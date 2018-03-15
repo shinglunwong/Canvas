@@ -1,0 +1,92 @@
+<style>
+    .canvas {
+        border: 1px black dotted;
+        position: absolute;
+        top: 0px;
+        left: 200px;
+    }
+
+    #canvas-draft {
+        background-color: transparent;
+    }
+
+    button {
+        width: 50px;
+        height: 50px;
+        opacity: 0.5;
+    }
+
+    button.active {
+        opacity: 1;
+    }
+
+    #tools button.active {
+        background-color: lightgray;
+    }
+
+    #black {
+        background-color: black;
+    }
+
+    #red {
+        background-color: red;
+    }
+</style>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<div>
+    <canvas id="canvas-real" class="canvas" width='1280px' height='720px'></canvas>
+    <canvas id="canvas-draft" class="canvas" width='1280px' height='720px'></canvas>
+</div>
+<div id="tools">
+    <button type="button" id="Pencil">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="-12 -12 40 40" width="100%" height="100%">
+            <path class="target" d="m3.19298,1.77277c0,0.08354 -0.02379,0.25618 -0.08354,0.41771c-0.09722,0.2628 -0.23328,0.55005 -0.37594,0.87719c-0.14934,0.34247 -0.33417,0.71011 -0.50125,1.12782c-0.16709,0.41771 -0.4419,0.98854 -0.54303,1.62907c-0.12394,0.78503 0.07874,1.09751 0.16709,1.12782c0.20146,0.06912 0.37796,0.07074 0.58479,0.04177c0.30116,-0.04218 0.62471,-0.17279 1.00251,-0.2924c0.41576,-0.13162 0.83939,-0.28187 1.2949,-0.45948c0.50593,-0.19726 1.20682,-0.55344 1.96324,-0.87719c0.70601,-0.30218 1.42022,-0.62657 2.1721,-0.96074c0.75188,-0.33416 1.41755,-0.67411 2.04679,-0.96073c1.12315,-0.51161 1.52972,-0.87428 1.67084,-0.75188c0.09979,0.08655 -0.17206,0.28915 -0.33417,0.54302c-0.47422,0.74267 -1.44555,2.25592 -2.75689,4.01003c-0.64059,0.85688 -2.40431,2.35522 -2.00501,2.96575c0.04572,0.06991 0.78847,-0.18668 2.96574,-0.75188c2.50052,-0.64912 4.47191,-1.23232 5.30493,-0.66834c0.07735,0.05236 -0.18254,0.45472 -1.46199,1.33667c-0.69638,0.48004 -2.06649,1.59225 -2.04678,1.62908c0.07107,0.13278 0.73973,0.1745 1.62907,0.79365c0.97084,0.67588 1.07976,1.41487 0.79365,1.92147c-0.2342,0.4147 -0.6039,0.71474 -0.58479,0.75188c0.16442,0.3195 2.29106,0.51896 3.13283,1.79615c0.56353,0.85503 -0.2924,1.58731 -0.62657,2.1721l1.37845,1.46199l3.92648,2.46449"
+                stroke-width="2" stroke="#000000" fill-opacity="0.0" style="fill: none; fill-opacity: 1; stroke: rgb(34, 34, 34); opacity: 1;"></path>
+        </svg>
+    </button>
+    <button type="button" id="Line">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" viewBox="0 0 64 64">
+            <line class="target" y2="62.5%" x2="75%" y1="37.5%" x1="25%" stroke-width="4" stroke="#000000" style="fill: none; fill-opacity: 1; stroke: rgb(34, 34, 34); opacity: 1;"></line>
+        </svg>
+    </button>
+    <button type="button" id="Rectangle">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" viewBox="0 0 64 64">
+            <rect class="target" x="25%" y="25%" width="50%" height="40%" stroke-width="4" style="fill: rgb(74, 144, 214); fill-opacity: 1; stroke: rgb(34, 34, 34); opacity: 1;"></rect>
+        </svg>
+    </button>
+    <!-- <button type="button" id="Triangle">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" viewBox="0 0 64 64">
+            <rect class="target" x="25%" y="25%" width="50%" height="40%" stroke-width="4" style="fill: rgb(74, 144, 214); fill-opacity: 1; stroke: rgb(34, 34, 34); opacity: 1;"></rect>
+        </svg>
+    </button> -->
+</div>
+<div id="colors">
+    <button type="button" id="black"></button>
+    <button type="button" id="red"></button>
+</div>
+
+<script type='text/javascript' src="canvas-common.js"></script>
+<script type='text/javascript' src="drawing-pencil.js"></script>
+<script type='text/javascript' src="drawing-line.js"></script>
+<script type='text/javascript' src="drawing-rectangle.js"></script>
+<script type='text/javascript'>
+    $('#tools button').click(function () {
+        console.log('currentFunction:' + $(this).attr('id'));
+        currentFunction = eval('new Drawing' + $(this).attr('id') + '(contextReal,contextDraft);');
+        $('#tools button').removeClass('active');
+        $(this).toggleClass('active');
+    });
+
+    $('#colors button').click(function () {
+        console.log('currentColor:' + $(this).attr('id'));
+        currentColor = $(this).attr('id');
+        $('#colors button').removeClass('active');
+        $(this).toggleClass('active');
+    });
+
+    // default parameters
+    $('#Line').click();
+    $('#red').click();
+</script>
