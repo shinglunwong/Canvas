@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+</head>
+
+<body>
+    <div class='parent'>
+        <div class='cursor'></div>
+        <canvas id="canvasDraft" width='1000' height='800'>Your browser does not support Canvas</canvas>
+        <br/>
+        <canvas id="canvasReal" width='1000' height='800'>Your browser does not support Canvas</canvas>
+    </div>
+    <div class='buttons'>
+        <button class='draw-rectangle'>Rectangle</button>
+        <button class='draw-line'>Line</button>
+        <button class='line'>Line tool</button>
+        <button class='eraser'>Eraser</button>
+    </div>
+    <div class='colour-picker'>
+        <div id='red'></div>
+        <div id='blue'></div>
+        <div id='green'></div>
+        <div id='yellow'></div>
+        <div id='purple'></div>
+        <div id='white'></div>
+        <div id='black'></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src='canvas-common.js'></script>
+    <script src='draw-line.js'></script>
+    <script src='linetool.js'></script>
+    <script src='draw-rectangle.js'></script>
+    <script src='eraser.js'></script>
+    <script src='main.js'></script>
+
+</body>
+
+</html>

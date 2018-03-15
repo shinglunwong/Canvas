@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        canvas {
+            border-style: solid;
+            border-color: black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas id="canvas1" width=400 height=400>Your browser does not support Canvas</canvas>
+    <script type='text/javascript'>
+        const canvas1 = document.getElementById('canvas1');
+        const ctx1 = canvas1.getContext('2d');
+
+        function drawLine(ctx, start, end) {
+            ctx.beginPath();
+            ctx.moveTo(start[0], start[1]);
+            ctx.lineTo(end[0], end[1]);
+            ctx.stroke();
+        }
+
+        drawLine(ctx1, [0, 0], [100, 300]);
+        drawLine(ctx1, [100, 300], [400, 400]);
+        drawLine(ctx1, [400, 400], [0, 0]);
+
+
+    </script>
+</body>
+
+</html>

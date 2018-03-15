@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        canvas {
+            border-style: solid;
+            border-color: black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas id="canvas" width=400 height=400>Your browser does not support Canvas</canvas>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script type='text/javascript'>
+        const canvas = document.getElementById('canvas');
+        const context = canvas.getContext('2d');
+        let dragging = false;
+        context.strokeStyle = "#df4b26";
+        context.lineJoin = "round";
+        context.lineWidth = 5;
+
+
+        $('#canvas').mousedown(function (e) {
+            let mouseX = e.pageX - this.offsetLeft;
+            let mouseY = e.pageY - this.offsetTop;
+            originalX = mouseX;
+            originalY = mouseY;
+            context.beginPath();
+            dragging = true;
+        });
+
+        $('#canvas').mousemove(function (e) {
+            if (dragging) {
+                let mouseX = e.pageX - this.offsetLeft;
+                let mouseY = e.pageY - this.offsetTop;
+                context.moveTo(originalX, originalY);
+                draw(mouseX, mouseY);
+            }
+        });
+        $('#canvas').mouseup(function (e) {
+            dragging = false;
+        });
+        $('#canvas').mouseleave(function (e) {
+            dragging = false;
+        });
+
+        function draw(x, y) {
+            context.lineTo(x, y);
+            context.moveTo(x, y);
+            context.closePath();
+            context.stroke();
+        }
+
+    </script>
+</body>
+
+</html>
