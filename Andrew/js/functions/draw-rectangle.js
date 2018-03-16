@@ -24,4 +24,5 @@ class DrawingRectangle extends PaintFunction{
     }
     onMouseLeave(){}
     onMouseEnter(){}
+    onClick(){}
 }

@@ -33,4 +33,5 @@ class lineTool extends PaintFunction {
         this.contextReal.stroke();}
     onMouseLeave() { }
     onMouseEnter() { }
+    onClick(){}
 }

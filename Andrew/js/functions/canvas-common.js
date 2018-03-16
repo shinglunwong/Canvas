@@ -46,6 +46,12 @@ $('.parent').on('mouseenter', '#canvasDraft', function (e) {
     currentFunction.onMouseEnter([mouseX,mouseY],e);
 });
 
+$('.parent').on('click', '#canvasDraft', function (e) {
+    let mouseX = e.pageX - this.offsetLeft;
+    let mouseY = e.pageY - this.offsetTop;
+    currentFunction.onClick([mouseX,mouseY],e);
+});
+
 // To prevent undefined functions
 class PaintFunction {
     constructor() { }
@@ -55,4 +61,5 @@ class PaintFunction {
     onMouseUp() { }
     onMouseLeave() { }
     onMouseEnter() { }
+    onClick(){}
 }    

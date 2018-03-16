@@ -13,6 +13,9 @@ $('.eraser').on('click', function () {
 $('.draw-rectangle').on('click', function () {
     currentFunction = new DrawingRectangle(contextReal, contextDraft);
 })
+$('.triangle').on('click', function () {
+    currentFunction = new DrawingTriangle(contextReal, contextDraft);
+})
 
 $('.parent').hover(function () {
     $('.parent').mousemove(function (e) {

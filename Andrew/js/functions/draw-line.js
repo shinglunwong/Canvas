@@ -20,6 +20,7 @@ class DrawingLine extends PaintFunction {
     onMouseUp() { }
     onMouseLeave() { }
     onMouseEnter() { }
+    onClick(){}
 
     draw(x, y) {
         this.context.lineTo(x, y);
