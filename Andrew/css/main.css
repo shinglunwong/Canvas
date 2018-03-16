@@ -1,0 +1,88 @@
+body{
+    user-select: none;
+}
+
+.parent {
+    position: relative;
+    height: 800px;
+    width: 1000px;
+    margin-bottom: 20px;
+}
+
+canvas {
+    border-style: solid;
+    border-color: black;
+    cursor: none;
+        }
+
+canvas#canvasDraft {
+    position: relative;
+    z-index: 100;
+    background-color: transparent;
+}
+
+canvas#canvasReal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: white;
+    z-index: 50;
+}
+
+.cursor {
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    display: none;
+    z-index: 80;
+    top: 0;
+    left: 0;
+    border-radius: 100%;
+    border: black solid 2px;
+    background-color: black;
+    transform: translate(50%, -125%);
+}
+
+.parent:hover .cursor {
+    display: block;
+    margin-top: 20px;
+}
+
+.colour-picker {
+    display: flex;
+    justify-content: flex-start;
+    cursor: pointer;
+}
+
+.colour-picker > div {
+    width: 25px;
+    height: 25px;
+    border: black solid;
+}
+#red {
+    background-color:red;
+}
+
+#blue {
+    background-color:blue;
+}
+
+#green {
+    background-color:green;
+}
+
+#yellow {
+    background-color:yellow;
+}
+
+#purple {
+    background-color:purple;
+}
+
+#white {
+    background-color:white;
+}
+
+#black {
+    background-color:black;
+}
