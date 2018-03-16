@@ -1,0 +1,116 @@
+#style {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    text-align: center;
+}
+#style .btn-group-vertical .btn {
+    border-radius: 0;
+}
+
+#tools {
+    position: absolute;
+    top: 80;
+    left: 0;
+    width: 80px;
+    height: 300px;
+}
+
+#canvas {
+    position: absolute;
+    top: 80px;
+    left: 80px;
+    width: 1280px;
+    height: 720px;
+}
+
+#canvas-grid.grid{
+    background: linear-gradient(90deg, transparent 99.5%, rgba(0, 0, 0, 0.5) 99.5%), linear-gradient(180deg, transparent 99%, rgba(0, 0, 0, 0.5) 99%);
+    background-size:34%;
+    background-repeat: repeat;
+}
+
+.canvas {
+    border: 1px black dotted;
+    position: absolute;
+    background-color: transparent;
+    width: 1280px;
+    height: 720px;
+}
+
+#tools button, .btn.grid{
+    width: 50px;
+    height: 50px;
+    opacity: 0.8;
+}
+
+.btn.grid {
+    padding: 6px;
+}
+
+#style .btn {
+    font-size: 11px;
+    line-height: 1;
+}
+
+.color-picker,
+.color-stroke-picker {
+    width: 50px;
+    height: 50px;
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.color-picker .sp-replacer {
+    border-top-left-radius: .25rem;
+    border-bottom-left-radius: .25rem;
+}
+
+.stroke-size {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+}
+
+.sp-replacer {
+    padding: 0;
+    border: 0;
+}
+
+.sp-preview {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.sp-dd {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    padding: 0;
+}
+
+.color-stroke-picker .sp-dd {
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    margin: 5px;
+    background-color: white;
+}
+
+.sp-replacer {
+    width: 100%;
+    height: 100%;
+}
+
+#tools button.active, .btn-secondary:not(:disabled):not(.disabled).active.grid{
+    background-color: lightgray;
+    opacity: 1;
+}
+
+.upload {
+    display: none;
+}

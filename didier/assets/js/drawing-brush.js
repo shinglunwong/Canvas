@@ -1,4 +1,4 @@
-class DrawingPencil extends PaintFunction{
+class DrawingBrush extends PaintFunction{
     constructor(contextReal){
         super();
         this.context = contextReal;            
