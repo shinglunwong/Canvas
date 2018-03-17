@@ -1,3 +1,13 @@
+$(document).ready(function(){
+    $('.splash').fadeOut('slow');
+})
+
+// Declare default tools options
+let brushSize = 10;
+let fillColor = 'black';
+let fontWidth = 16;
+let font = '24px sans-serif'
+
 // color-picker
 currentColor = "#f00";
 $("#color-picker").spectrum({
@@ -87,21 +97,14 @@ $('input.upload').change(function() {
     img.src = url;
 });
 
-
-//Andrew's drawing function
-$('#Brush').on('click', function () {
-    currentFunction = new DrawingBrush(contextReal, contextDraft);
+// Custom cursor
+$('#canvas').hover(function () {
+    $('#canvas').mousemove(function (e) {
+        let mouseX = e.pageX - this.offsetLeft;
+        let mouseY = e.pageY - this.offsetTop;
+        $('.cursor').css('left', mouseX - currentStrokeSize/2);
+        $('.cursor').css('top', mouseY - currentStrokeSize);
+        $('.cursor').css('width', currentStrokeSize);
+        $('.cursor').css('height', currentStrokeSize);
+    })
 })
-$('#Line').on('click', function () {
-    currentFunction = new DrawingLine(contextReal, contextDraft);
-})
-$('#Rectangle').on('click', function () {
-    currentFunction = new DrawingRectangle(contextReal, contextDraft);
-})
-$('#Polygon').on('click', function () {
-    currentFunction = new DrawingPolygon(contextReal, contextDraft);
-})
-$('#Circle').on('click', function () {
-    currentFunction = new DrawingCircle(contextReal, contextDraft);
-})
-

@@ -28,3 +28,19 @@ class DrawingBrush extends PaintFunction{
         this.context.stroke();    
     }
 }
+
+
+// For eraser
+class DrawingEraser extends DrawingBrush{
+    constructor(contextReal){
+        super();
+        this.context = contextReal;
+  
+    }
+    onMouseDown(coord,event){
+        this.context.strokeStyle = 'white';
+        this.context.lineJoin = "round";
+        this.context.lineWidth = 5;
+        this.context.beginPath();
+    }
+}

@@ -12,6 +12,7 @@
 
 <body>
 
+    <!-- Stylebar -->
     <div id="style">
         <div class="btn-group">
             <button type="button" class="btn btn-secondary color-picker active" title="Color">
@@ -34,6 +35,8 @@
             </button>
         </div>
     </div>
+
+    <!-- Toolbar-->
     <div id="tools" class="btn-group-vertical">
         <button type="button" class="btn btn-secondary" id="Brush" title="Brush [b]">
             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="-12 -12 40 40" width="100%" height="100%">
@@ -62,6 +65,8 @@
                     stroke-width="2" style="fill: rgb(74, 144, 214); fill-opacity: 1; stroke: rgb(34, 34, 34); opacity: 1;"></path>
             </svg>
         </button>
+        <button type="button" class="btn btn-secondary" id="Text" title="Text [t]"> Aa</button>
+        </button>
         <button type="button" class="btn btn-secondary" id="Eraser" title="Eraser [e]">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px"
                 viewBox="0 0 280 280" style="enable-background:new 0 0 280 280;width: 24px;" xml:space="preserve">
@@ -74,6 +79,7 @@
                 <path style="fill:#EAE5E4;" d="M20.416,145.548l114.041,114.041l-10.555,10.555L9.861,156.103L20.416,145.548z" />
             </svg>
         </button>
+        <br/>
         <button type="button" class="btn btn-secondary import-file" title="Import file [i]">
             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                 viewBox="0 0 52 52" style="enable-background:new 0 0 52 52;" xml:space="preserve">
@@ -85,6 +91,8 @@
             </svg>
         </button>
     </div>
+
+    <!-- Canvas -->
     <div id="canvas">
         <div class='cursor'></div>
         <canvas id="canvas-real" class="canvas" width='1280px' height='720px'></canvas>
@@ -93,18 +101,21 @@
     </div>
     <input type="file" class="upload"/>
 
-    <!-- JS -->
+    <!-- JS dependencies -->
     <script type='text/javascript' src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.js"></script>
     <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script type='text/javascript' src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
+    <!-- Functions -->
     <script type='text/javascript' src="assets/js/canvas-common.js"></script>
     <script type='text/javascript' src="assets/js/drawing-brush.js"></script>
     <script type='text/javascript' src="assets/js/drawing-line.js"></script>
     <script type='text/javascript' src="assets/js/drawing-rectangle.js"></script>
     <script type='text/javascript' src="assets/js/drawing-circle.js"></script>
+    <script type='text/javascript' src="assets/js/drawing-text.js"></script>
     <script type='text/javascript' src="assets/js/drawing-polygon.js"></script>
-    <script type='text/javascript' src="assets/js/drawing-eraser.js"></script>
     <script type='text/javascript' src="assets/js/init.js"></script>
 
 </body>

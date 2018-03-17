@@ -8,7 +8,7 @@ let currentColor;
 let shifting = false;
 let leftCanvas = false;
 
-$('#canvas').on('contextmenu', '#canvasDraft', function (e) {
+$('#canvas').on('contextmenu', '#canvas-draft', function (e) {
     e.preventDefault();
 })
 
