@@ -1,5 +1,7 @@
-$(document).ready(function(){
-    $('.splash').fadeOut('slow');
+$(document).ready(function () {
+    setTimeout(function () {
+        $('.splash').fadeOut('slow');
+    }, 2000)
 })
 
 // Declare default tools options
@@ -64,7 +66,7 @@ $('#stroke-size-less').click(function () {
 // tools buttons
 $('#tools button').click(function (e) {
     e.preventDefault();
-    if(typeof $(this).attr('id')!=='undefined') {
+    if (typeof $(this).attr('id') !== 'undefined') {
         console.log('currentFunction:' + $(this).attr('id'));
         currentFunction = eval('new Drawing' + $(this).attr('id') + '(contextReal,contextDraft);');
         $('#tools button').removeClass('active');
@@ -87,12 +89,12 @@ $('button.import-file').click(function (e) {
     console.log('upload');
     $('input.upload').click();
 });
-$('input.upload').change(function() {
+$('input.upload').change(function () {
     var file = document.querySelector('input[type=file]').files[0];
     var url = URL.createObjectURL(file);
     var img = new Image();
-    img.onload = function() {
-        contextReal.drawImage(img, 0, 0);    
+    img.onload = function () {
+        contextReal.drawImage(img, 0, 0);
     }
     img.src = url;
 });
@@ -102,7 +104,7 @@ $('#canvas').hover(function () {
     $('#canvas').mousemove(function (e) {
         let mouseX = e.pageX - this.offsetLeft;
         let mouseY = e.pageY - this.offsetTop;
-        $('.cursor').css('left', mouseX - currentStrokeSize/2);
+        $('.cursor').css('left', mouseX - currentStrokeSize / 2);
         $('.cursor').css('top', mouseY - currentStrokeSize);
         $('.cursor').css('width', currentStrokeSize);
         $('.cursor').css('height', currentStrokeSize);
