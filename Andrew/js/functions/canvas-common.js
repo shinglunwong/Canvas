@@ -7,50 +7,78 @@ $('.parent').on('contextmenu', '#canvasDraft', function (e) {
     e.preventDefault();
 })
 let dragging = false;
+let shifting = false;
+let leftCanvas = false;
 
 $('.parent').on('mousedown', '#canvasDraft', function (e) {
-    if (e.which == 1) {
-        let mouseX = e.pageX - this.offsetLeft;
-        let mouseY = e.pageY - this.offsetTop;
-        currentFunction.onMouseDown([mouseX, mouseY], e)
-        dragging = true;
-    }
+    let mouseX = e.offsetX - this.offsetLeft;
+    let mouseY = e.offsetY - this.offsetTop;
+    currentFunction.onMouseDown([mouseX, mouseY], e)
+    dragging = true;
 });
 
-$('.parent').on('mousemove', '#canvasDraft', function (e) {
-    let mouseX = e.pageX - this.offsetLeft;
-    let mouseY = e.pageY - this.offsetTop;
+$(document).on('keydown', function (e) {
+    if (e.which == 16) {
+        shifting = true;
+    }
+})
+
+$(document).on('keyup', function (e) {
+    if (e.which == 16) {
+        shifting = false;
+    }
+})
+
+$(document).on('mousemove', '#canvasDraft', function (e) {
+    let mouseX = e.offsetX - this.offsetLeft;
+    let mouseY = e.offsetY - this.offsetTop;
     if (dragging) {
         currentFunction.onDragging([mouseX, mouseY], e);
     }
-    currentFunction.onMouseMove([mouseX, mouseY], e);
+    else {
+        currentFunction.onMouseMove([mouseX, mouseY], e);
+    }
 });
 
+$(window).on('mouseup', function (e) {
+    if (leftCanvas) {
+        leftCanvas = false;
+        currentFunction.clearDraft();
+    }
+})
 $('.parent').on('mouseup', '#canvasDraft', function (e) {
     dragging = false;
-    let mouseX = e.pageX - this.offsetLeft;
-    let mouseY = e.pageY - this.offsetTop;
-    currentFunction.onMouseUp([mouseX,mouseY],e);
+    let mouseX = e.offsetX - this.offsetLeft;
+    let mouseY = e.offsetY - this.offsetTop;
+    currentFunction.onMouseUp([mouseX, mouseY], e);
 });
 
 $('.parent').on('mouseleave', '#canvasDraft', function (e) {
+    if (dragging) {
+        leftCanvas = true;
+    }
     dragging = false;
-    let mouseX = e.pageX - this.offsetLeft;
-    let mouseY = e.pageY - this.offsetTop;
-    currentFunction.onMouseLeave([mouseX,mouseY],e);
+    let mouseX = e.offsetX - this.offsetLeft;
+    let mouseY = e.offsetY - this.offsetTop;
+    currentFunction.onMouseLeave([mouseX, mouseY], e);
 });
 
 $('.parent').on('mouseenter', '#canvasDraft', function (e) {
-    let mouseX = e.pageX - this.offsetLeft;
-    let mouseY = e.pageY - this.offsetTop;
-    currentFunction.onMouseEnter([mouseX,mouseY],e);
+    if (leftCanvas) {
+        dragging = true;
+        leftCanvas = false;
+    }
+    let mouseX = e.offsetX - this.offsetLeft;
+    let mouseY = e.offsetY - this.offsetTop;
+    currentFunction.onMouseEnter([mouseX, mouseY], e);
 });
 
 $('.parent').on('click', '#canvasDraft', function (e) {
-    let mouseX = e.pageX - this.offsetLeft;
-    let mouseY = e.pageY - this.offsetTop;
-    currentFunction.onClick([mouseX,mouseY],e);
+    let mouseX = e.offsetX - this.offsetLeft;
+    let mouseY = e.offsetY - this.offsetTop;
+    currentFunction.onClick([mouseX, mouseY], e);
 });
+
 
 // To prevent undefined functions
 class PaintFunction {
@@ -61,5 +89,10 @@ class PaintFunction {
     onMouseUp() { }
     onMouseLeave() { }
     onMouseEnter() { }
-    onClick(){}
+    onClick() { }
+    clearDraft() {
+        contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
+        contextDraft.closePath();
+    }
+    onKeydown() { };
 }    

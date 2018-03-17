@@ -7,12 +7,12 @@ body{
     height: 800px;
     width: 1000px;
     margin-bottom: 20px;
+    cursor: none;
 }
 
 canvas {
     border-style: solid;
     border-color: black;
-    cursor: none;
         }
 
 canvas#canvasDraft {
@@ -40,7 +40,6 @@ canvas#canvasReal {
     border-radius: 100%;
     border: black solid 2px;
     background-color: black;
-    transform: translate(50%, -125%);
 }
 
 .parent:hover .cursor {

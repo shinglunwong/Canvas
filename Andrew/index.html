@@ -10,6 +10,12 @@
 </head>
 
 <body>
+    <div class='topbar'>
+
+    </div>
+    <div class='left-toolbar'>
+
+    </div>
     <div class='parent'>
         <div class='cursor'></div>
         <canvas id="canvasDraft" width='1000' height='800'>Your browser does not support Canvas</canvas>
@@ -18,10 +24,12 @@
     </div>
     <div class='buttons'>
         <button class='draw-rectangle'>Rectangle</button>
-        <button class='draw-line'>Line</button>
+        <button class='draw-line'>Pencil</button>
         <button class='line'>Line tool</button>
-        <button class='triangle'>Triangle</button>
+        <button class='polygon'>Polygon</button>
         <button class='eraser'>Eraser</button>
+        <button class='circle'>Circle</button>
+        <button class='text'>Text</button>
     </div>
     <div class='colour-picker'>
         <div id='red'></div>
@@ -34,12 +42,17 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
+
+
+
+
     <script src='js/functions/canvas-common.js'></script>
     <script src='js/functions/draw-line.js'></script>
     <script src='js/functions/linetool.js'></script>
     <script src='js/functions/draw-rectangle.js'></script>
-    <script src='js/functions/eraser.js'></script>
-    <script src='js/functions/draw-triangle.js'></script>
+    <script src='js/functions/draw-polygon.js'></script>
+    <script src='js/functions/draw-circle.js'></script>    
+    <script src='js/functions/text-input.js'></script>    
     <script src='js/main.js'></script>
 
 </body>
