@@ -2,6 +2,8 @@ let currentFunction = new DrawingLine(contextReal, contextDraft);
 let currentColor = 'black';
 let brushSize = 10;
 let fillColor = 'black';
+let fontWidth = 16;
+let font = '24px sans-serif'
 
 
 

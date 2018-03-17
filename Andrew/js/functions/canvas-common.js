@@ -21,6 +21,7 @@ $(document).on('keydown', function (e) {
     if (e.which == 16) {
         shifting = true;
     }
+    currentFunction.onKeydown(e)
 })
 
 $(document).on('keyup', function (e) {

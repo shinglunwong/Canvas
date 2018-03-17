@@ -9,6 +9,7 @@ class TextInput extends PaintFunction {
         super();
         this.contextReal = contextReal;
         this.contextDraft = contextDraft;
+        this.inputString = '';
     }
 
     onMouseDown(coord, event) {
@@ -16,11 +17,13 @@ class TextInput extends PaintFunction {
         this.contextReal.fillStyle = fillColor;
         this.contextDraft.strokestyle = currentColor;
         this.contextReal.strokestyle = currentColor;
-        this.contextReal.lineWidth = brushSize;
+        this.contextReal.lineWidth = 1;
+        this.contextReal.font = font;
         this.origX = coord[0];
         this.origY = coord[1];
         this.width = '';
         this.height = '';
+        this.textEnter = false;
     }
     onDragging(coord, event) {
         this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
@@ -62,40 +65,42 @@ class TextInput extends PaintFunction {
             this.height = coord[1] - this.origY;
         }
 
-        this.contextDraft.strokeRect(this.origX, this.origY, this.width, this.height);
+        this.contextReal.strokeRect(this.origX, this.origY, this.width, this.height);
         console.log(this.height);
         console.log(this.width);
 
 
         //define variables to use outside function
-        textboxWidth = Math.abs(this.width);
-        textboxHeight = Math.abs(this.height);
+        this.width = Math.abs(this.width);
+        this.height = Math.abs(this.height);
 
         if (coord[0] - this.origX < 0) {
-            textboxOrigX = this.origX - textboxWidth;
-        }
-        else {
-            textboxOrigX = this.origX;
-
+            this.origX -= this.width;
         }
         if (coord[1] - this.origY < 0) {
-            textboxOrigY = this.origY - textboxHeight;
+            this.origY -= this.height;
         }
-        else {
-            textboxOrigY = this.origY;
-        }
+        this.textEnter = true;
 
-        $('.parent').append(`<input class='canvasTextbox' placeholder='Input text here' style='position: absolute; height: ${textboxHeight}px; width: ${textboxWidth}px; left: ${textboxOrigX}px; top: ${textboxOrigY}px; z-index: 200;'></input>`)
+        // $('.parent').append(`<form  class='canvasTextbox'><input type='text' placeholder='Input text here' style='position: absolute; height: ${textboxHeight}px; width: ${textboxWidth}px; left: ${textboxOrigX}px; top: ${textboxOrigY}px; z-index: 200;'></input></form>`)
     }
     onMouseLeave() { }
     onMouseEnter() { }
     onClick() { }
+    onKeydown(e) {
+        if (this.textEnter) {
+            if (e.which != 13) {
+                this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
+                this.contextReal.font = font;
+                this.inputString += String.fromCharCode(e.which);
+                this.contextDraft.textAlign = 'center';
+                this.contextDraft.fillText(this.inputString, (this.origX + this.width / 2), (this.origY + this.height / 2));
+
+            }
+            else {
+                this.textEnter = false;
+            }
+
+        }
+    }
 }
-
-
-    $('.parent').on('submit', '.canvasTextbox', function () {
-        console.log('text')
-        canvasReal.strokeRect(textboxOrigX, textboxOrigY, textboxWidth, textboxHeight);
-        $('.canvasTextbox').remove();
-    })
-
