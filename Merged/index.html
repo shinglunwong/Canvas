@@ -12,35 +12,43 @@
 
 <body>
     <!-- Loading Screen -->
-    <div class='splash'>
+    <div class='splash' style='display: none'>
         <div class='load-circle'></div>
         <p>Loading...</p>
     </div>
-
     <!-- Stylebar -->
-    <div id="style">
-        <div class="btn-group">
-            <button type="button" class="btn btn-secondary color-picker active" title="Color">
-                <input id='color-picker' />
-            </button>
-            <button type="button" class="btn btn-secondary color-stroke-picker active" title="Stroke Color">
-                <input id='color-stroke-picker' />
-            </button>
-            <input type="text" class="stroke-size" value="2">
-            <div class="btn-group-vertical">
-                <button type="button" class="btn btn-secondary" id="stroke-size-more">▲</button>
-                <button type="button" class="btn btn-secondary" id="stroke-size-less">▼</button>
-            </div>
-            <button type="button" class="btn btn-secondary grid" title="Grid [g]">
-                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                    viewBox="0 0 16 12" style="enable-background:new 0 0 16 12;" xml:space="preserve">
-                    <path class="st0" d="M0-2v16h16V-2H0z M5,14H0V9h5V14z M5,8H0V4h5V8z M5,3H0v-5h5V3z M10,14H6V9h4V14z M10,8H6V4h4V8z M10,3H6v-5h4
+    <nav class="navbar navbar-expand-md">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="style" id="navbarNav">
+            <div class="btn-group">
+                <button type="button" class="btn btn-secondary color-picker active" title="Color">
+                    <input id='color-picker' />
+                </button>
+                <button type="button" class="btn btn-secondary color-stroke-picker active" title="Stroke Color">
+                    <input id='color-stroke-picker' />
+                </button>
+                <input type="text" class="stroke-size" value="10">
+                <div class="btn-group-vertical">
+                    <button type="button" class="btn btn-secondary" id="stroke-size-more">&#9650;</button>
+                    <button type="button" class="btn btn-secondary" id="stroke-size-less">&#9660;</button>
+                </div>
+                <button type="button" class="btn btn-secondary grid" title="Grid [g]">
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                        viewBox="0 0 16 12" style="enable-background:new 0 0 16 12;" xml:space="preserve">
+                        <path class="st0" d="M0-2v16h16V-2H0z M5,14H0V9h5V14z M5,8H0V4h5V8z M5,3H0v-5h5V3z M10,14H6V9h4V14z M10,8H6V4h4V8z M10,3H6v-5h4
 	V3z M16,14h-5V9h5V14z M16,8h-5V4h5V8z M16,3h-5v-5h5V3z" />
-                </svg>
-            </button>
+                    </svg>
+                </button>
+            </div>
         </div>
-    </div>
-
+        <div class='save'>
+            <button class='btn'>Save</button>
+        </div>
+    </nav>
     <!-- Toolbar-->
     <div id="tools" class="btn-group-vertical">
         <button type="button" class="btn btn-secondary" id="Brush" title="Brush [b]">
@@ -84,7 +92,6 @@
                 <path style="fill:#EAE5E4;" d="M20.416,145.548l114.041,114.041l-10.555,10.555L9.861,156.103L20.416,145.548z" />
             </svg>
         </button>
-        <br/>
         <button type="button" class="btn btn-secondary import-file" title="Import file [i]">
             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                 viewBox="0 0 52 52" style="enable-background:new 0 0 52 52;" xml:space="preserve">
@@ -104,7 +111,7 @@
         <div id="canvas-grid" class="canvas grid" width='1280px' height='720px'></div>
         <canvas id="canvas-draft" class="canvas" width='1280px' height='720px'></canvas>
     </div>
-    <input type="file" class="upload"/>
+    <input type="file" class="upload" />
 
     <!-- JS dependencies -->
     <script type='text/javascript' src="https://code.jquery.com/jquery-3.2.1.min.js"></script>

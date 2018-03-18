@@ -8,7 +8,7 @@ class DrawingCircle extends PaintFunction {
 
     onMouseDown(coord, event) {
         this.contextReal.fillStyle = currentColor;
-        this.contextReal.strokestyle = currentColor;
+        this.contextReal.strokestyle = currentStrokeColor;
         this.origX = coord[0];
         this.origY = coord[1];
     }

@@ -34,28 +34,48 @@
 
 /* Toolbars */
 
-#style {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
+.navbar {
     height: 80px;
-    text-align: center;
+    background-color: #500381;
+    margin-bottom: 10px;
+    box-shadow: 0 5px 10px #444444;
 }
+
+.navbar-brand {
+    color: white;
+    width: 4%;
+}
+.save {
+    width: 4%;
+    text-align: right;
+}
+
+#style {
+    flex-grow: 1;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#style .btn-group-vertical {
+    height: 50px;
+}
+
 #style .btn-group-vertical .btn {
     border-radius: 0;
 }
 
 #tools {
     position: absolute;
-    top: 80;
+    display: flex;
+    top: 30%;
     left: 0;
     width: 80px;
-    height: 300px;
 }
 
 #tools button, .btn.grid{
-    width: 50px;
+    width: 55px;
     height: 50px;
     opacity: 0.8;
 }
@@ -74,21 +94,25 @@
     font-size: 11px;
     line-height: 1;
 }
+.btn-secondary:not(:disabled):not(.disabled).active:focus, .btn-secondary:not(:disabled):not(.disabled):active:focus, .show>.btn-secondary.dropdown-toggle:focus{
+    box-shadow: 0 0 0 1px rgba(108,117,125,.5)
+}
+
 
 /* Custom cursor */
 
 
 .cursor {
-    width: 5px;
-    height: 5px;
+    width: 10px;
+    height: 10px;
     position: absolute;
     display: none;
     z-index: 90;
     top: 0;
     left: 0;
+    transform: translate(0 , -20px);
     border-radius: 100%;
-    border: black solid 2px;
-    background-color: black;
+    border: black solid 1px;
 }
 
 #canvas:hover .cursor {
@@ -100,7 +124,7 @@
 
 #canvas {
     position: absolute;
-    top: 80px;
+    top: 90px;
     left: 80px;
     width: 1280px;
     height: 720px;

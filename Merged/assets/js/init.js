@@ -5,8 +5,6 @@ $(document).ready(function () {
 })
 
 // Declare default tools options
-let brushSize = 10;
-let fillColor = 'black';
 let fontWidth = 16;
 let font = '24px sans-serif'
 
@@ -108,5 +106,6 @@ $('#canvas').hover(function () {
         $('.cursor').css('top', mouseY - currentStrokeSize);
         $('.cursor').css('width', currentStrokeSize);
         $('.cursor').css('height', currentStrokeSize);
+        $('.cursor').css('backgroundColor', currentColor);
     })
 })

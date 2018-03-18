@@ -10,10 +10,10 @@ class DrawingPolygon extends PaintFunction {
         this.drawingY = '';
     }
     onClick(coord, event) {
-        this.contextDraft.strokeStyle = currentColor;
-        this.contextReal.strokeStyle = currentColor;
+        this.contextDraft.strokeStyle = currentStrokeColor;
+        this.contextReal.strokeStyle = currentStrokeColor;
         this.contextReal.lineWidth = currentStrokeSize;
-        this.contextReal.fillStyle = fillColor;
+        this.contextReal.fillStyle = currentColor;
         this.contextReal.lineJoin = 'miter';
 
         // End polygon
