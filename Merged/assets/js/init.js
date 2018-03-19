@@ -115,3 +115,17 @@ $('#canvas').hover(function () {
         $('.cursor').css('backgroundColor', currentColor);
     })
 })
+
+// Shortcuts
+$('[data-shortcut]').each(function () {
+    var $element = $(this);
+    key = $element.data('shortcut');
+
+    $(document).on('keyup', null, String(key), function () {
+        $element.trigger('focus').trigger('click');
+
+        if ($element.prop('tagName').toLowerCase() === 'a') {
+            window.location = element.attr('href');
+        }
+    });
+});

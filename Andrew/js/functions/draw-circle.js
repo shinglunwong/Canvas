@@ -23,6 +23,7 @@ class DrawingCircle extends PaintFunction {
             this.contextDraft.ellipse(this.origX, this.origY, Math.abs(this.origX - coord[0]), Math.abs(this.origY - coord[1]), 0, 0, 2 * Math.PI);
         }
         this.contextDraft.fill();
+
     }
     onMouseMove() { }
 
