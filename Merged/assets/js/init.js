@@ -186,8 +186,7 @@ if (isMobile) {
 // Save function
 var saveCanvasReal = $('#canvas-real');
 
-function save() {
-    // var dataUrl = canvasReal.toDataURL('image/png', 1);
-    // console.log(dataUrl);
-    console.log('hi')
-}
+$('.save').click(function () {
+    var dataURL = canvasReal.toDataURL('image/png', 1);
+    $('.save').href = dataURL;
+})
