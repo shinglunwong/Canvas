@@ -184,7 +184,7 @@ if (isMobile) {
 }
 
 // Save function
-var canvasReal = $('#canvas-real');
+var saveCanvasReal = $('#canvas-real');
 
 function save() {
     // var dataUrl = canvasReal.toDataURL('image/png', 1);
