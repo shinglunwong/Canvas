@@ -1,16 +1,18 @@
 // Set Canvas dimension
-$(document).ready(function(){
+$(document).ready(function () {
     var winWidth = $(window).width() - 100;
     var winHeight = $(window).height() - 120;
     $("#width").attr("value", winWidth);
     $("#height").attr("value", winHeight);
-    $('.canvas-size').submit(function(e) {
+    $('.canvas-size').submit(function (e) {
         e.preventDefault();
         $('.splash').fadeOut('slow');
         var width = $("#width").val();
         var height = $("#height").val();
         $('#canvas canvas').attr("width", width).attr("height", height);
         $('#canvas, #canvas-grid.grid').css("width", width).css("height", height);
+        contextReal.fillStyle = 'white';
+        contextReal.fillRect(0, 0, canvasReal.width, canvasReal.height);
     })
 })
 
@@ -126,7 +128,9 @@ $('input.upload').change(function () {
     var url = URL.createObjectURL(file);
     var img = new Image();
     img.onload = function () {
-        contextReal.drawImage(img, 0, 0);
+        console.log(this.width);
+        console.log(this.height);
+        contextReal.drawImage(img, 0, 0, canvasReal.width, canvasReal.height);
     }
     img.src = url;
 });
@@ -163,18 +167,18 @@ $('[data-shortcut]').each(function () {
 // mobile events
 if (isMobile) {
     var mc = new Hammer(document.getElementById('canvas-draft'));
-    mc.on("pan panstart panend tap press pressup", function(e) {
-        console.log('new event:'+e.type);
+    mc.on("pan panstart panend tap press pressup", function (e) {
+        console.log('new event:' + e.type);
         //console.log(e);
         let mouseX = e.center.x - e.target.offsetParent.offsetLeft;
         //console.log('mouseX:'+mouseX);
         let mouseY = e.center.y - e.target.offsetParent.offsetTop;
         //console.log('mouseY:'+mouseY);
-        if(e.type=='press' || e.type=='tap') {
+        if (e.type == 'press' || e.type == 'tap') {
             currentFunction.onKeydown(e);
             currentFunction.onClick([mouseX, mouseY], e);
         }
-        else if(e.type=='panstart') {
+        else if (e.type == 'panstart') {
             currentFunction.onKeydown(e);
             currentFunction.onMouseDown([mouseX, mouseY], e);
         }
@@ -191,6 +195,7 @@ if (isMobile) {
 var saveCanvasReal = $('#canvas-real');
 
 $('.save').click(function () {
-    var dataURL = canvasReal.toDataURL('image/png', 1);
-    $('.save').href = dataURL;
+    $('#canvas-real').css('backgroundColor', 'white');
+    var dataURL = saveCanvasReal[0].toDataURL('image/jpeg', 1);
+    this.href = dataURL;
 })
