@@ -36,7 +36,7 @@
                     <button type="button" class="btn btn-secondary" id="stroke-size-more">&#9650;</button>
                     <button type="button" class="btn btn-secondary" id="stroke-size-less">&#9660;</button>
                 </div>
-                <button type="button" class="btn btn-secondary grid" title="Grid [g]">
+                <button type="button" class="btn btn-secondary grid" title="Grid [g]" data-shortcut="g">
                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                         viewBox="0 0 16 12" style="enable-background:new 0 0 16 12;" xml:space="preserve">
                         <path class="st0" d="M0-2v16h16V-2H0z M5,14H0V9h5V14z M5,8H0V4h5V8z M5,3H0v-5h5V3z M10,14H6V9h4V14z M10,8H6V4h4V8z M10,3H6v-5h4
@@ -51,36 +51,36 @@
     </nav>
     <!-- Toolbar-->
     <div id="tools" class="btn-group-vertical">
-        <button type="button" class="btn btn-secondary" id="Brush" title="Brush [b]">
+        <button type="button" class="btn btn-secondary" id="Brush" title="Brush [b]" data-shortcut="b">
             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="-12 -12 40 40" width="100%" height="100%">
                 <path class="target" d="m3.19298,1.77277c0,0.08354 -0.02379,0.25618 -0.08354,0.41771c-0.09722,0.2628 -0.23328,0.55005 -0.37594,0.87719c-0.14934,0.34247 -0.33417,0.71011 -0.50125,1.12782c-0.16709,0.41771 -0.4419,0.98854 -0.54303,1.62907c-0.12394,0.78503 0.07874,1.09751 0.16709,1.12782c0.20146,0.06912 0.37796,0.07074 0.58479,0.04177c0.30116,-0.04218 0.62471,-0.17279 1.00251,-0.2924c0.41576,-0.13162 0.83939,-0.28187 1.2949,-0.45948c0.50593,-0.19726 1.20682,-0.55344 1.96324,-0.87719c0.70601,-0.30218 1.42022,-0.62657 2.1721,-0.96074c0.75188,-0.33416 1.41755,-0.67411 2.04679,-0.96073c1.12315,-0.51161 1.52972,-0.87428 1.67084,-0.75188c0.09979,0.08655 -0.17206,0.28915 -0.33417,0.54302c-0.47422,0.74267 -1.44555,2.25592 -2.75689,4.01003c-0.64059,0.85688 -2.40431,2.35522 -2.00501,2.96575c0.04572,0.06991 0.78847,-0.18668 2.96574,-0.75188c2.50052,-0.64912 4.47191,-1.23232 5.30493,-0.66834c0.07735,0.05236 -0.18254,0.45472 -1.46199,1.33667c-0.69638,0.48004 -2.06649,1.59225 -2.04678,1.62908c0.07107,0.13278 0.73973,0.1745 1.62907,0.79365c0.97084,0.67588 1.07976,1.41487 0.79365,1.92147c-0.2342,0.4147 -0.6039,0.71474 -0.58479,0.75188c0.16442,0.3195 2.29106,0.51896 3.13283,1.79615c0.56353,0.85503 -0.2924,1.58731 -0.62657,2.1721l1.37845,1.46199l3.92648,2.46449"
                     stroke-width="2" stroke="#000000" fill-opacity="0.0" style="fill: none; fill-opacity: 1; stroke: rgb(34, 34, 34); opacity: 1;"></path>
             </svg>
         </button>
-        <button type="button" class="btn btn-secondary" id="Line" title="Line [l]">
+        <button type="button" class="btn btn-secondary" id="Line" title="Line [l]" data-shortcut="l">
             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" viewBox="0 0 64 64">
                 <line class="target" y2="62.5%" x2="75%" y1="37.5%" x1="25%" stroke-width="4" stroke="#000000" style="fill: none; fill-opacity: 1; stroke: rgb(34, 34, 34); opacity: 1;"></line>
             </svg>
         </button>
-        <button type="button" class="btn btn-secondary" id="Rectangle" title="Rectangle [r]">
+        <button type="button" class="btn btn-secondary" id="Rectangle" title="Rectangle [r]" data-shortcut="r">
             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" viewBox="0 0 64 64">
                 <rect class="target" x="25%" y="25%" width="50%" height="40%" stroke-width="4" style="fill: rgb(74, 144, 214); fill-opacity: 1; stroke: rgb(34, 34, 34); opacity: 1;"></rect>
             </svg>
         </button>
-        <button type="button" class="btn btn-secondary" id="Circle" title="Circle [c]">
+        <button type="button" class="btn btn-secondary" id="Circle" title="Circle [c]" data-shortcut="c">
             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" viewBox="0 0 64 64">
                 <ellipse class="target" rx="25%" ry="20%" cy="50%" cx="50%" stroke-width="4" style="fill: rgb(74, 144, 214); fill-opacity: 1; stroke: rgb(34, 34, 34); opacity: 1;"></ellipse>
             </svg>
         </button>
-        <button type="button" class="btn btn-secondary" id="Polygon" title="Polygon [p]">
+        <button type="button" class="btn btn-secondary" id="Polygon" title="Polygon [p]" data-shortcut="p">
             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="-6 -6 36 36" width="100%" height="100%">
                 <path class="target" d="m4.06652,19.02639l12.92382,1.97361l3.00965,-5.92085l-4.03648,-11.07915l-12.46352,2.73615l0.56652,12.29024z"
                     stroke-width="2" style="fill: rgb(74, 144, 214); fill-opacity: 1; stroke: rgb(34, 34, 34); opacity: 1;"></path>
             </svg>
         </button>
-        <button type="button" class="btn btn-secondary" id="Text" title="Text [t]"> Aa</button>
+        <button type="button" class="btn btn-secondary" id="Text" title="Text [t]" data-shortcut="t"> Aa</button>
         </button>
-        <button type="button" class="btn btn-secondary" id="Eraser" title="Eraser [e]">
+        <button type="button" class="btn btn-secondary" id="Eraser" title="Eraser [e]" data-shortcut="e">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px"
                 viewBox="0 0 280 280" style="enable-background:new 0 0 280 280;width: 24px;" xml:space="preserve">
                 <path style="fill:#26A6D1;" d="M183.679,4.634l91.683,91.683c6.178,6.178,6.178,16.207,0,22.385L118.695,275.359   c-6.178,6.187-16.207,6.187-22.385,0L4.637,183.676c-6.178-6.178-6.178-16.198,0-22.376L161.295,4.634   C167.482-1.545,177.501-1.545,183.679,4.634z"
@@ -92,7 +92,7 @@
                 <path style="fill:#EAE5E4;" d="M20.416,145.548l114.041,114.041l-10.555,10.555L9.861,156.103L20.416,145.548z" />
             </svg>
         </button>
-        <button type="button" class="btn btn-secondary import-file" title="Import file [i]">
+        <button type="button" class="btn btn-secondary import-file" title="Import file [i]" data-shortcut="i">
             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                 viewBox="0 0 52 52" style="enable-background:new 0 0 52 52;" xml:space="preserve">
                 <rect x="2" y="1" style="fill:#424A60;stroke:#E7ECED;stroke-width:2;stroke-miterlimit:10;" width="48" height="50" />
@@ -108,8 +108,8 @@
     <div id="canvas">
         <div class='cursor'></div>
         <canvas id="canvas-real" class="canvas" width='1280px' height='720px'></canvas>
-        <div id="canvas-grid" class="canvas grid" width='1280px' height='720px'></div>
         <canvas id="canvas-draft" class="canvas" width='1280px' height='720px'></canvas>
+        <div id="canvas-grid" class="canvas grid" width='1280px' height='720px'></div>
     </div>
     <input type="file" class="upload" />
 
@@ -118,7 +118,7 @@
     <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.js"></script>
     <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script type='text/javascript' src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
+    <script type='text/javascript' src="https://cdn.jsdelivr.net/npm/jquery.hotkeys@0.1.0/jquery.hotkeys.js"></script>
 
     <!-- Functions -->
     <script type='text/javascript' src="assets/js/canvas-common.js"></script>
