@@ -3,6 +3,8 @@ class DrawingCircle extends PaintFunction {
         super();
         this.contextReal = contextReal;
         this.contextDraft = contextDraft;
+        this.clickMode = false;
+        this.dragged = false;
     }
 
     onMouseDown(coord, event) {
