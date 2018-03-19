@@ -9,10 +9,10 @@ class DrawingLine extends PaintFunction {
         this.drawingY = '';
     }
     onClick(coord, event) {
-        this.contextDraft.strokeStyle = currentColor;
-        this.contextReal.strokeStyle = currentColor;
-        this.contextDraft.lineWidth = currentStrokeSize;
-        this.contextReal.lineWidth = currentStrokeSize;
+        // this.contextDraft.strokeStyle = currentColor;
+        // this.contextReal.strokeStyle = currentColor;
+        // this.contextDraft.lineWidth = currentStrokeSize;
+        // this.contextReal.lineWidth = currentStrokeSize;
         this.x.push(coord[0]);
         this.y.push(coord[1]);
 

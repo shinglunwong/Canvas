@@ -61,6 +61,15 @@ $('#stroke-size-less').click(function () {
     $('.stroke-size').val(parseInt($('.stroke-size').val()) - 1).change();
 });
 
+function styleSet () {
+    contextDraft.strokeStyle = currentStrokeColor;
+    contextReal.strokeStyle = currentStrokeColor;
+    contextDraft.lineWidth = currentStrokeSize;
+    contextReal.lineWidth = currentStrokeSize;
+    contextDraft.fillStyle = currentColor;
+    contextReal.fillStyle = currentColor;
+}
+
 // tools buttons
 $('#tools button').click(function (e) {
     e.preventDefault();
@@ -109,3 +118,4 @@ $('#canvas').hover(function () {
         $('.cursor').css('backgroundColor', currentColor);
     })
 })
+
