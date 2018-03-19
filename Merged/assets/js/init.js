@@ -74,6 +74,15 @@ function styleSet () {
     contextReal.lineWidth = currentStrokeSize;
     contextDraft.fillStyle = currentColor;
     contextReal.fillStyle = currentColor;
+    contextDraft.lineJoin = 'miter';
+    contextReal.lineJoin = 'miter';
+}
+
+function resetPosition (){
+    this.width = null;
+    this.height = null;
+    this.origX = null;
+    this.origY = null;
 }
 
 // tools buttons

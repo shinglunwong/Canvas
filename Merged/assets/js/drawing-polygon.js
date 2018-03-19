@@ -12,7 +12,6 @@ class DrawingPolygon extends PaintFunction {
     onClick(coord, event) {
         styleSet();
         this.contextReal.lineWidth =  this.contextReal.lineWidth/2;
-        this.contextReal.lineJoin = 'miter';
 
         // End polygon
         if (coord[0] < this.x[0] + 20 && coord[0] > this.x[0] - 20 && coord[1] < this.y[0] + 20 && coord[1] > this.y[0] - 20 && this.x.length > 0) {

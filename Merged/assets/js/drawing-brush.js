@@ -38,6 +38,7 @@ class DrawingEraser extends DrawingBrush{
   
     }
     onMouseDown(coord,event){
+        this.context.lineWidth = currentStrokeSize/2;
         this.context.strokeStyle = 'white';
         this.context.lineJoin = "round";
         // this.context.lineWidth = currentStrokeSize;
