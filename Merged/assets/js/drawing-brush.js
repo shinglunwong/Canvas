@@ -17,7 +17,9 @@ class DrawingBrush extends PaintFunction{
     }
 
     onMouseMove(){}
-    onMouseUp(){}
+    onMouseUp(coord,event){
+        this.draw(coord[0],coord[1]);
+    }
     onMouseLeave(){}
     onMouseEnter(){}
 
