@@ -2,7 +2,7 @@
 
 <head>
     <title>DAB Picasso</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -39,7 +39,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div id="style" id="navbarNav">
-            <div class="btn-group">
+            <div class="main-function">
                 <button type="button" class="btn btn-secondary color-picker active" title="Color">
                     <input id='color-picker' />
                 </button>
@@ -51,17 +51,20 @@
                     <button type="button" class="btn btn-secondary" id="stroke-size-more">&#9650;</button>
                     <button type="button" class="btn btn-secondary" id="stroke-size-less">&#9660;</button>
                 </div>
+            </div>
+            <div class="side-function">
+                
+            </div>
+            <div class='setting-function'>
                 <button type="button" class="btn btn-secondary grid" title="Grid [g]" data-shortcut="g">
                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                         viewBox="0 0 16 12" style="enable-background:new 0 0 16 12;" xml:space="preserve">
                         <path class="st0" d="M0-2v16h16V-2H0z M5,14H0V9h5V14z M5,8H0V4h5V8z M5,3H0v-5h5V3z M10,14H6V9h4V14z M10,8H6V4h4V8z M10,3H6v-5h4
-	V3z M16,14h-5V9h5V14z M16,8h-5V4h5V8z M16,3h-5v-5h5V3z" />
+                V3z M16,14h-5V9h5V14z M16,8h-5V4h5V8z M16,3h-5v-5h5V3z" />
                     </svg>
                 </button>
+                <button class='btn'>Save</button>
             </div>
-        </div>
-        <div class='save'>
-            <button class='btn'>Save</button>
         </div>
     </nav>
     <!-- Toolbar-->
@@ -134,6 +137,7 @@
     <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script type='text/javascript' src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script type='text/javascript' src="https://cdn.jsdelivr.net/npm/jquery.hotkeys@0.1.0/jquery.hotkeys.js"></script>
+    <script type='text/javascript' src="https://hammerjs.github.io/dist/hammer.min.js"></script>
 
     <!-- Functions -->
     <script type='text/javascript' src="assets/js/canvas-common.js"></script>
@@ -144,6 +148,13 @@
     <script type='text/javascript' src="assets/js/drawing-text.js"></script>
     <script type='text/javascript' src="assets/js/drawing-polygon.js"></script>
     <script type='text/javascript' src="assets/js/init.js"></script>
+
+    <!-- Debug -->
+    <script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script>
+    <script>
+        startOpened=false;
+    </script>
+
 
 </body>
 

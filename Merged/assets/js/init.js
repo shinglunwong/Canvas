@@ -6,7 +6,7 @@ $(document).ready(function(){
         var width = $("#width").val();
         var height = $("#height").val();
         $('#canvas canvas').attr("width",width).attr("height",height);
-        $('#canvas-grid.grid').css("width",width).css("height",height);        
+        $('#canvas, #canvas-grid.grid').css("width",width).css("height",height);        
       })
     })
 
@@ -148,4 +148,24 @@ $('[data-shortcut]').each(function () {
             }
         }
     });
+});
+
+// mobile events
+var mc = new Hammer(document.getElementById('canvas-draft'));
+mc.on("pan panup tap press pressup", function(e) {
+    console.log('new event:'+e.type);
+    console.log(e);
+    let mouseX = e.center.x-e.target.offsetParent.offsetLeft;
+    console.log('mouseX:'+mouseX);
+    let mouseY = e.center.y-e.target.offsetParent.offsetTop;
+    console.log('mouseY:'+mouseY);
+    if(e.type=='press' || e.type=='tap') {
+        currentFunction.onClick([mouseX, mouseY], e);
+    }
+    else if(e.type=='pan') {
+        currentFunction.onDragging([mouseX,mouseY],e);
+    }
+    else if(e.type=='panup' || e.type=='pressup') {
+        currentFunction.onMouseUp([mouseX,mouseY],e);
+    }
 });
