@@ -11,10 +11,25 @@
 </head>
 
 <body>
-    <!-- Loading Screen -->
-    <div class='splash' style='display: none'>
-        <div class='load-circle'></div>
-        <p>Loading...</p>
+    <!-- input form -->
+    <div class='splash'>
+        <div id="overlay">
+            <div id="form-text">
+                <form class='canvas-size'>
+                    <span>w:</span>
+                    <input type="text" name="width" value=" 800"class="dimension" id="width">
+                    <span>&nbsp&nbsp h:</span>
+                    <input type="text" name="height" value="600" class="dimension" id="height">
+                    <p>
+                        <input type="submit" value="Create Canvas" class="form-button" id="create">
+                    </p>
+                </form>
+
+            </div>
+        </div>
+        
+
+        
     </div>
     <!-- Stylebar -->
     <nav class="navbar navbar-expand-md">
@@ -107,9 +122,15 @@
     <!-- Canvas -->
     <div id="canvas">
         <div class='cursor'></div>
+<<<<<<< HEAD
+        <canvas id="canvas-real" class="canvas"></canvas>
+        <div id="canvas-grid" class="canvas grid"></div>
+        <canvas id="canvas-draft" class="canvas"></canvas>
+=======
         <canvas id="canvas-real" class="canvas" width='1280px' height='720px'></canvas>
         <canvas id="canvas-draft" class="canvas" width='1280px' height='720px'></canvas>
         <div id="canvas-grid" class="canvas grid" width='1280px' height='720px'></div>
+>>>>>>> aef3f461116dce651c6a08c7f8989f451bed3b3b
     </div>
     <input type="file" class="upload" />
 
