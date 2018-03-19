@@ -6,7 +6,7 @@ $(document).ready(function(){
         var width = $("#width").val();
         var height = $("#height").val();
         $('#canvas canvas').attr("width",width).attr("height",height);
-        $('#canvas-grid.grid').css("width",width).css("height",height);        
+        $('#canvas, #canvas-grid.grid').css("width",width).css("height",height);        
       })
     })
 
