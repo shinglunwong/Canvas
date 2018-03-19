@@ -153,20 +153,21 @@ $('[data-shortcut]').each(function () {
 // mobile events
 if(isMobile) {
     var mc = new Hammer(document.getElementById('canvas-draft'));
-    mc.on("pan panup tap press pressup", function(e) {
+    mc.on("pan panend tap press pressup", function(e) {
         console.log('new event:'+e.type);
-        console.log(e);
+        //console.log(e);
         let mouseX = e.center.x-e.target.offsetParent.offsetLeft;
-        console.log('mouseX:'+mouseX);
+        //console.log('mouseX:'+mouseX);
         let mouseY = e.center.y-e.target.offsetParent.offsetTop;
-        console.log('mouseY:'+mouseY);
+        //console.log('mouseY:'+mouseY);
         if(e.type=='press' || e.type=='tap') {
+            currentFunction.onKeydown(e);
             currentFunction.onClick([mouseX, mouseY], e);
         }
         else if(e.type=='pan') {
             currentFunction.onDragging([mouseX,mouseY],e);
         }
-        else if(e.type=='panup' || e.type=='pressup') {
+        else if(e.type=='panend' || e.type=='pressup') {
             currentFunction.onMouseUp([mouseX,mouseY],e);
         }
     });
