@@ -163,14 +163,14 @@ $('[data-shortcut]').each(function () {
 // mobile events
 if(isMobile) {
     var mc = new Hammer(document.getElementById('canvas-draft'));
-    mc.on("pan panend tap press pressup", function(e) {
+    mc.on("pan panstart panend tap press pressup", function(e) {
         console.log('new event:'+e.type);
         //console.log(e);
         let mouseX = e.center.x-e.target.offsetParent.offsetLeft;
         //console.log('mouseX:'+mouseX);
         let mouseY = e.center.y-e.target.offsetParent.offsetTop;
         //console.log('mouseY:'+mouseY);
-        if(e.type=='press' || e.type=='tap') {
+        if(e.type=='press' || e.type=='tap' || e.type=='panstart') {
             currentFunction.onKeydown(e);
             currentFunction.onClick([mouseX, mouseY], e);
         }
