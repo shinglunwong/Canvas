@@ -46,7 +46,7 @@ form .dimension{
     background-position: center;
     overflow: hidden;
     background-image: url(../images/splash.jpg);
-    display: flex;
+    display: block;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -68,55 +68,56 @@ form .dimension{
 }
 
 /* Toolbars */
-
-.navbar {
-    height: 80px;
-    background-color: #500381;
+    /* Top */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #FFC739;
     margin-bottom: 10px;
     box-shadow: 0 5px 10px #444444;
 }
-
-.navbar-brand {
-    color: white;
-    width: 4%;
+.align-left {
+    margin: 0 auto;
 }
-.save {
-    width: 4%;
-    text-align: right;
+.align-right {
+    margin: 0 auto;
+}
+.align-center {
+    margin: 0 auto;
 }
 
-#style {
-    flex-grow: 1;
-    height: 80px;
+.button-style {
+    height: 50px;
     display: flex;
-    justify-content: center;
     align-items: center;
+    flex-grow: 1;
 }
-
-#style .btn-group-vertical {
+    /* Left */
+.button-style .btn-group-vertical {
     height: 50px;
 }
-
-#style .btn-group-vertical .btn {
+.button-style .btn-group-vertical .btn {
     border-radius: 0;
 }
-
 #tools {
     position: absolute;
     display: flex;
-    top: 30%;
+    top: 20%;
     left: 0;
     width: 80px;
 }
 
-#tools button, .btn.grid{
+#tools button {
     width: 55px;
     height: 50px;
     opacity: 0.8;
 }
 
 
-#tools button.active, .btn-secondary:not(:disabled):not(.disabled).active.grid{
+#tools button.active, 
+.btn-secondary:not(:disabled):not(.disabled).active.grid{
     background-color: lightgray;
     opacity: 1;
 }
@@ -125,11 +126,9 @@ form .dimension{
     display: none;
 }
 
-#style .btn {
-    font-size: 11px;
-    line-height: 1;
-}
-.btn-secondary:not(:disabled):not(.disabled).active:focus, .btn-secondary:not(:disabled):not(.disabled):active:focus, .show>.btn-secondary.dropdown-toggle:focus{
+.btn-secondary:not(:disabled):not(.disabled).active:focus,
+.btn-secondary:not(:disabled):not(.disabled):active:focus, 
+.show>.btn-secondary.dropdown-toggle:focus {
     box-shadow: 0 0 0 1px rgba(108,117,125,.5)
 }
 
@@ -184,28 +183,32 @@ form .dimension{
     z-index: 100;
 }
 
-.btn.grid {
-    padding: 6px;
-}
+
 
 .color-picker,
 .color-stroke-picker {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 30px;
     border: 0;
     margin: 0;
     padding: 0;
 }
 
 .color-picker .sp-replacer {
-    border-top-left-radius: .25rem;
-    border-bottom-left-radius: .25rem;
+    border-radius: .25rem;
 }
 
 .stroke-size {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 30px;
     text-align: center;
+    border-radius: .25rem;
+}
+button[id^=stroke-size] {
+    padding: 0;
+    height: 16px;
+    background: #FFC739;
+    border: none;
 }
 
 .sp-replacer {
@@ -218,18 +221,21 @@ form .dimension{
     height: 100%;
     border: none;
 }
-
+.sp-preview-inner {
+    border-radius: .25rem;
+}
 .sp-dd {
     position: absolute;
-    height: 50px;
-    width: 50px;
+    height: 30px;
+    width: 40px;
     padding: 0;
+    border-radius: .1rem;
 }
 
 .color-stroke-picker .sp-dd {
     position: absolute;
-    height: 40px;
-    width: 40px;
+    height: 20px;
+    width: 30px;
     margin: 5px;
     background-color: white;
 }
@@ -241,5 +247,5 @@ form .dimension{
 
 
 body {
-    background-color: #FFB700;
+    background-color: wheat;
 }
