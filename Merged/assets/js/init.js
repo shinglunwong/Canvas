@@ -105,6 +105,12 @@ $('.grid').click(function () {
     $('#canvas-grid').toggleClass('grid');
 }).click();
 
+// clear
+$('.clear').click(function () {
+    contextReal.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
+
+}).click();
+
 // import image
 $('button.import-file').click(function (e) {
     e.preventDefault();
