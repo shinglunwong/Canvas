@@ -1,14 +1,14 @@
 // Set Canvas dimension
-$(document).ready(function(){
-    $('.canvas-size').submit(function(e) {
+$(document).ready(function () {
+    $('.canvas-size').submit(function (e) {
         e.preventDefault();
         $('.splash').fadeOut('slow');
         var width = $("#width").val();
         var height = $("#height").val();
-        $('#canvas canvas').attr("width",width).attr("height",height);
-        $('#canvas, #canvas-grid.grid').css("width",width).css("height",height);        
-      })
+        $('#canvas canvas').attr("width", width).attr("height", height);
+        $('#canvas, #canvas-grid.grid').css("width", width).css("height", height);
     })
+})
 
 // Declare default tools options
 let fontWidth = 16;
@@ -67,7 +67,7 @@ $('#stroke-size-less').click(function () {
     $('.stroke-size').val(parseInt($('.stroke-size').val()) - 1).change();
 });
 
-function styleSet () {
+function styleSet() {
     contextDraft.strokeStyle = currentStrokeColor;
     contextReal.strokeStyle = currentStrokeColor;
     contextDraft.lineWidth = currentStrokeSize;
@@ -78,7 +78,7 @@ function styleSet () {
     contextReal.lineJoin = 'miter';
 }
 
-function resetPosition (){
+function resetPosition() {
     this.width = null;
     this.height = null;
     this.origX = null;
@@ -146,7 +146,7 @@ $('[data-shortcut]').each(function () {
     key = element.data('shortcut');
 
     $(document).on('keyup', null, String(key), function () {
-        if(currentFunction.__proto__.constructor.name!='DrawingText') {    // no shortcut if typing text
+        if (currentFunction.__proto__.constructor.name != 'DrawingText') {    // no shortcut if typing text
             element.trigger('focus').trigger('click');
 
             if (element.prop('tagName').toLowerCase() === 'a') {
@@ -157,24 +157,33 @@ $('[data-shortcut]').each(function () {
 });
 
 // mobile events
-if(isMobile) {
+if (isMobile) {
     var mc = new Hammer(document.getElementById('canvas-draft'));
-    mc.on("pan panend tap press pressup", function(e) {
-        console.log('new event:'+e.type);
+    mc.on("pan panend tap press pressup", function (e) {
+        console.log('new event:' + e.type);
         //console.log(e);
-        let mouseX = e.center.x-e.target.offsetParent.offsetLeft;
+        let mouseX = e.center.x - e.target.offsetParent.offsetLeft;
         //console.log('mouseX:'+mouseX);
-        let mouseY = e.center.y-e.target.offsetParent.offsetTop;
+        let mouseY = e.center.y - e.target.offsetParent.offsetTop;
         //console.log('mouseY:'+mouseY);
-        if(e.type=='press' || e.type=='tap') {
+        if (e.type == 'press' || e.type == 'tap') {
             currentFunction.onKeydown(e);
             currentFunction.onClick([mouseX, mouseY], e);
         }
-        else if(e.type=='pan') {
-            currentFunction.onDragging([mouseX,mouseY],e);
+        else if (e.type == 'pan') {
+            currentFunction.onDragging([mouseX, mouseY], e);
         }
-        else if(e.type=='panend' || e.type=='pressup') {
-            currentFunction.onMouseUp([mouseX,mouseY],e);
+        else if (e.type == 'panend' || e.type == 'pressup') {
+            currentFunction.onMouseUp([mouseX, mouseY], e);
         }
     });
+}
+
+// Save function
+var canvasReal = $('#canvas-real');
+
+function save() {
+    // var dataUrl = canvasReal.toDataURL('image/png', 1);
+    // console.log(dataUrl);
+    console.log('hi')
 }
