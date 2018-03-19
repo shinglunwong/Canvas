@@ -78,7 +78,6 @@ nav {
     margin-bottom: 10px;
     box-shadow: 0 5px 10px #444444;
 }
-<<<<<<< HEAD
 .align-left {
     margin: 0 auto;
 }
@@ -87,16 +86,6 @@ nav {
 }
 .align-center {
     margin: 0 auto;
-=======
-
-.navbar-brand {
-    color: white;
-    /* width: 4%; */
-}
-.save {
-    /* width: 4%; */
-    text-align: right;
->>>>>>> 4c4c0cec50e877fa90c45314ea71619096179eca
 }
 
 .button-style {
