@@ -78,10 +78,10 @@ form .dimension{
 
 .navbar-brand {
     color: white;
-    width: 4%;
+    /* width: 4%; */
 }
 .save {
-    width: 4%;
+    /* width: 4%; */
     text-align: right;
 }
 
