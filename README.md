@@ -20,7 +20,7 @@ Didier
 - fix colorpicker
 - stamp / filters
 - mobile
-- shortcuts (cancel with text fct)
++ shortcuts (cancel with text fct)
 
 other tasks:
 

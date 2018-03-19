@@ -74,6 +74,15 @@ function styleSet () {
     contextReal.lineWidth = currentStrokeSize;
     contextDraft.fillStyle = currentColor;
     contextReal.fillStyle = currentColor;
+    contextDraft.lineJoin = 'miter';
+    contextReal.lineJoin = 'miter';
+}
+
+function resetPosition (){
+    this.width = null;
+    this.height = null;
+    this.origX = null;
+    this.origY = null;
 }
 
 // tools buttons
@@ -146,3 +155,25 @@ $('[data-shortcut]').each(function () {
         }
     });
 });
+
+// mobile events
+if(isMobile) {
+    var mc = new Hammer(document.getElementById('canvas-draft'));
+    mc.on("pan panup tap press pressup", function(e) {
+        console.log('new event:'+e.type);
+        console.log(e);
+        let mouseX = e.center.x-e.target.offsetParent.offsetLeft;
+        console.log('mouseX:'+mouseX);
+        let mouseY = e.center.y-e.target.offsetParent.offsetTop;
+        console.log('mouseY:'+mouseY);
+        if(e.type=='press' || e.type=='tap') {
+            currentFunction.onClick([mouseX, mouseY], e);
+        }
+        else if(e.type=='pan') {
+            currentFunction.onDragging([mouseX,mouseY],e);
+        }
+        else if(e.type=='panup' || e.type=='pressup') {
+            currentFunction.onMouseUp([mouseX,mouseY],e);
+        }
+    });
+}

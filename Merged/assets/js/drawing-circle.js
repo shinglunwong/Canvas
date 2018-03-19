@@ -9,44 +9,60 @@ class DrawingCircle extends PaintFunction {
         styleSet();
         this.height = null;
         this.width = null;
-        this.origX = coord[0];
-        this.origY = coord[1];
+        if (!this.clickMode) {
+            this.origX = coord[0];
+            this.origY = coord[1];
+        }
     }
     onDragging(coord, event) {
-        this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
-        this.contextDraft.beginPath();
-        this.width = Math.abs(this.origX - coord[0]);
-
-        //For circle
-        if (shifting) {
-            this.height = Math.abs(this.origX - coord[0]);
+        if (Math.abs(coord[0] - this.origX) > 5 || Math.abs(coord[1] - this.origY) > 5) {
+            this.dragged = true;
+            this.draw(coord, event, this.contextDraft)
         }
-
-        //For ellipse
-        else {
-            this.height = Math.abs(this.origY - coord[1]);
-        }
-        this.contextDraft.ellipse(this.origX, this.origY, this.width, this.height, 0, 0, 2 * Math.PI);
-        this.contextDraft.stroke();
-        this.contextDraft.fill();
     }
-    onMouseMove() { }
+    onMouseMove(coord, event) {
+        if (this.clickMode) {
+            this.draw(coord, event, this.contextDraft);
+        }
+    }
 
-    onMouseUp(coord) {
-
-        this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height)
-        this.contextReal.beginPath();
-        this.contextReal.ellipse(this.origX, this.origY, this.width, this.height, 0, 0, 2 * Math.PI);
-        this.contextReal.closePath();
-        this.contextReal.stroke();
-        this.contextReal.fill();
-        this.width = null;
-        this.height = null;
-        this.origX = null;
-        this.origY = null;
+    onMouseUp(coord, event) {
+        if (this.clickMode) {
+            this.draw(coord, event, this.contextReal);
+            this.clickMode = false;
+        }
+        else {
+            if (this.dragged) {
+                this.draw(coord, event, this.contextReal);
+                this.dragged = false;
+            }
+            else if (this.dragged == false) {
+                this.origX = coord[0];
+                this.origY = coord[1];
+                this.clickMode = true;
+            }
+        }
     }
 
     onMouseLeave() { }
     onMouseEnter() { }
     onClick() { }
+    draw(coord, event, context) {
+        this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
+        context.beginPath();
+        this.width = Math.abs((coord[0] - this.origX) / 2);
+
+        //For circle
+        if (shifting) {
+            this.height = Math.abs((coord[0] - this.origX) / 2);
+        }
+
+        //For ellipse
+        else {
+            this.height = Math.abs((coord[1] - this.origY) / 2);
+        }
+        context.ellipse(this.origX + (coord[0] - this.origX) / 2, this.origY + (coord[1] - this.origY) / 2, this.width, this.height, 0, 0, 2 * Math.PI);
+        context.stroke();
+        context.fill();
+    }
 }
