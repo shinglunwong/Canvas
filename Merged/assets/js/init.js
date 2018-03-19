@@ -1,5 +1,9 @@
 // Set Canvas dimension
 $(document).ready(function(){
+    var winWidth = $(window).width() - 100;
+    var winHeight = $(window).height() - 120;
+    $("#width").attr("value", winWidth);
+    $("#height").attr("value", winHeight);
     $('.canvas-size').submit(function(e) {
         e.preventDefault();
         $('.splash').fadeOut('slow');
