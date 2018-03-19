@@ -117,24 +117,26 @@ $('#canvas').hover(function () {
     $('#canvas').mousemove(function (e) {
         let mouseX = e.pageX - this.offsetLeft;
         let mouseY = e.pageY - this.offsetTop;
-        $('.cursor').css('left', mouseX - currentStrokeSize / 2);
-        $('.cursor').css('top', mouseY - currentStrokeSize);
-        $('.cursor').css('width', currentStrokeSize);
-        $('.cursor').css('height', currentStrokeSize);
+        $('.cursor').css('left', mouseX);
+        $('.cursor').css('top', mouseY);
+        $('.cursor').css('width', currentStrokeSize * 0.5);
+        $('.cursor').css('height', currentStrokeSize * 0.5);
         $('.cursor').css('backgroundColor', currentColor);
     })
 })
 
 // Shortcuts
 $('[data-shortcut]').each(function () {
-    var $element = $(this);
-    key = $element.data('shortcut');
+    var element = $(this);
+    key = element.data('shortcut');
 
     $(document).on('keyup', null, String(key), function () {
-        $element.trigger('focus').trigger('click');
+        if(currentFunction.__proto__.constructor.name!='DrawingText') {    // no shortcut if typing text
+            element.trigger('focus').trigger('click');
 
-        if ($element.prop('tagName').toLowerCase() === 'a') {
-            window.location = element.attr('href');
+            if (element.prop('tagName').toLowerCase() === 'a') {
+                window.location = element.attr('href');
+            }
         }
     });
 });

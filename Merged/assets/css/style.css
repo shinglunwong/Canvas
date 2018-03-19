@@ -138,6 +138,7 @@ form .dimension{
 
 
 .cursor {
+    margin: 0 !important;
     width: 10px;
     height: 10px;
     position: absolute;
@@ -145,7 +146,7 @@ form .dimension{
     z-index: 90;
     top: 0;
     left: 0;
-    transform: translate(0 , -20px);
+    transform: translate(-50% , -50%);
     border-radius: 100%;
     border: black solid 1px;
 }

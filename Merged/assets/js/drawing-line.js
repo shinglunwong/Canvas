@@ -9,10 +9,11 @@ class DrawingLine extends PaintFunction {
         this.drawingY = '';
     }
     onClick(coord, event) {
-        // this.contextDraft.strokeStyle = currentColor;
-        // this.contextReal.strokeStyle = currentColor;
-        // this.contextDraft.lineWidth = currentStrokeSize;
-        // this.contextReal.lineWidth = currentStrokeSize;
+        styleSet();
+        this.contextDraft.lineWidth = currentStrokeSize/2;
+        this.contextReal.lineWidth = currentStrokeSize/2;
+        this.contextDraft.strokeStyle = currentColor;
+        this.contextReal.strokeStyle = currentColor;
         this.x.push(coord[0]);
         this.y.push(coord[1]);
 
@@ -30,7 +31,6 @@ class DrawingLine extends PaintFunction {
         if (this.x.length == 1) {
 
             if (shifting) {
-                console.log('hi');
                 if (Math.abs(coord[0] - this.x[0]) > Math.abs(coord[1] - this.y[0])) {
                     this.drawingX = coord[0];
                     this.drawingY = this.y[0];
