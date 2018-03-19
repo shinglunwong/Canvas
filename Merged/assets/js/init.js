@@ -1,6 +1,10 @@
 // Set Canvas dimension
-$(document).ready(function () {
-    $('.canvas-size').submit(function (e) {
+$(document).ready(function(){
+    var winWidth = $(window).width() - 100;
+    var winHeight = $(window).height() - 120;
+    $("#width").attr("value", winWidth);
+    $("#height").attr("value", winHeight);
+    $('.canvas-size').submit(function(e) {
         e.preventDefault();
         $('.splash').fadeOut('slow');
         var width = $("#width").val();
@@ -159,14 +163,14 @@ $('[data-shortcut]').each(function () {
 // mobile events
 if (isMobile) {
     var mc = new Hammer(document.getElementById('canvas-draft'));
-    mc.on("pan panend tap press pressup", function (e) {
-        console.log('new event:' + e.type);
+    mc.on("pan panstart panend tap press pressup", function(e) {
+        console.log('new event:'+e.type);
         //console.log(e);
         let mouseX = e.center.x - e.target.offsetParent.offsetLeft;
         //console.log('mouseX:'+mouseX);
         let mouseY = e.center.y - e.target.offsetParent.offsetTop;
         //console.log('mouseY:'+mouseY);
-        if (e.type == 'press' || e.type == 'tap') {
+        if(e.type=='press' || e.type=='tap' || e.type=='panstart') {
             currentFunction.onKeydown(e);
             currentFunction.onClick([mouseX, mouseY], e);
         }
