@@ -1,6 +1,6 @@
 # Canvas
 
-task:
+tasks:
 
 Andrew
 
@@ -21,6 +21,11 @@ Didier
 - stamp / filters
 - mobile
 - shortcuts (cancel with text fct)
+
+other tasks:
+
+- logo
+- favicon
 
 ideas:
 
