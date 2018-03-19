@@ -5,8 +5,9 @@ class DrawingBrush extends PaintFunction{
     }
     
     onMouseDown(coord,event){
-        // this.context.strokeStyle = currentColor;
-        // this.context.lineWidth = currentStrokeSize;
+        styleSet();
+        this.context.lineWidth = currentStrokeSize/2;
+        this.context.strokeStyle = currentColor;
         this.context.beginPath();
         this.context.moveTo(coord[0],coord[1]);
         this.draw(coord[0],coord[1]);
