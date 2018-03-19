@@ -1,3 +1,4 @@
+// Set Canvas dimension
 $(document).ready(function(){
     $('.canvas-size').submit(function(e) {
         e.preventDefault();
@@ -8,8 +9,6 @@ $(document).ready(function(){
         $('#canvas-grid.grid').css("width",width).css("height",height);        
       })
     })
-// Set Canvas dimension
-
 
 // Declare default tools options
 let fontWidth = 16;
