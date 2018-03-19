@@ -174,6 +174,10 @@ if (isMobile) {
             currentFunction.onKeydown(e);
             currentFunction.onClick([mouseX, mouseY], e);
         }
+        else if(e.type=='panstart') {
+            currentFunction.onKeydown(e);
+            currentFunction.onMouseDown([mouseX, mouseY], e);
+        }
         else if (e.type == 'pan') {
             currentFunction.onDragging([mouseX, mouseY], e);
         }
