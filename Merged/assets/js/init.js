@@ -1,8 +1,15 @@
-$(document).ready(function () {
-    setTimeout(function () {
+$(document).ready(function(){
+    $('.canvas-size').submit(function(e) {
+        e.preventDefault();
         $('.splash').fadeOut('slow');
-    }, 2000)
-})
+        var width = $("#width").val();
+        var height = $("#height").val();
+        $('#canvas canvas').attr("width",width).attr("height",height);
+        $('#canvas-grid.grid').css("width",width).css("height",height);        
+      })
+    })
+// Set Canvas dimension
+
 
 // Declare default tools options
 let fontWidth = 16;
