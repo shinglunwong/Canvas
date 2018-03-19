@@ -117,10 +117,10 @@ $('#canvas').hover(function () {
     $('#canvas').mousemove(function (e) {
         let mouseX = e.pageX - this.offsetLeft;
         let mouseY = e.pageY - this.offsetTop;
-        $('.cursor').css('left', mouseX - currentStrokeSize / 2);
-        $('.cursor').css('top', mouseY - currentStrokeSize);
-        $('.cursor').css('width', currentStrokeSize);
-        $('.cursor').css('height', currentStrokeSize);
+        $('.cursor').css('left', mouseX);
+        $('.cursor').css('top', mouseY);
+        $('.cursor').css('width', currentStrokeSize * 0.5);
+        $('.cursor').css('height', currentStrokeSize * 0.5);
         $('.cursor').css('backgroundColor', currentColor);
     })
 })
