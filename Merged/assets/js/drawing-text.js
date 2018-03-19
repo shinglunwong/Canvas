@@ -7,10 +7,10 @@ class DrawingText extends PaintFunction {
     }
 
     onMouseDown(coord, event) {
-        this.contextDraft.fillStyle = fillColor;
-        this.contextReal.fillStyle = fillColor;
-        this.contextDraft.strokestyle = currentColor;
-        this.contextReal.strokestyle = currentColor;
+        this.contextDraft.fillStyle = currentColor;
+        this.contextReal.fillStyle = currentColor;
+        this.contextDraft.strokestyle = currentStrokeColor;
+        this.contextReal.strokestyle = currentStrokeColor;
         this.contextReal.lineWidth = 1;
         this.contextReal.font = font;
         this.origX = coord[0];

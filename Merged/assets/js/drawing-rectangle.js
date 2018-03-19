@@ -8,48 +8,53 @@ class DrawingRectangle extends PaintFunction {
     onMouseDown(coord, event) {
         this.contextDraft.fillStyle = currentColor;
         this.contextReal.fillStyle = currentColor;
-        this.contextDraft.strokestyle = currentColor;
-        this.contextReal.strokestyle = currentColor;
+        this.contextDraft.strokestyle = currentStrokeColor;
+        this.contextReal.strokestyle = currentStrokeColor;
+        this.contextDraft.lineWidth = currentStrokeSize;
         this.contextReal.lineWidth = currentStrokeSize;
+        this.height = null;
+        this.width = null;
         this.origX = coord[0];
         this.origY = coord[1];
     }
     onDragging(coord, event) {
         this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
+        this.contextDraft.beginPath();
 
         //For Square
         if (shifting) {
             if (coord[1] - this.origY < 0) {
-                this.contextDraft.fillRect(this.origX, this.origY, coord[0] - this.origX, -Math.abs(coord[0] - this.origX));
+                this.width = coord[0] - this.origX;
+                this.height = -Math.abs(coord[0] - this.origX);
             }
+
             else {
-                this.contextDraft.fillRect(this.origX, this.origY, coord[0] - this.origX, Math.abs(coord[0] - this.origX));
+                this.width = coord[0] - this.origX;
+                this.height = Math.abs(coord[0] - this.origX);
             }
         }
         //For Rectangle
         else {
-            this.contextDraft.fillRect(this.origX, this.origY, coord[0] - this.origX, coord[1] - this.origY)
+            this.width = coord[0] - this.origX;
+            this.height = coord[1] - this.origY;
         }
+        this.contextDraft.rect(this.origX, this.origY, this.width, this.height);
+        this.contextDraft.stroke();
+        this.contextDraft.fill();
     }
 
     onMouseMove() { }
 
     onMouseUp(coord) {
         this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
-        //For Square
-        if (shifting) {
-            console.log('shift')
-            if (coord[1] - this.origY < 0) {
-                this.contextReal.fillRect(this.origX, this.origY, coord[0] - this.origX, -Math.abs(coord[0] - this.origX));
-            }
-            else {
-                this.contextReal.fillRect(this.origX, this.origY, coord[0] - this.origX, Math.abs(coord[0] - this.origX));
-            }
-        }
-        //For Rectangle
-        else {
-            this.contextReal.fillRect(this.origX, this.origY, coord[0] - this.origX, coord[1] - this.origY)
-        }
+        this.contextReal.beginPath();
+        this.contextReal.rect(this.origX, this.origY, this.width, this.height);
+        this.contextReal.stroke();
+        this.contextReal.fill();
+        this.width = null;
+        this.height = null;
+        this.origX = null;
+        this.origY = null;
     }
     onMouseLeave() { }
     onMouseEnter() { }

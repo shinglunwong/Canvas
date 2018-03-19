@@ -10,15 +10,12 @@ class DrawingPolygon extends PaintFunction {
         this.drawingY = '';
     }
     onClick(coord, event) {
-        this.contextDraft.strokeStyle = currentStrokeColor;
-        this.contextReal.strokeStyle = currentStrokeColor;
-        this.contextReal.lineWidth = currentStrokeSize;
-        this.contextReal.fillStyle = currentColor;
+        styleSet();
+        this.contextReal.lineWidth =  this.contextReal.lineWidth/2;
         this.contextReal.lineJoin = 'miter';
 
         // End polygon
         if (coord[0] < this.x[0] + 20 && coord[0] > this.x[0] - 20 && coord[1] < this.y[0] + 20 && coord[1] > this.y[0] - 20 && this.x.length > 0) {
-            console.log('test')
             this.draw(this.contextReal);
             this.x = [];
             this.y = [];
@@ -33,14 +30,12 @@ class DrawingPolygon extends PaintFunction {
             else if (this.x.length == this.angles) {
                 this.draw(this.contextReal);
             }
-
         }
-
     }
-
 
     onMouseMove(coord, event) {
         if (this.x.length > 0) {
+            console.log(this.contextDraft.lineWidth)
             this.drawingX = coord[0];
             this.drawingY = coord[1];
 
@@ -56,14 +51,16 @@ class DrawingPolygon extends PaintFunction {
     draw(context) {
         this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
         if (context == this.contextDraft) {
+            contextDraft.lineWidth = 2;
             this.contextDraft.fillStyle = 'transparent';
             this.contextDraft.beginPath();
-            this.contextDraft.moveTo(this.x[0] - 6, this.y[0] - 6);
-            this.contextDraft.lineTo(this.x[0] + 6, this.y[0] - 6);
-            this.contextDraft.lineTo(this.x[0] + 6, this.y[0] + 6);
-            this.contextDraft.lineTo(this.x[0] - 6, this.y[0] + 6);
+            this.contextDraft.moveTo(this.x[0] - 10, this.y[0] - 10);
+            this.contextDraft.lineTo(this.x[0] + 10, this.y[0] - 10);
+            this.contextDraft.lineTo(this.x[0] + 10, this.y[0] + 10);
+            this.contextDraft.lineTo(this.x[0] - 10, this.y[0] + 10);
             this.contextDraft.closePath();
             this.contextDraft.stroke();
+            contextDraft.lineWidth = currentStrokeSize/2;
         }
 
         context.beginPath();
@@ -80,6 +77,7 @@ class DrawingPolygon extends PaintFunction {
         if (context == this.contextReal) {
             context.fill();
         }
+        context.closePath();
         context.stroke();
     }
 }

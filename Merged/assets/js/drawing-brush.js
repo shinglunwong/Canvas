@@ -5,9 +5,8 @@ class DrawingBrush extends PaintFunction{
     }
     
     onMouseDown(coord,event){
-        this.context.strokeStyle = currentColor;
-        this.context.lineJoin = "round";
-        this.context.lineWidth = 5;
+        // this.context.strokeStyle = currentColor;
+        // this.context.lineWidth = currentStrokeSize;
         this.context.beginPath();
         this.context.moveTo(coord[0],coord[1]);
         this.draw(coord[0],coord[1]);
@@ -40,7 +39,7 @@ class DrawingEraser extends DrawingBrush{
     onMouseDown(coord,event){
         this.context.strokeStyle = 'white';
         this.context.lineJoin = "round";
-        this.context.lineWidth = 5;
+        // this.context.lineWidth = currentStrokeSize;
         this.context.beginPath();
     }
 }

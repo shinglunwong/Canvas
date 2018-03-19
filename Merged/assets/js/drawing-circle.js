@@ -3,25 +3,31 @@ class DrawingCircle extends PaintFunction {
         super();
         this.contextReal = contextReal;
         this.contextDraft = contextDraft;
-        var draft = this.contextDraft;
     }
 
     onMouseDown(coord, event) {
-        this.contextReal.fillStyle = currentColor;
-        this.contextReal.strokestyle = currentStrokeColor;
+        styleSet();
+        this.height = null;
+        this.width = null;
         this.origX = coord[0];
         this.origY = coord[1];
     }
     onDragging(coord, event) {
-        this.contextDraft.fillStyle = currentColor;
         this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
         this.contextDraft.beginPath();
+        this.width = Math.abs(this.origX - coord[0]);
+
+        //For circle
         if (shifting) {
-            this.contextDraft.ellipse(this.origX, this.origY, Math.abs(this.origX - coord[0]), Math.abs(this.origX - coord[0]), 0, 0, 2 * Math.PI);
+            this.height = Math.abs(this.origX - coord[0]);
         }
+
+        //For ellipse
         else {
-            this.contextDraft.ellipse(this.origX, this.origY, Math.abs(this.origX - coord[0]), Math.abs(this.origY - coord[1]), 0, 0, 2 * Math.PI);
+            this.height = Math.abs(this.origY - coord[1]);
         }
+        this.contextDraft.ellipse(this.origX, this.origY, this.width, this.height, 0, 0, 2 * Math.PI);
+        this.contextDraft.stroke();
         this.contextDraft.fill();
     }
     onMouseMove() { }
@@ -30,16 +36,14 @@ class DrawingCircle extends PaintFunction {
 
         this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height)
         this.contextReal.beginPath();
-
-        if (shifting) {
-            this.contextReal.ellipse(this.origX, this.origY, Math.abs(this.origX - coord[0]), Math.abs(this.origX - coord[0]), 0, 0, 2 * Math.PI);
-        }
-        else {
-            this.contextReal.ellipse(this.origX, this.origY, Math.abs(this.origX - coord[0]), Math.abs(this.origY - coord[1]), 0, 0, 2 * Math.PI);
-        };
-        this.origX = 0;
-        this.origY = 0;
+        this.contextReal.ellipse(this.origX, this.origY, this.width, this.height, 0, 0, 2 * Math.PI);
+        this.contextReal.closePath();
+        this.contextReal.stroke();
         this.contextReal.fill();
+        this.width = null;
+        this.height = null;
+        this.origX = null;
+        this.origY = null;
     }
 
     onMouseLeave() { }
