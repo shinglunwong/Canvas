@@ -127,14 +127,16 @@ $('#canvas').hover(function () {
 
 // Shortcuts
 $('[data-shortcut]').each(function () {
-    var $element = $(this);
-    key = $element.data('shortcut');
+    var element = $(this);
+    key = element.data('shortcut');
 
     $(document).on('keyup', null, String(key), function () {
-        $element.trigger('focus').trigger('click');
+        if(currentFunction.__proto__.constructor.name!='DrawingText') {    // no shortcut if typing text
+            element.trigger('focus').trigger('click');
 
-        if ($element.prop('tagName').toLowerCase() === 'a') {
-            window.location = element.attr('href');
+            if (element.prop('tagName').toLowerCase() === 'a') {
+                window.location = element.attr('href');
+            }
         }
     });
 });
