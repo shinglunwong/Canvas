@@ -140,7 +140,7 @@ nav {
 /* Custom cursor */
 
 
-.cursor {
+.cursor, .cursor-outer  {
     margin: 0 !important;
     width: 10px;
     height: 10px;
@@ -154,7 +154,12 @@ nav {
     border: black solid 1px;
 }
 
-#canvas:hover .cursor {
+.cursor-outer {
+    min-width: 20px;
+    min-height: 20px;
+}
+
+#canvas:hover .cursor, #canvas:hover .cursor-outer {
     display: block;
     margin-top: 20px;
 }

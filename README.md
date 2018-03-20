@@ -4,10 +4,10 @@ tasks:
 
 Andrew
 
-- fix border, width
+<!-- - fix border, width
 - fix text
 - save
-- undo
+- undo -->
 
 Brad
 
