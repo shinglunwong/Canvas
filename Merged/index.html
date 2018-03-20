@@ -1,3 +1,4 @@
+<!DOCTYPE Html>
 <html>
 
 <head>
@@ -57,17 +58,24 @@
                     </span>
                     <input type="text" class="stroke-size" value="10">
                     <div class="btn-group-vertical">
-                        <button type="button" class="btn btn-secondary" id="stroke-size-more">
+                        <button type="button" id="stroke-size-more">
                             <i class="fas fa-angle-up"></i>
                         </button>
-                        <button type="button" class="btn btn-secondary" id="stroke-size-less">
+                        <button type="button" id="stroke-size-less">
                             <i class="fas fa-angle-down"></i>
                         </button>
                     </div>
                 </div>
                 <div class="side-function align-center">
-                    <button class='btn'>Sty1</button>
-                    <button class='btn'>Sty2</button>
+                    <button class='btn brush-style'>
+                        <i class="fas fa-circle"></i>
+                    </button>
+                    <button class='btn brush-style-1'>
+                        <i class="fas fa-paint-brush"></i>
+                    </button>
+                    <button class='btn brush-style-2'>
+                        <i class="fas fa-minus"></i>
+                    </button>
                 </div>
                 <div class="side-function align-center filter-desktop">
                     <button class='btn previous-filter'><<</button>
@@ -193,6 +201,7 @@
     <!-- Functions -->
     <script type='text/javascript' src="assets/js/canvas-common.js"></script>
     <script type='text/javascript' src="assets/js/drawing-brush.js"></script>
+    <script type='text/javascript' src="assets/js/drawing-brush-2.js"></script>
     <script type='text/javascript' src="assets/js/drawing-line.js"></script>
     <script type='text/javascript' src="assets/js/drawing-rectangle.js"></script>
     <script type='text/javascript' src="assets/js/drawing-circle.js"></script>

@@ -50,6 +50,7 @@ class DrawingRectangle extends PaintFunction {
             this.height = coord[1] - this.origY;
         }
         context.rect(this.origX, this.origY, this.width, this.height);
+        context.closePath();
         context.stroke();
         context.fill();
         resetPosition();
