@@ -250,3 +250,15 @@ button[id^=stroke-size] {
 body {
     background-color: wheat;
 }
+
+.textInputForm {
+    margin: 0;
+    z-index: 1000;
+    position: absolute;
+}
+.textInput {
+    border: 0;
+    padding: 10px;
+    text-align: center;
+    background-color: transparent;  
+}

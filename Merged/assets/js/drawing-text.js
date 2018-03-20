@@ -3,53 +3,53 @@ class DrawingText extends PaintFunction {
         super();
         this.contextReal = contextReal;
         this.contextDraft = contextDraft;
-        this.inputString = '';
+        this.height = null;
+        this.width = null;
+        this.typing = false;
     }
 
     onMouseDown(coord, event) {
-        this.contextDraft.fillStyle = currentColor;
-        this.contextReal.fillStyle = currentColor;
-        this.contextDraft.strokestyle = currentStrokeColor;
-        this.contextReal.strokestyle = currentStrokeColor;
-        this.contextReal.lineWidth = 1;
-        this.contextReal.font = font;
-        this.origX = coord[0];
-        this.origY = coord[1];
-        this.width = '';
-        this.height = '';
-        this.textEnter = false;
+        if (!this.typing) {
+            styleSet();
+            this.contextReal.font = "30px Arial";
+            this.contextReal.textAlign = "center";
+            this.origX = coord[0];
+            this.origY = coord[1];
+        }
     }
     onDragging(coord, event) {
-        this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
-
-        //For Square
-        if (shifting) {
-            if (coord[1] - this.origY < 0) {
-                this.contextDraft.strokeRect(this.origX, this.origY, coord[0] - this.origX, -Math.abs(coord[0] - this.origX));
-            }
-            else {
-                this.contextDraft.strokeRect(this.origX, this.origY, coord[0] - this.origX, Math.abs(coord[0] - this.origX));
-            }
-        }
-        //For Rectangle
-        else {
-            this.contextDraft.strokeRect(this.origX, this.origY, coord[0] - this.origX, coord[1] - this.origY)
+        if (!this.typing) {
+            this.draw(coord, event, this.contextDraft)
         }
     }
 
     onMouseMove() { }
 
     onMouseUp(coord) {
+        if (!this.typing) {
+            this.draw(coord, event, this.contextReal);
+            this.typing = true;
+            this.textInput(coord);
+            resetPosition();
+            saveMove();
+        }
+    }
+    onMouseLeave() { }
+    onMouseEnter() { }
+    onKeydown() { }
+
+    draw(coord, event, context) {
         this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
+        context.beginPath();
+        this.width = coord[0] - this.origX;
+
         //For Square
         if (shifting) {
-            console.log('shift')
             if (coord[1] - this.origY < 0) {
-                this.width = coord[0] - this.origX;
                 this.height = -Math.abs(coord[0] - this.origX);
             }
+
             else {
-                this.width = coord[0] - this.origX;
                 this.height = Math.abs(coord[0] - this.origX);
             }
         }
@@ -58,44 +58,43 @@ class DrawingText extends PaintFunction {
             this.width = coord[0] - this.origX;
             this.height = coord[1] - this.origY;
         }
-
-        this.contextReal.strokeRect(this.origX, this.origY, this.width, this.height);
-        console.log(this.height);
-        console.log(this.width);
-
+        context.rect(this.origX, this.origY, this.width, this.height);
+        context.closePath();
+        context.stroke();
+        context.fill();
+    }
+    textInput(coordInput) {
 
         //Update variables to shift origX and origY to top-left corner
         this.width = Math.abs(this.width);
         this.height = Math.abs(this.height);
 
-        if (coord[0] - this.origX < 0) {
+        if (coordInput[0] - this.origX < 0) {
             this.origX -= this.width;
         }
-        if (coord[1] - this.origY < 0) {
+        if (coordInput[1] - this.origY < 0) {
             this.origY -= this.height;
         }
-        this.textEnter = true;
 
-    }
-    onMouseLeave() { }
-    onMouseEnter() { }
-    onClick() { }
-    onKeydown(e) {
-        if (this.textEnter) {
-            if (e.which == 8) {
-                this.inputString = this.inputString.slice(0, -1);
-            }
-            else if (e.which != 13) {
-                this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
-                this.contextReal.font = font;
-                this.inputString += String.fromCharCode(e.which);
-                this.contextDraft.textAlign = 'center';
-                this.contextDraft.fillText(this.inputString, (this.origX + this.width / 2), (this.origY + this.height / 2));
-            }
-            else {
-                this.textEnter = false;
-            }
+        var x = this.origX + this.width / 2;
+        var y = this.origY + this.height / 2 + 15;
+        var width = this.width;
 
-        }
+        var contextFill = this.contextReal;
+        $('#canvas').append(`
+            <form class='textInputForm' style=" top:${this.origY}; left:${this.origX};">
+                <input class='textInput' style='height:${this.height + 1}; width:${this.width + 1};' type="text" placeholder='Input text here'></input>
+            </form>`)
+        
+        $('#canvas').on('submit', '.textInputForm', function (e) {
+            e.preventDefault();
+            contextFill.fillStyle = currentStrokeColor;
+            var message = $('.textInput').val();
+            contextFill.fillText(message, x, y, width)
+            $('#canvas').off('submit', '.textInputForm')
+            $('.textInputForm').remove()
+        })
+        
+        this.typing = false;
     }
 }
