@@ -46,6 +46,7 @@ form .dimension{
     background-position: center;
     overflow: hidden;
     background-image: url(../images/splash.jpg);
+    opacity: 0.95;
     display: block;
     flex-direction: column;
     justify-content: center;
@@ -87,12 +88,15 @@ nav {
 .align-center {
     margin: 0 auto;
 }
-
 .button-style {
     height: 50px;
     display: flex;
     align-items: center;
     flex-grow: 1;
+}
+
+.brush-style {
+    display: inline-block;
 }
     /* Left */
 .button-style .btn-group-vertical {
@@ -189,7 +193,7 @@ nav {
 .color-picker,
 .color-stroke-picker {
     width: 40px;
-    height: 30px;
+    height: 38px;
     border: 0;
     margin: 0;
     padding: 0;
@@ -201,13 +205,15 @@ nav {
 
 .stroke-size {
     width: 40px;
-    height: 30px;
+    height: 38px;
     text-align: center;
     border-radius: .25rem;
+    position: relative;
+    top: 2px;
 }
 button[id^=stroke-size] {
     padding: 0;
-    height: 16px;
+    height: 20px;
     background: #FFC739;
     border: none;
 }
@@ -227,7 +233,7 @@ button[id^=stroke-size] {
 }
 .sp-dd {
     position: absolute;
-    height: 30px;
+    height: 38px;
     width: 40px;
     padding: 0;
     border-radius: .1rem;
@@ -235,7 +241,7 @@ button[id^=stroke-size] {
 
 .color-stroke-picker .sp-dd {
     position: absolute;
-    height: 20px;
+    height: 28px;
     width: 30px;
     margin: 5px;
     background-color: white;
