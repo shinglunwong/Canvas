@@ -11,49 +11,24 @@ class DrawingRectangle extends PaintFunction {
         styleSet();
         this.height = null;
         this.width = null;
-        if (!this.clickMode) {
-            this.origX = coord[0];
-            this.origY = coord[1];
-        }
+        this.origX = coord[0];
+        this.origY = coord[1];
     }
     onDragging(coord, event) {
-        if (Math.abs(coord[0] - this.origX) > 5 || Math.abs(coord[1] - this.origY) > 5) {
-            this.dragged = true;
-            this.draw(coord, event, this.contextDraft)
-        }
+        this.draw(coord, event, this.contextDraft)
     }
 
-    onMouseMove(coord, event) {
-        if (this.clickMode) {
-            this.draw(coord, event, this.contextDraft);
-        }
+    onMouseMove() {
     }
 
-    onMouseUp() { 
-        if (isMobile) {
-            console.log('hi')
-            this.draw(coord, event, this.contextReal);
-        }
+    onMouseUp(coord, event) {
+        this.draw(coord, event, this.contextReal);
+
     }
     onMouseLeave() { }
     onMouseEnter() { }
 
-    onClick(coord, event) {
-        if (this.clickMode) {
-            this.draw(coord, event, this.contextReal);
-            this.clickMode = false;
-        }
-        else {
-            if (this.dragged) {
-                this.draw(coord, event, this.contextReal);
-                this.dragged = false;
-            }
-            else if (this.dragged == false) {
-                this.origX = coord[0];
-                this.origY = coord[1];
-                this.clickMode = true;
-            }
-        }
+    onClick() {
     }
 
     draw(coord, event, context) {
@@ -79,6 +54,6 @@ class DrawingRectangle extends PaintFunction {
         context.rect(this.origX, this.origY, this.width, this.height);
         context.stroke();
         context.fill();
-        resetPosition ()
+        resetPosition()
     }
 }

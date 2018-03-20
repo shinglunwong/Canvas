@@ -7,6 +7,8 @@ let dragging = false;
 let currentColor;
 let shifting = false;
 let leftCanvas = false;
+contextReal.imageSmoothingEnabled = true;
+contextDraft.imageSmoothingEnabled = true;
 
 $('#canvas').on('contextmenu', '#canvas-draft', function (e) {
     e.preventDefault();
