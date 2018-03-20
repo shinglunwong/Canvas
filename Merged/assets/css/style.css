@@ -262,3 +262,6 @@ body {
     text-align: center;
     background-color: transparent;  
 }
+.filter-desktop {
+    display: none;
+}
