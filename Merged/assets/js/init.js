@@ -96,6 +96,7 @@ function resetPosition() {
 // tools buttons
 $('#tools button').click(function (e) {
     e.preventDefault();
+    $('.filter-desktop').hide();
     if (typeof $(this).attr('id') !== 'undefined') {
         console.log('currentFunction:' + $(this).attr('id'));
         currentFunction = eval('new Drawing' + $(this).attr('id') + '(contextReal,contextDraft);');
@@ -198,7 +199,7 @@ $('[data-shortcut]').each(function () {
 // mobile events
 if (isMobile) {
     var mc = new Hammer(document.getElementById('canvas-draft'));
-    mc.on("pan panstart panend tap press pressup", function (e) {
+    mc.on("pan panstart panend panright panleft tap press pressup", function (e) {
         console.log('new event:' + e.type);
         //console.log(e);
         let mouseX = e.center.x - e.target.offsetParent.offsetLeft;
@@ -219,6 +220,12 @@ if (isMobile) {
         }
         else if (e.type == 'pan') {
             currentFunction.onDragging([mouseX, mouseY], e);
+        }
+        else if (e.type == 'panright') {
+            currentFunction.onPanRight();
+        }
+        else if (e.type == 'panleft') {
+            currentFunction.onPanLeft();
         }
         else if (e.type == 'panend' || e.type == 'pressup') {
             dragging = false;
@@ -276,3 +283,17 @@ function saveMove() {
     var lastMove = saveCanvasReal[0].toDataURL('image/png', 1);
     drawHistory.push(lastMove);
 }
+
+// prev/next filter
+$('.previous-filter').click(function () {
+    currentFunction.onPanLeft();
+    currentFunction.onMouseUp();
+});
+$('.next-filter').click(function () {
+    currentFunction.onPanRight();
+    currentFunction.onMouseUp();
+});
+$('.apply-filter').click(function () {
+    shifting = true;
+    currentFunction.onClick();
+});
