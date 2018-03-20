@@ -131,6 +131,11 @@ $('input.upload').change(function () {
     var imgWidth = null;
     var imgHeight = null;
     img.onload = function () {
+        EXIF.getData(this, function() {
+            //console.log(EXIF.getAllTags(this));
+            orientation = EXIF.getTag(this, "Orientation");
+            console.log('orientation:'+orientation);
+        });
         console.log(this.width);
         console.log(this.height);
         if (this.width > this.height) {
