@@ -5,11 +5,8 @@ class DrawingText extends PaintFunction {
         this.contextDraft = contextDraft;
         this.height = null;
         this.width = null;
-<<<<<<< HEAD
         this.typing = false;
         $('.text-panel').fadeIn(220);
-=======
->>>>>>> f983eb4065f2618f16fd06921cb4fa113c9170b4
     }
 
     onMouseDown(coord, event) {
