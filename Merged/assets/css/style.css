@@ -249,3 +249,7 @@ button[id^=stroke-size] {
 body {
     background-color: wheat;
 }
+
+.filter-desktop {
+    display: none;
+}
