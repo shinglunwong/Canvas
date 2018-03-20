@@ -40,6 +40,7 @@ class DrawingLine extends PaintFunction {
     }
     onMouseUp(coord, event) {
         this.draw(this.contextReal);
+        saveMove();
         this.x = [];
         this.y = [];
     }

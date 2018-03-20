@@ -23,6 +23,7 @@ class DrawingCircle extends PaintFunction {
 
     onMouseUp(coord, event) {
         this.draw(coord, event, this.contextReal);
+        saveMove();
     }
 
     onMouseLeave() { }
