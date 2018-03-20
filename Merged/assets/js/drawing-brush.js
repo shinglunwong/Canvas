@@ -1,49 +1,59 @@
-class DrawingBrush extends PaintFunction{
-    constructor(contextReal){
+class DrawingBrush extends PaintFunction {
+    constructor(contextReal) {
         super();
-        this.context = contextReal;            
+        this.contextDraft = contextDraft;
+        this.contextReal = contextReal;
+        this.brushPath = [];
     }
-    
-    onMouseDown(coord,event){
+
+    onMouseDown(coord, event) {
         styleSet();
-        this.context.lineWidth = currentStrokeSize/2;
-        this.context.strokeStyle = currentColor;
-        this.context.beginPath();
-        this.context.moveTo(coord[0],coord[1]);
-        this.draw(coord[0],coord[1]);
+        this.contextDraft.lineWidth = currentStrokeSize / 2;
+        this.contextDraft.strokeStyle = currentColor;
+        this.contextReal.lineWidth = currentStrokeSize / 2;
+        this.contextReal.strokeStyle = currentColor;
+        this.contextDraft.beginPath();
+        this.contextReal.beginPath();
+        this.brushPath[0] = [coord[0], coord[1]];
     }
-    onDragging(coord,event){
-        this.draw(coord[0],coord[1]);
+    onDragging(coord, event) {
+        this.brushPath.push([coord[0], coord[1]])
+        this.draw(this.contextDraft);
     }
 
-    onMouseMove(){}
-    onMouseUp(coord,event){
-        this.draw(coord[0],coord[1]);
+    onMouseMove() { }
+    onMouseUp(coord, event) {
+        this.draw(this.contextReal);
+        this.brushPath = [];
+        saveMove();
     }
-    onMouseLeave(){}
-    onMouseEnter(){}
+    onMouseLeave() { }
+    onMouseEnter() { }
 
-    draw(x,y){
-        this.context.lineTo(x,y);
-        this.context.moveTo(x,y);
-        this.context.closePath();
-        this.context.stroke();    
+    draw(context) {
+        this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
+        context.moveTo(this.brushPath[0][0], this.brushPath[0][1]);
+        for (var i = 1; i < this.brushPath.length; i++) {
+            context.lineTo(this.brushPath[i][0], this.brushPath[i][1]);
+        }
+        context.stroke();
     }
 }
 
 
 // For eraser
-class DrawingEraser extends DrawingBrush{
-    constructor(contextReal){
+class DrawingEraser extends DrawingBrush {
+    constructor(contextReal) {
         super();
-        this.context = contextReal;
-  
+        this.contextDraft = contextDraft;
+        this.contextReal = contextReal;
+        this.brushPath = [];
     }
-    onMouseDown(coord,event){
-        this.context.lineWidth = currentStrokeSize/2;
-        this.context.strokeStyle = 'white';
-        this.context.lineJoin = "round";
+    onMouseDown(coord, event) {
+        this.contextDraft.strokeStyle = 'white';
+        this.contextReal.strokeStyle = 'white';
         // this.context.lineWidth = currentStrokeSize;
-        this.context.beginPath();
+        this.contextDraft.beginPath();
+        this.contextReal.beginPath();
     }
 }

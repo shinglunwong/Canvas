@@ -179,7 +179,7 @@
 
     <!-- mobile debug -->
 
-    <!-- <div id="logger" class="web_console" style='    background-color: white;
+    <div id="logger" class="web_console" style='    background-color: white;
     bottom: 0;
     position: absolute;
     width: 100vw;
@@ -187,30 +187,30 @@
     overflow: scroll;'></div>
 
     <script type="text/javascript">
+        if (isMobile) {
+            // Overriding console object
+            var console = {};
 
-        // Overriding console object
-        var console = {};
+            // Getting div to insert logs
+            var logger = document.getElementById("logger");
 
-        // Getting div to insert logs
-        var logger = document.getElementById("logger");
-
-        // Adding log method from our console object
-        console.log = function (text) {
-            var element = document.createElement("div");
-            var txt = document.createTextNode(text);
+            // Adding log method from our console object
+            console.log = function (text) {
+                var element = document.createElement("div");
+                var txt = document.createTextNode(text);
 
 
-            element.appendChild(txt);
-            $(logger).prepend(element);
-            // logger.appendChild(element);
+                element.appendChild(txt);
+                $(logger).prepend(element);
+                // logger.appendChild(element);
+            }
         }
-
 
         /**
             console.log prints the message in the page instead browser console, useful to programming and debugging JS using a Android phone
             
         */
-    </script> -->
+    </script>
 </body>
 
 </html>
