@@ -184,10 +184,12 @@
     position: absolute;
     width: 100vw;
     height: 200px;
-    overflow: scroll;'></div>
+    overflow: scroll;
+    display:none;'></div>
 
     <script type="text/javascript">
         if (isMobile) {
+            $('#logger').show();
             // Overriding console object
             var console = {};
 
@@ -204,12 +206,13 @@
                 $(logger).prepend(element);
                 // logger.appendChild(element);
             }
-        }
 
-        /**
-            console.log prints the message in the page instead browser console, useful to programming and debugging JS using a Android phone
-            
-        */
+
+            /**
+                console.log prints the message in the page instead browser console, useful to programming and debugging JS using a Android phone
+                
+            */
+        }
     </script>
 </body>
 
