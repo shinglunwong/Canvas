@@ -6,6 +6,7 @@ class DrawingText extends PaintFunction {
         this.height = null;
         this.width = null;
         this.typing = false;
+        $('.text-panel').fadeIn(220);
     }
 
     onMouseDown(coord, event) {

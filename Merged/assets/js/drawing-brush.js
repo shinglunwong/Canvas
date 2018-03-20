@@ -4,6 +4,7 @@ class DrawingBrush extends PaintFunction {
         this.contextDraft = contextDraft;
         this.contextReal = contextReal;
         this.brushPath = [];
+        $('.brush-panel').fadeIn(220);
     }
 
     onMouseDown(coord, event) {

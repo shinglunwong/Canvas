@@ -96,18 +96,12 @@ function resetPosition() {
 // tools buttons
 $('#tools button').click(function (e) {
     e.preventDefault();
-    $('.filter-desktop').hide();
+    $('.filter-desktop, .brush-panel, .text-panel').hide();
     if (typeof $(this).attr('id') !== 'undefined') {
         console.log('currentFunction:' + $(this).attr('id'));
         currentFunction = eval('new Drawing' + $(this).attr('id') + '(contextReal,contextDraft);');
         $('#tools button').removeClass('active');
         $(this).toggleClass('active');
-    }
-    // hide/show brush style
-    if ($('button#Brush').hasClass('active')==true) {
-        $('.side-function .btn').css("visibility", "visible")
-    } else {
-        $('.side-function .btn').css("visibility", "hidden")
     }
 });
 
