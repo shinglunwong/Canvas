@@ -7,6 +7,7 @@ let dragging = false;
 let currentColor;
 let shifting = false;
 let leftCanvas = false;
+let typing = false;
 contextReal.imageSmoothingEnabled = true;
 contextDraft.imageSmoothingEnabled = true;
 

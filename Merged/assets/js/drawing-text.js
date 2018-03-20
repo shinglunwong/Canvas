@@ -5,11 +5,10 @@ class DrawingText extends PaintFunction {
         this.contextDraft = contextDraft;
         this.height = null;
         this.width = null;
-        this.typing = false;
     }
 
     onMouseDown(coord, event) {
-        if (!this.typing) {
+        if (!typing) {
             styleSet();
             this.contextReal.font = "30px Arial";
             this.contextReal.textAlign = "center";
@@ -18,7 +17,7 @@ class DrawingText extends PaintFunction {
         }
     }
     onDragging(coord, event) {
-        if (!this.typing) {
+        if (!typing) {
             this.draw(coord, event, this.contextDraft)
         }
     }
@@ -26,9 +25,9 @@ class DrawingText extends PaintFunction {
     onMouseMove() { }
 
     onMouseUp(coord) {
-        if (!this.typing) {
+        if (!typing) {
             this.draw(coord, event, this.contextReal);
-            this.typing = true;
+            typing = true;
             this.textInput(coord);
             resetPosition();
             saveMove();
@@ -81,20 +80,21 @@ class DrawingText extends PaintFunction {
         var width = this.width;
 
         var contextFill = this.contextReal;
-        $('#canvas').append(`
+        var canvas = $('#canvas');
+
+        canvas.append(`
             <form class='textInputForm' style=" top:${this.origY}px; left:${this.origX}px;">
                 <input class='textInput' style='height:${this.height + 1}px; width:${this.width + 1}px;' type="text" placeholder='Input text here'></input>
             </form>`)
-        
-        $('#canvas').on('submit', '.textInputForm', function (e) {
+
+        canvas.on('submit', '.textInputForm', function (e) {
             e.preventDefault();
             contextFill.fillStyle = currentStrokeColor;
             var message = $('.textInput').val();
             contextFill.fillText(message, x, y, width)
             $('#canvas').off('submit', '.textInputForm')
             $('.textInputForm').remove()
+            typing = false;
         })
-        
-        this.typing = false;
     }
 }
