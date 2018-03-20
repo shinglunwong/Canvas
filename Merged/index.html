@@ -47,12 +47,12 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <div class="button-style">
                 <div class="main-function align-left">
-                    <button type="button" class="btn btn-secondary color-picker active" title="Color">
+                    <span type="button" class="btn btn-secondary color-picker" title="Color">
                         <input id='color-picker' />
-                    </button>
-                    <button type="button" class="btn btn-secondary color-stroke-picker active" title="Stroke Color">
+                    </span>
+                    <span type="button" class="btn btn-secondary color-stroke-picker" title="Stroke Color">
                         <input id='color-stroke-picker' />
-                    </button>
+                    </span>
                     <input type="text" class="stroke-size" value="10">
                     <div class="btn-group-vertical">
                         <button type="button" class="btn btn-secondary" id="stroke-size-more">
@@ -148,8 +148,8 @@
     <div id="canvas">
         <div class='cursor'></div>
         <canvas id="canvas-real" class="canvas"></canvas>
-        <div id="canvas-grid" class="canvas grid"></div>
         <canvas id="canvas-draft" class="canvas"></canvas>
+        <div id="canvas-grid" class="canvas grid"></div>
     </div>
     <input type="file" class="upload" />
 
