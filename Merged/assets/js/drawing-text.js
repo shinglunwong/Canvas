@@ -30,7 +30,6 @@ class DrawingText extends PaintFunction {
             typing = true;
             this.textInput(coord);
             resetPosition();
-            saveMove();
         }
     }
     onMouseLeave() { }
@@ -80,14 +79,12 @@ class DrawingText extends PaintFunction {
         var width = this.width;
 
         var contextFill = this.contextReal;
-        var canvas = $('#canvas');
 
-        canvas.append(`
-            <form class='textInputForm' style=" top:${this.origY}px; left:${this.origX}px;">
+        $('#canvas').append(`<form class='textInputForm' style=" top:${this.origY}px; left:${this.origX}px;">
                 <input class='textInput' style='height:${this.height + 1}px; width:${this.width + 1}px;' type="text" placeholder='Input text here'></input>
-            </form>`)
+            </form>`);
 
-        canvas.on('submit', '.textInputForm', function (e) {
+        $('#canvas').on('submit', '.textInputForm', function (e) {
             e.preventDefault();
             contextFill.fillStyle = currentStrokeColor;
             var message = $('.textInput').val();
@@ -95,6 +92,7 @@ class DrawingText extends PaintFunction {
             $('#canvas').off('submit', '.textInputForm')
             $('.textInputForm').remove()
             typing = false;
+            saveMove();
         })
     }
 }

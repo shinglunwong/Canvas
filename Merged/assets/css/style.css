@@ -263,10 +263,10 @@ body {
     position: absolute;
 }
 .textInput {
-    border: 0;
     padding: 10px;
     text-align: center;
     background-color: transparent;  
+    border: none;
 }
 .filter-desktop {
     display: none;
