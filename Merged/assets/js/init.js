@@ -127,10 +127,22 @@ $('input.upload').change(function () {
     var file = document.querySelector('input[type=file]').files[0];
     var url = URL.createObjectURL(file);
     var img = new Image();
+    var imgWidth = null;
+    var imgHeight = null;
     img.onload = function () {
         console.log(this.width);
         console.log(this.height);
-        contextReal.drawImage(img, 0, 0, canvasReal.width, canvasReal.height);
+        if (this.width > this.height) {
+            imgWidth = canvasReal.width;
+            imgHeight = canvasReal.width / (this.width / this.height);
+        }
+        else {
+            imgWidth = canvasReal.height * (this.width / this.height);
+            imgHeight = canvasReal.height;
+        }
+        $('#canvas canvas').attr("width", imgWidth).attr("height", imgHeight);
+        $('#canvas, #canvas-grid.grid').css("width", imgWidth).css("height", imgHeight);
+        contextReal.drawImage(img, 0, 0, imgWidth, imgHeight);
     }
     img.src = url;
 });
@@ -195,7 +207,7 @@ if (isMobile) {
 var saveCanvasReal = $('#canvas-real');
 
 $('.save').click(function () {
-    $('#canvas-real').css('backgroundColor', 'white');
+    console.log('save');
     var dataURL = saveCanvasReal[0].toDataURL('image/jpeg', 1);
     this.href = dataURL;
 })
