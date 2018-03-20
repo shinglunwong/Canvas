@@ -178,28 +178,16 @@ $('[data-shortcut]').each(function () {
 
 // mobile events
 if (isMobile) {
-    var myElement = document.getElementById('canvas-draft');
-    // We create a manager object, which is the same as Hammer(), but without the presetted recognizers. 
-     var mc = new Hammer.Manager(myElement);
-    // Tap recognizer with minimal 2 taps
-    mc.add(new Hammer.Tap({ event: 'doubletap', taps: 2 }));
-    // Single tap recognizer
-    mc.add(new Hammer.Tap({ event: 'singletap' }));
-    mc.add(new Hammer.Pan());
-    mc.add(new Hammer.Press());
-    // we want to recognize this simulatenous, so a quadrupletap will be detected even while a tap has been recognized.
-    mc.get('doubletap').recognizeWith('singletap');
-    mc.get('doubletap').recognizeWith('pan');
-    // we only want to trigger a tap, when we don't have detected a doubletap
-    mc.get('singletap').requireFailure('doubletap');
-    mc.on("pan panstart panend press singletap doubletap", function (e) {
+    var mc = new Hammer(document.getElementById('canvas-draft'));
+    mc.on("pan panstart panend tap press pressup", function (e) {
         console.log('new event:' + e.type);
         //console.log(e);
         let mouseX = e.center.x - e.target.offsetParent.offsetLeft;
         //console.log('mouseX:'+mouseX);
         let mouseY = e.center.y - e.target.offsetParent.offsetTop;
         //console.log('mouseY:'+mouseY);
-        if (e.type == 'press'/* || e.type == 'singletap' || e.type == 'tap'*/) {    // nothing hapening for single tap
+        if (e.type == 'press' || e.type == 'tap') {
+            console.log('tap');
             currentFunction.onKeydown(e);
             currentFunction.onClick([mouseX, mouseY], e);
         }
@@ -214,11 +202,6 @@ if (isMobile) {
         else if (e.type == 'panend' || e.type == 'pressup') {
             dragging = false;
             currentFunction.onMouseUp([mouseX, mouseY], e);
-            shifting = false;
-        }
-        else if (e.type == 'doubletap') {
-            //currentFunction.onDragging([mouseX, mouseY], e);
-            shifting = true;
         }
     });
 }
