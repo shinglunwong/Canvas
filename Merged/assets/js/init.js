@@ -82,6 +82,8 @@ function styleSet() {
     contextReal.fillStyle = currentColor;
     contextDraft.lineJoin = 'miter';
     contextReal.lineJoin = 'miter';
+    contextDraft.shadowBlur =  0;
+    contextReal.shadowBlur =  0;
 }
 
 function resetPosition() {
@@ -100,7 +102,24 @@ $('#tools button').click(function (e) {
         $('#tools button').removeClass('active');
         $(this).toggleClass('active');
     }
+    // hide/show brush style
+    if ($('button#Brush').hasClass('active')==true) {
+        $('.side-function .btn').css("visibility", "visible")
+    } else {
+        $('.side-function .btn').css("visibility", "hidden")
+    }
 });
+
+// brush style
+$('.brush-style-2').click(function(e){
+    currentFunction = new DrawingBrush2(contextReal,contextDraft);
+})
+$('.brush-style-1').click(function(e){
+    currentFunction = new DrawingBrush1(contextReal,contextDraft);
+})
+$('.brush-style').click(function(e){
+    currentFunction = new DrawingBrush(contextReal,contextDraft);
+})
 
 // select default tool
 $('#Brush').click();

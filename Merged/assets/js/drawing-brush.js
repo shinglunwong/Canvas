@@ -52,7 +52,28 @@ class DrawingEraser extends DrawingBrush {
     onMouseDown(coord, event) {
         this.contextDraft.strokeStyle = 'white';
         this.contextReal.strokeStyle = 'white';
-        // this.context.lineWidth = currentStrokeSize;
+        this.contextDraft.beginPath();
+        this.contextReal.beginPath();
+    }
+}
+
+class DrawingBrush1 extends DrawingBrush{
+    constructor(contextReal) {
+        super();
+        this.contextDraft = contextDraft;
+        this.contextReal = contextReal;
+        this.brushPath = [];
+    }
+    onMouseDown(coord, event) {
+        styleSet();
+        this.contextDraft.lineWidth = currentStrokeSize / 2;
+        this.contextDraft.strokeStyle = currentColor;
+        this.contextReal.lineWidth = currentStrokeSize / 2;
+        this.contextReal.strokeStyle = currentColor;
+        this.contextDraft.shadowBlur =  10;
+        this.contextReal.shadowBlur =  10;
+        this.contextDraft.shadowColor = currentColor;
+        this.contextReal.shadowColor = currentColor;
         this.contextDraft.beginPath();
         this.contextReal.beginPath();
     }
