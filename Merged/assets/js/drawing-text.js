@@ -82,8 +82,8 @@ class DrawingText extends PaintFunction {
 
         var contextFill = this.contextReal;
         $('#canvas').append(`
-            <form class='textInputForm' style=" top:${this.origY}; left:${this.origX};">
-                <input class='textInput' style='height:${this.height + 1}; width:${this.width + 1};' type="text" placeholder='Input text here'></input>
+            <form class='textInputForm' style=" top:${this.origY}px; left:${this.origX}px;">
+                <input class='textInput' style='height:${this.height + 1}px; width:${this.width + 1}px;' type="text" placeholder='Input text here'></input>
             </form>`)
         
         $('#canvas').on('submit', '.textInputForm', function (e) {
