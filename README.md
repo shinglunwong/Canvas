@@ -17,9 +17,9 @@ Brad
 
 Didier
 
-- fix colorpicker
++ fix colorpicker
 - stamp / filters
-- mobile
+~ mobile (waiting Andrew to fix mouseup drawing / scroll down bug)
 + shortcuts (cancel with text fct)
 
 other tasks:

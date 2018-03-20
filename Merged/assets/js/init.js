@@ -187,7 +187,9 @@ if (isMobile) {
         let mouseY = e.center.y - e.target.offsetParent.offsetTop;
         //console.log('mouseY:'+mouseY);
         if (e.type == 'press' || e.type == 'tap') {
-            console.log('tap');
+            if(e.type == 'press') {
+                shifting = true;
+            }
             currentFunction.onKeydown(e);
             currentFunction.onClick([mouseX, mouseY], e);
         }
@@ -202,6 +204,7 @@ if (isMobile) {
         else if (e.type == 'panend' || e.type == 'pressup') {
             dragging = false;
             currentFunction.onMouseUp([mouseX, mouseY], e);
+            shifting = false;
         }
     });
 }

@@ -3,14 +3,12 @@ class DrawingCircle extends PaintFunction {
         super();
         this.contextReal = contextReal;
         this.contextDraft = contextDraft;
-        this.clickMode = false;
-        this.dragged = false;
+        this.height = null;
+        this.width = null;
     }
 
     onMouseDown(coord, event) {
         styleSet();
-        this.height = null;
-        this.width = null;
         this.origX = coord[0];
         this.origY = coord[1];
     }
@@ -30,6 +28,7 @@ class DrawingCircle extends PaintFunction {
     onMouseEnter() { }
     draw(coord, event, context) {
         this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
+        
         context.beginPath();
         this.width = Math.abs((coord[0] - this.origX) / 2);
         if (context == this.contextReal) {
@@ -47,5 +46,6 @@ class DrawingCircle extends PaintFunction {
         context.ellipse(this.origX + (coord[0] - this.origX) / 2, this.origY + (coord[1] - this.origY) / 2, this.width, this.height, 0, 0, 2 * Math.PI);
         context.stroke();
         context.fill();
+        resetPosition();
     }
 }

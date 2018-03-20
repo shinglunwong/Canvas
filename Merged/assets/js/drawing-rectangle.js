@@ -3,14 +3,12 @@ class DrawingRectangle extends PaintFunction {
         super();
         this.contextReal = contextReal;
         this.contextDraft = contextDraft;
-        this.clickMode = false;
-        this.dragged = false;
+        this.height = null;
+        this.width = null;
     }
 
     onMouseDown(coord, event) {
         styleSet();
-        this.height = null;
-        this.width = null;
         this.origX = coord[0];
         this.origY = coord[1];
     }
@@ -54,6 +52,6 @@ class DrawingRectangle extends PaintFunction {
         context.rect(this.origX, this.origY, this.width, this.height);
         context.stroke();
         context.fill();
-        resetPosition()
+        resetPosition();
     }
 }
