@@ -15,6 +15,25 @@ class DrawingCircle extends PaintFunction {
             this.origX = coord[0];
             this.origY = coord[1];
         }
+        if (this.clickMode) {
+            console.log('clickmode off');
+            console.log('draw click')
+            this.draw(coord, event, this.contextReal);
+            this.clickMode = false;
+        }
+        else {
+            if (this.dragged) {
+                this.draw(coord, event, this.contextReal);
+                this.dragged = false;
+                console.log('draw drag');
+            }
+            else if (this.dragged == false) {
+                this.origX = coord[0];
+                this.origY = coord[1];
+                this.clickMode = true;
+                console.log('clickmode on');
+            }
+        }
     }
     onDragging(coord, event) {
         if (Math.abs(coord[0] - this.origX) > 5 || Math.abs(coord[1] - this.origY) > 5) {
@@ -23,38 +42,32 @@ class DrawingCircle extends PaintFunction {
         }
     }
     onMouseMove(coord, event) {
-        if (this.clickMode) {
-            this.draw(coord, event, this.contextDraft);
-        }
+        // if (this.clickMode) {
+        this.draw(coord, event, this.contextDraft);
+        // }
     }
 
-    onMouseUp() {
+    onMouseUp(coord, event) {
+        if (this.dragged == true) {
+        console.log('hi')
+        this.draw(coord, event, this.contextReal)
+        }
     }
 
     onMouseLeave() { }
     onMouseEnter() { }
     onClick(coord, event) {
-        if (this.clickMode) {
-            this.draw(coord, event, this.contextReal);
-            this.clickMode = false;
-        }
-        else {
-            if (this.dragged) {
-                this.draw(coord, event, this.contextReal);
-                this.dragged = false;
-            }
-            else if (this.dragged == false) {
-                this.origX = coord[0];
-                this.origY = coord[1];
-                this.clickMode = true;
-            }
-        }
+        // if (!isMobile) {
+
     }
+
     draw(coord, event, context) {
         this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
         context.beginPath();
         this.width = Math.abs((coord[0] - this.origX) / 2);
-
+        if (context == this.contextReal) {
+            console.log('real')
+        }
         //For circle
         if (shifting) {
             this.height = Math.abs((coord[0] - this.origX) / 2);
@@ -69,3 +82,4 @@ class DrawingCircle extends PaintFunction {
         context.fill();
     }
 }
+

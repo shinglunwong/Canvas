@@ -187,17 +187,20 @@ if (isMobile) {
         let mouseY = e.center.y - e.target.offsetParent.offsetTop;
         //console.log('mouseY:'+mouseY);
         if (e.type == 'press' || e.type == 'tap') {
+            console.log('tap');
             currentFunction.onKeydown(e);
             currentFunction.onClick([mouseX, mouseY], e);
         }
         else if (e.type == 'panstart') {
             currentFunction.onKeydown(e);
             currentFunction.onMouseDown([mouseX, mouseY], e);
+            dragging = true;
         }
         else if (e.type == 'pan') {
             currentFunction.onDragging([mouseX, mouseY], e);
         }
         else if (e.type == 'panend' || e.type == 'pressup') {
+            dragging = false;
             currentFunction.onMouseUp([mouseX, mouseY], e);
         }
     });

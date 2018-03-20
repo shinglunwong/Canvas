@@ -29,7 +29,12 @@ class DrawingRectangle extends PaintFunction {
         }
     }
 
-    onMouseUp() { }
+    onMouseUp() { 
+        if (isMobile) {
+            console.log('hi')
+            this.draw(coord, event, this.contextReal);
+        }
+    }
     onMouseLeave() { }
     onMouseEnter() { }
 

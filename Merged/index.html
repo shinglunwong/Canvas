@@ -7,15 +7,17 @@
     <!-- Debug -->
     <script>
         var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent); // only open console on mobile
-        if (isMobile) {
-            document.write('<script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"><\/script>');
-        }
+        // if (isMobile) {
+        //     document.write('<script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"><\/script>');
+        // }
     </script>
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+
 </head>
 
 <body>
@@ -175,6 +177,40 @@
     <script type='text/javascript' src="assets/js/drawing-polygon.js"></script>
     <script type='text/javascript' src="assets/js/init.js"></script>
 
+    <!-- mobile debug -->
+
+    <div id="logger" class="web_console" style='    background-color: white;
+    bottom: 0;
+    position: absolute;
+    width: 100vw;
+    height: 200px;
+    overflow: scroll;'></div>
+
+    <script type="text/javascript">
+
+        // Overriding console object
+        var console = {};
+
+        // Getting div to insert logs
+        var logger = document.getElementById("logger");
+
+        // Adding log method from our console object
+        console.log = function (text) {
+            var element = document.createElement("div");
+            var txt = document.createTextNode(text);
+
+
+            element.appendChild(txt);
+            $(logger).prepend(element);
+            // logger.appendChild(element);
+        }
+
+
+        /**
+            console.log prints the message in the page instead browser console, useful to programming and debugging JS using a Android phone
+            
+        */
+    </script>
 </body>
 
 </html>

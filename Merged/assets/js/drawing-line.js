@@ -9,13 +9,15 @@ class DrawingLine extends PaintFunction {
         this.drawingY = '';
     }
     onClick(coord, event) {
+        console.log('click');
         styleSet();
-        this.contextDraft.lineWidth = currentStrokeSize/2;
-        this.contextReal.lineWidth = currentStrokeSize/2;
+        this.contextDraft.lineWidth = currentStrokeSize / 2;
+        this.contextReal.lineWidth = currentStrokeSize / 2;
         this.contextDraft.strokeStyle = currentColor;
         this.contextReal.strokeStyle = currentColor;
         this.x.push(coord[0]);
         this.y.push(coord[1]);
+
 
         if (this.x.length == 1) {
             this.draw(this.contextDraft);
@@ -55,6 +57,20 @@ class DrawingLine extends PaintFunction {
 
     draw(context) {
         this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
+        
+            //Draw first position
+            contextDraft.lineWidth = 2;
+            this.contextDraft.fillStyle = 'transparent';
+            this.contextDraft.beginPath();
+            this.contextDraft.moveTo(this.x[0] - 10, this.y[0] - 10);
+            this.contextDraft.lineTo(this.x[0] + 10, this.y[0] - 10);
+            this.contextDraft.lineTo(this.x[0] + 10, this.y[0] + 10);
+            this.contextDraft.lineTo(this.x[0] - 10, this.y[0] + 10);
+            this.contextDraft.closePath();
+            this.contextDraft.stroke();
+            contextDraft.lineWidth = currentStrokeSize / 2;
+        
+
         context.beginPath();
         context.moveTo(this.x[0], this.y[0]);
         for (var i = 1; i < this.x.length; i++) {
@@ -67,5 +83,8 @@ class DrawingLine extends PaintFunction {
         }
         context.closePath();
         context.stroke();
+        if(context == this.contextReal){
+            this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
+        }
     }
 }
