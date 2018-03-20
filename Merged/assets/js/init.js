@@ -214,3 +214,43 @@ $('.save').click(function () {
     var dataURL = saveCanvasReal[0].toDataURL('image/jpeg', 1);
     this.href = dataURL;
 })
+
+// Undo function
+
+var drawHistory = [];
+var redoList = [];
+$('.undo').click(function () {
+    if (drawHistory.length == 0) {
+        return
+    }
+    else if (drawHistory.length == 1) {
+        contextReal.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
+    }
+    else {
+        var lastStep = new Image();
+        lastStep.src = drawHistory[drawHistory.length - 2];
+        lastStep.onload = function () {
+            contextReal.drawImage(lastStep, 0, 0);
+        };
+    }
+    redoList.push(drawHistory.pop());
+})
+
+$('.redo').click(function () {
+    if (redoList.length == 0) {
+        return
+    }
+    else {
+        var nextStep = new Image();
+        nextStep.src = redoList[redoList.length - 1];
+        nextStep.onload = function () {
+            contextReal.drawImage(nextStep, 0, 0);
+        };
+        drawHistory.push(redoList.pop());
+    }
+})
+
+function saveMove() {
+    var lastMove = saveCanvasReal[0].toDataURL('image/png', 1);
+    drawHistory.push(lastMove);
+}

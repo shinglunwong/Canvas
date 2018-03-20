@@ -30,6 +30,7 @@ class DrawingPolygon extends PaintFunction {
                 this.draw(this.contextReal);
             }
         }
+        saveMove();
     }
 
     onMouseMove(coord, event) {
