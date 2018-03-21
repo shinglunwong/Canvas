@@ -77,21 +77,20 @@ class DrawingText extends PaintFunction {
             this.origY -= this.height;
         }
 
-        var x = this.origX + this.width / 2;
+        var x = this.origX + this.width / 2 -1;
         var y = this.origY + this.height / 2 + 15;
         var width = this.width;
 
         var textReal = this.contextReal;
 
         $('#canvas').append(`<form class='textInputForm' style=" top:${this.origY}px; left:${this.origX}px;">
-                <input class='textInput' style='height:${this.height + 1}px; width:${this.width + 1}px;' type="text" placeholder='Input text here'></input>
+                <input class='textInput' style='height:${this.height + 1}px; width:${this.width + 1}px;' type="text" placeholder='Input text here'>
             </form>`);
-
-        var angle = 90;
 
         $('.textInput').css({fontSize: sizeFont, fontFamily: familyFont})
 
         $('#canvas').on('submit', '.textInputForm', function (e) {
+            var angle = textAngle;
             e.preventDefault();
             textReal.fillStyle = currentStrokeColor;
             var message = $('.textInput').val();
