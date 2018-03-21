@@ -3,7 +3,7 @@ class DrawingFilter extends PaintFunction {
         super();
         this.contextReal = contextReal;
         this.contextDraft = contextDraft;
-        this.filters = ['filter1.png', 'filter2.png', 'filter3.png'];
+        this.filters = ['filter1.png', 'filter2.png', 'filter3.png', 'filter4.png'];
         this.currentFilter = 0;
         this.draw(this.contextDraft);
         this.filterUpdate = false;

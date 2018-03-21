@@ -14,16 +14,23 @@
     position: absolute;
     top: 50%;
     left: 50%;
+    height: 120px;
+    width: 260px;
     color: black;
     transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%);
     text-align: center;
+    background-color: white;
+    border: 1px solid #ced4da;
+    padding: 20px;
+    border-radius: .25rem;
+    box-shadow: 0 0 4px 1px #444444;
 }
 .form-button{
     display: block;
     font-size: 18px;
-    font-weight: 200;
-    margin: 5px 0;
+    font-weight: 400;
+    border-radius: .25rem;
     width: 100%;
     background-color: #946a00;
     color: rgb(252, 228, 167);
@@ -34,6 +41,27 @@ form .dimension{
     font-size:15px;
     width:60px;
 }
+.canvas-size{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: space-between
+}
+.size-forms{
+    flex-grow: 1;
+    width: 95px;
+}
+.size-forms > input {
+    display: inline-block;
+}
+.submit-button{
+    margin: 5px 10px 0 10px;
+    flex-grow: 1;
+}
+
 .splash {
     position: fixed;
     top: 0;
@@ -43,7 +71,6 @@ form .dimension{
     width: 100vw;
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
     overflow: hidden;
     background-image: url(../images/splash.jpg);
     opacity: 0.95;
@@ -306,6 +333,22 @@ body {
 .textInput:focus {
     border: none;
 }
+.font-select {
+    background-color: #5a6268;
+    border-color: #545b62;
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 5px;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    margin: 0;
+}
 
 .side-function {
     display: flex;
@@ -340,8 +383,8 @@ body {
 .emoji-grid {
     display: none;
     background: white;
-    width: 400px;
-    height: 300px;
+    width: 172px;
+    height: 139px;
     overflow: scroll;
     top: 58px;
     position: absolute;

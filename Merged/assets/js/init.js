@@ -38,6 +38,7 @@ $("#color-picker").spectrum({
     ],
     change: function (color) {
         currentColor = color;
+        $('.textInput').css('color', color);
         console.log('currentColor:' + currentColor);
     }
 });
@@ -362,9 +363,11 @@ var familyFont = 'Arial';
 $(function () {
     $('#font').fontselect().change(function () {
 
+
         // replace + signs with spaces for css
         var font = $(this).val().replace(/\+/g, ' ');
         console.log(font)
+        $('.textInput').css('fontFamily', font);
 
         familyFont = font;
     });
