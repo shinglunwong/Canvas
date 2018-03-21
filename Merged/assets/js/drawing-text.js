@@ -12,6 +12,9 @@ class DrawingText extends PaintFunction {
     onMouseDown(coord, event) {
         if (!typing) {
             styleSet();
+            this.contextDraft.strokeStyle = 'black';
+            this.contextDraft.fillStyle = 'transparent';
+            this.contextReal.fillStyle = 'transparent';
             this.contextReal.font = `${sizeFont}px ${familyFont}`
             this.contextReal.textAlign = "center";
             this.contextReal.textBaseline = "middle";
@@ -87,18 +90,18 @@ class DrawingText extends PaintFunction {
                 <input class='textInput' style='height:${this.height + 1}px; width:${this.width + 1}px;' type="text" placeholder='Input text here'>
             </form>`);
 
-        $('.textInput').css({fontSize: sizeFont, fontFamily: familyFont})
-
+        $('.textInput').css({fontSize: sizeFont, fontFamily: familyFont, color: currentColor})
+        
         $('#canvas').on('submit', '.textInputForm', function (e) {
             textReal.font = `${sizeFont}px ${familyFont}`
             var angle = textAngle;
             e.preventDefault();
-            textReal.fillStyle = currentStrokeColor;
+            textReal.fillStyle = currentColor;
 
             var message = $('.textInput').val();
             textReal.translate(x, y -sizeFont/2-1)
             textReal.rotate((Math.PI / 180) * angle);
-            textReal.fillText(message, 0, 0, width);
+            textReal.fillText(message, 0, 0);
             textReal.translate(-x - canvas.width / 2, -y - canvas.height / 2)
             textReal.setTransform(1, 0, 0, 1, 0, 0);
 
