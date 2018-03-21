@@ -81,6 +81,15 @@ $('#stroke-size-less').click(function () {
     cursorSize();
 });
 
+$('.stamp-panel .selected').click(function () {
+    $('.emoji-grid').toggle();
+});
+
+$('.emoji-grid img').click(function () {
+    $('.stamp-panel .selected').html($(this).parent().html());
+    $('.emoji-grid').toggle();
+});
+
 $('.cursor').css('width', currentStrokeSize * 0.5); //defaults
 $('.cursor').css('height', currentStrokeSize * 0.5);
 $('.cursor-outer').css('width', currentStrokeSize * 0.5 + 10);
@@ -116,7 +125,7 @@ function resetPosition() {
 // tools buttons
 $('#tools button').click(function (e) {
     e.preventDefault();
-    $('.filter-desktop, .brush-panel, .text-panel').hide();
+    $('.filter-desktop, .brush-panel, .stamp-panel, .text-panel').hide();
     if (typeof $(this).attr('id') !== 'undefined') {
         console.log('currentFunction:' + $(this).attr('id'));
         currentFunction = eval('new Drawing' + $(this).attr('id') + '(contextReal,contextDraft);');
@@ -164,11 +173,11 @@ $('input.upload').change(function () {
     var imgWidth = null;
     var imgHeight = null;
     img.onload = function () {
-        EXIF.getData(this, function() {
-            //console.log(EXIF.getAllTags(this));
-            orientation = EXIF.getTag(this, "Orientation");
-            console.log('orientation:'+orientation);
-        });
+        // EXIF.getData(this, function() {
+        //     //console.log(EXIF.getAllTags(this));
+        //     orientation = EXIF.getTag(this, "Orientation");
+        //     console.log('orientation:'+orientation);
+        // });
         console.log(this.width);
         console.log(this.height);
         if (this.width > this.height) {
