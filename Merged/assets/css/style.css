@@ -190,6 +190,10 @@ nav {
     cursor: none;
 }
 
+.canvas:not(:hover){
+    cursor: default;
+}
+
 #canvas-draft {
     z-index: 100;
     border: 1px black solid;
@@ -300,7 +304,7 @@ body {
 }
 .button-style button {
     box-shadow: 1px 1px 1px #000000;
-    background-color: white;
+    background-color: #eeecec;
 }
 .button-style button:active {
     box-shadow: inset 1px 1px 1px #000000;
@@ -315,6 +319,49 @@ body {
     display: none;
 }
 
+.stamp-panel img {
+    width: 32px;
+}
+
+#selected-stamp {
+    width: 58px;
+}
+
+.emoji-grid {
+    display: none;
+    background: white;
+    width: 400px;
+    height: 300px;
+    overflow: scroll;
+    top: 58px;
+    position: absolute;
+    z-index: 110;
+    border: 1px solid;
+    padding: 5px;
+}
+
+.emoji-grid li{
+    list-style-type: none;
+    float: left;
+}
+div .dropdown {
+    display: inline;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    z-index: 500;
+    right: 0;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropdown-content button:hover {
+    box-shadow: inset 1px 1px 1px #000000;
+}
+button.btn {
+    width: 42px;
+}
 .text-rotate {
     width: 40px;
     height: 38px;

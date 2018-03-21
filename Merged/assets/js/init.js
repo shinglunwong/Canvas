@@ -15,7 +15,7 @@ $(document).ready(function () {
         contextReal.fillRect(0, 0, canvasReal.width, canvasReal.height);
     })
     if (isMobile) {
-        $('#canvas:hover .cursors').hide();
+        $('#canvas:hover + .cursors').hide();
     }
 
 })
@@ -25,8 +25,9 @@ let fontWidth = 16;
 let font = '24px sans-serif'
 
 // color-picker
-currentColor = "#f00";
+currentColor = "rgb(0, 0, 0)";
 $("#color-picker").spectrum({
+    preferredFormat: "rgb",
     color: currentColor,
     showAlpha: true,
     showPalette: true,
@@ -42,8 +43,9 @@ $("#color-picker").spectrum({
 });
 
 // color-stroke-picker
-currentStrokeColor = "#000";
+currentStrokeColor = "rgb(0, 0, 0)";
 $("#color-stroke-picker").spectrum({
+    preferredFormat: "rgb",
     color: currentStrokeColor,
     showAlpha: true,
     showPalette: true,
@@ -78,6 +80,15 @@ $('#stroke-size-more').click(function () {
 $('#stroke-size-less').click(function () {
     $('.stroke-size').val(parseInt($('.stroke-size').val()) - 1).change();
     cursorSize();
+});
+
+$('#selected-stamp').click(function () {
+    $('.emoji-grid').toggle();
+});
+
+$('.emoji-grid img').click(function () {
+    $('#selected-stamp').html($(this).parent().html());
+    $('.emoji-grid').toggle();
 });
 
 $('.cursor').css('width', currentStrokeSize * 0.5); //defaults
@@ -115,7 +126,7 @@ function resetPosition() {
 // tools buttons
 $('#tools button').click(function (e) {
     e.preventDefault();
-    $('.filter-desktop, .brush-panel, .text-panel').hide();
+    $('.filter-desktop, .brush-panel, .stamp-panel, .text-panel').hide();
     if (typeof $(this).attr('id') !== 'undefined') {
         console.log('currentFunction:' + $(this).attr('id'));
         currentFunction = eval('new Drawing' + $(this).attr('id') + '(contextReal,contextDraft);');
@@ -163,11 +174,11 @@ $('input.upload').change(function () {
     var imgWidth = null;
     var imgHeight = null;
     img.onload = function () {
-        EXIF.getData(this, function () {
-            //console.log(EXIF.getAllTags(this));
-            orientation = EXIF.getTag(this, "Orientation");
-            console.log('orientation:' + orientation);
-        });
+        // EXIF.getData(this, function() {
+        //     //console.log(EXIF.getAllTags(this));
+        //     orientation = EXIF.getTag(this, "Orientation");
+        //     console.log('orientation:'+orientation);
+        // });
         console.log(this.width);
         console.log(this.height);
         if (this.width > this.height) {
@@ -310,7 +321,9 @@ function saveMove() {
     var lastMove = saveCanvasReal[0].toDataURL('image/png', 1);
     drawHistory.push(lastMove);
 }
-
+$('.replay').click(function(){
+    replaySteps();
+})
 function replaySteps() {
     var replayIndex = 0;
     var replayFunction = setInterval(function () {
@@ -355,12 +368,6 @@ $(function () {
 
         familyFont = font;
     });
-})
-
-
-// line text
-$('#line-tool').on('click', function () {
-    currentFunction = new LineText(contextReal, contextDraft);
 })
 
 //text angle
