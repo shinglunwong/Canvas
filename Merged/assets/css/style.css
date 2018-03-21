@@ -304,3 +304,25 @@ body {
 .filter-desktop, .brush-panel, .text-panel {
     display: none;
 }
+
+.stamp-panel img {
+    width: 32px;
+}
+
+.emoji-grid {
+    display: none;
+    background: white;
+    width: 400px;
+    height: 300px;
+    overflow: scroll;
+    top: 58px;
+    position: absolute;
+    z-index: 110;
+    border: 1px solid;
+    padding: 5px;
+}
+
+.emoji-grid li{
+    list-style-type: none;
+    float: left;
+}

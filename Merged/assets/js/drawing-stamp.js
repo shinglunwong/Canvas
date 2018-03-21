@@ -1,6 +1,7 @@
 class DrawingStamp extends PaintFunction{
     constructor(contextReal, contextDraft){
-        super();          
+        super();
+        $('.stamp-panel').fadeIn(220); 
     }
     
     onMouseDown(){}
