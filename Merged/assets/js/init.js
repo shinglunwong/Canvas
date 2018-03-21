@@ -79,12 +79,12 @@ $('#stroke-size-less').click(function () {
     cursorSize();
 });
 
-$('.stamp-panel .selected').click(function () {
+$('#selected-stamp').click(function () {
     $('.emoji-grid').toggle();
 });
 
 $('.emoji-grid img').click(function () {
-    $('.stamp-panel .selected').html($(this).parent().html());
+    $('#selected-stamp').html($(this).parent().html());
     $('.emoji-grid').toggle();
 });
 

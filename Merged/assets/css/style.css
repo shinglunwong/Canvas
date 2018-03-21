@@ -317,7 +317,7 @@ body {
     width: 32px;
 }
 
-.stamp-panel .selected {
+#selected-stamp {
     width: 58px;
 }
 
