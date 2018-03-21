@@ -14,9 +14,10 @@ $(document).ready(function () {
         contextReal.fillStyle = 'white';
         contextReal.fillRect(0, 0, canvasReal.width, canvasReal.height);
     })
-    if(isMobile) {
-        $('#canvas:hover .cursor, #canvas:hover .cursor-outer').hide();
+    if (isMobile) {
+        $('#canvas:hover .cursors').hide();
     }
+
 })
 
 // Declare default tools options
@@ -162,10 +163,10 @@ $('input.upload').change(function () {
     var imgWidth = null;
     var imgHeight = null;
     img.onload = function () {
-        EXIF.getData(this, function() {
+        EXIF.getData(this, function () {
             //console.log(EXIF.getAllTags(this));
             orientation = EXIF.getTag(this, "Orientation");
-            console.log('orientation:'+orientation);
+            console.log('orientation:' + orientation);
         });
         console.log(this.width);
         console.log(this.height);
@@ -187,8 +188,8 @@ $('input.upload').change(function () {
 // Custom cursor
 $('#canvas').hover(function () {
     $('#canvas').mousemove(function (e) {
-        let mouseX = e.pageX - this.offsetLeft;
-        let mouseY = e.pageY - this.offsetTop;
+        let mouseX = e.pageX;
+        let mouseY = e.pageY;
         $('.cursor').css('left', mouseX);
         $('.cursor').css('top', mouseY);
         $('.cursor').css('backgroundColor', currentColor);
@@ -341,9 +342,26 @@ $('.apply-filter').click(function () {
 });
 
 
-//custom font size
+//custom font
 var sizeFont = 30;
 var familyFont = 'Arial';
+
+$(function () {
+    $('#font').fontselect().change(function () {
+
+        // replace + signs with spaces for css
+        var font = $(this).val().replace(/\+/g, ' ');
+        console.log(font)
+
+        familyFont = font;
+    });
+})
+
+
+// line text
+$('#line-tool').on('click', function () {
+    currentFunction = new LineText(contextReal, contextDraft);
+})
 
 //text angle
 textAngle = 0;
@@ -363,5 +381,5 @@ $('#text-rotate-less').click(function () {
 
 $('.text-rotate').change(function () {
     $('.textInput').css('transform', `rotate(${textAngle}deg)`)
-    
+
 })
