@@ -15,7 +15,7 @@ Brad
 - brush style
 - navbar and design
 
-Didier
+Didier  
 
 + fix colorpicker
 - stamp / filters

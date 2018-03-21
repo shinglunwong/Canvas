@@ -10,8 +10,9 @@ class DrawingText extends PaintFunction {
     onMouseDown(coord, event) {
         if (!typing) {
             styleSet();
-            this.contextReal.font = "30px Arial";
+            this.contextReal.font = `${sizeFont}px ${familyFont}`
             this.contextReal.textAlign = "center";
+            this.contextReal.textBaseline = "middle";
             this.origX = coord[0];
             this.origY = coord[1];
         }
@@ -78,17 +79,25 @@ class DrawingText extends PaintFunction {
         var y = this.origY + this.height / 2 + 15;
         var width = this.width;
 
-        var contextFill = this.contextReal;
+        var textReal = this.contextReal;
 
         $('#canvas').append(`<form class='textInputForm' style=" top:${this.origY}px; left:${this.origX}px;">
                 <input class='textInput' style='height:${this.height + 1}px; width:${this.width + 1}px;' type="text" placeholder='Input text here'></input>
             </form>`);
 
+        var angle = 90;
+
+        $('.textInput').css({fontSize: sizeFont, fontFamily: familyFont})
+
         $('#canvas').on('submit', '.textInputForm', function (e) {
             e.preventDefault();
-            contextFill.fillStyle = currentStrokeColor;
+            textReal.fillStyle = currentStrokeColor;
             var message = $('.textInput').val();
-            contextFill.fillText(message, x, y, width)
+            textReal.translate(x, y -sizeFont/2-1)
+            textReal.rotate((Math.PI / 180) * angle);
+            textReal.fillText(message, 0, 0, width);
+            textReal.translate(-x - canvas.width / 2, -y - canvas.height / 2)
+            textReal.setTransform(1, 0, 0, 1, 0, 0);
             $('#canvas').off('submit', '.textInputForm')
             $('.textInputForm').remove()
             typing = false;

@@ -272,6 +272,8 @@ body {
     text-align: center;
     background-color: transparent;  
     border: none;
+    min-width: 100px;
+    min-height: 50px;
 }
 .filter-desktop {
     display: none;

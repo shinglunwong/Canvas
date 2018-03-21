@@ -328,3 +328,8 @@ $('.apply-filter').click(function () {
     shifting = true;
     currentFunction.onClick();
 });
+
+
+//custom font size
+var sizeFont = 30;
+var familyFont = 'Arial';
