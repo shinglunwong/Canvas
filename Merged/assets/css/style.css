@@ -145,7 +145,6 @@ nav {
     width: 10px;
     height: 10px;
     position: absolute;
-    display: none;
     z-index: 90;
     top: 0;
     left: 0;
@@ -159,7 +158,10 @@ nav {
     min-height: 20px;
 }
 
-#canvas:hover .cursor, #canvas:hover .cursor-outer {
+.cursors {
+    display:none;
+}
+#canvas:hover + .cursors {
     display: block;
     margin-top: 20px;
 }
@@ -321,7 +323,7 @@ body {
     width: 32px;
 }
 
-.stamp-panel .selected {
+#selected-stamp {
     width: 58px;
 }
 

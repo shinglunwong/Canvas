@@ -14,9 +14,10 @@ $(document).ready(function () {
         contextReal.fillStyle = 'white';
         contextReal.fillRect(0, 0, canvasReal.width, canvasReal.height);
     })
-    if(isMobile) {
-        $('#canvas:hover .cursor, #canvas:hover .cursor-outer').hide();
+    if (isMobile) {
+        $('#canvas:hover + .cursors').hide();
     }
+
 })
 
 // Declare default tools options
@@ -81,12 +82,12 @@ $('#stroke-size-less').click(function () {
     cursorSize();
 });
 
-$('.stamp-panel .selected').click(function () {
+$('#selected-stamp').click(function () {
     $('.emoji-grid').toggle();
 });
 
 $('.emoji-grid img').click(function () {
-    $('.stamp-panel .selected').html($(this).parent().html());
+    $('#selected-stamp').html($(this).parent().html());
     $('.emoji-grid').toggle();
 });
 
@@ -198,8 +199,8 @@ $('input.upload').change(function () {
 // Custom cursor
 $('#canvas').hover(function () {
     $('#canvas').mousemove(function (e) {
-        let mouseX = e.pageX - this.offsetLeft;
-        let mouseY = e.pageY - this.offsetTop;
+        let mouseX = e.pageX;
+        let mouseY = e.pageY;
         $('.cursor').css('left', mouseX);
         $('.cursor').css('top', mouseY);
         $('.cursor').css('backgroundColor', currentColor);
@@ -354,9 +355,20 @@ $('.apply-filter').click(function () {
 });
 
 
-//custom font size
+//custom font
 var sizeFont = 30;
 var familyFont = 'Arial';
+
+$(function () {
+    $('#font').fontselect().change(function () {
+
+        // replace + signs with spaces for css
+        var font = $(this).val().replace(/\+/g, ' ');
+        console.log(font)
+
+        familyFont = font;
+    });
+})
 
 //text angle
 textAngle = 0;
@@ -376,5 +388,5 @@ $('#text-rotate-less').click(function () {
 
 $('.text-rotate').change(function () {
     $('.textInput').css('transform', `rotate(${textAngle}deg)`)
-    
+
 })

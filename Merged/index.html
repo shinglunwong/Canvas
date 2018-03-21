@@ -8,15 +8,13 @@
     <!-- Debug -->
     <script>
         var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent); // only open console on mobile
-        // if (isMobile) {
-        //     document.write('<script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"><\/script>');
-        // }
     </script>
-
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.css">
+    <link rel="stylesheet" href="assets/css/fontselect.css">
+
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
     <!-- favicon error fix -->
@@ -84,7 +82,7 @@
                     </div>
                     <!-- stamp panel -->
                     <div class="stamp-panel">
-                        <button class='btn selected'>
+                        <button class="btn" id="selected-stamp">
                             <img src="https://emojipedia-us.s3.amazonaws.com/thumbs/72/apple/76/grinning-face_1f600.png" title="Grinning Face">
                         </button>
                         <ul class="emoji-grid">
@@ -511,9 +509,22 @@
                     </div>
                     <!-- text panel -->
                     <div class="text-panel">
-                        <button class='btn'>X</button>
-                        <button class='btn'>X</button>
-                        <button class='btn'>X</button>
+                        <!-- <input type="text" class="font-size" value="24"> -->
+                        <!-- <div class="btn-group-vertical">
+                            <button type="button" class='font-size-picker' id="font-more">
+                                <i class="fas fa-angle-up"></i>
+                            </button>
+                            <button type="button" class='font-size-picker' id="font-less">
+                                <i class="fas fa-angle-down"></i>
+                            </button>
+                        </div> -->
+                        <!-- <span class="btn btn-secondary font-color-picker" title="Font Color">
+                                <input id='font-color-picker' />
+                            </span> -->
+
+                            
+                        <input id="font" type="text">
+
                         <input type="text" class="text-rotate" value="0°">
                         <div class="btn-group-vertical">
                             <button type="button" class='text-rotate-picker' id="text-rotate-more">
@@ -632,12 +643,14 @@
 
     <!-- Canvas -->
     <div id="canvas">
-            <div class='cursor'></div>
-            <div class='cursor-outer'></div>
         <canvas id="canvas-real" class="canvas"></canvas>
         <canvas id="canvas-draft" class="canvas"></canvas>
         <div id="canvas-grid" class="canvas grid"></div>
     </div>
+    <div class='cursors'>
+            <div class='cursor'></div>
+            <div class='cursor-outer'></div>
+        </div>
     <input type="file" class="upload" />
 
     <!-- JS dependencies -->
@@ -652,6 +665,7 @@
         crossorigin="anonymous"></script>
     <script type='text/javascript' src="https://hammerjs.github.io/dist/hammer.min.js"></script>
     <!-- <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/exif-js/2.3.0/exif.min.js"></script> -->
+    <script src="assets/js/fontselect/jquery.fontselect.min.js"></script>
 
     <!-- Functions -->
     <script type='text/javascript' src="assets/js/canvas-common.js"></script>

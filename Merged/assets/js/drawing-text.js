@@ -90,18 +90,22 @@ class DrawingText extends PaintFunction {
         $('.textInput').css({fontSize: sizeFont, fontFamily: familyFont})
 
         $('#canvas').on('submit', '.textInputForm', function (e) {
+            textReal.font = `${sizeFont}px ${familyFont}`
             var angle = textAngle;
             e.preventDefault();
             textReal.fillStyle = currentStrokeColor;
+
             var message = $('.textInput').val();
             textReal.translate(x, y -sizeFont/2-1)
             textReal.rotate((Math.PI / 180) * angle);
             textReal.fillText(message, 0, 0, width);
             textReal.translate(-x - canvas.width / 2, -y - canvas.height / 2)
             textReal.setTransform(1, 0, 0, 1, 0, 0);
+
             $('#canvas').off('submit', '.textInputForm')
             $('.textInputForm').remove()
             typing = false;
+
             saveMove();
         })
     }
