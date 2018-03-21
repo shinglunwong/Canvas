@@ -111,18 +111,12 @@ function resetPosition() {
 // tools buttons
 $('#tools button').click(function (e) {
     e.preventDefault();
-    $('.filter-desktop').hide();
+    $('.filter-desktop, .brush-panel, .text-panel').hide();
     if (typeof $(this).attr('id') !== 'undefined') {
         console.log('currentFunction:' + $(this).attr('id'));
         currentFunction = eval('new Drawing' + $(this).attr('id') + '(contextReal,contextDraft);');
         $('#tools button').removeClass('active');
         $(this).toggleClass('active');
-    }
-    // hide/show brush style
-    if ($('button#Brush').hasClass('active') == true) {
-        $('.side-function .btn').css("visibility", "visible")
-    } else {
-        $('.side-function .btn').css("visibility", "hidden")
     }
 });
 
@@ -165,6 +159,11 @@ $('input.upload').change(function () {
     var imgWidth = null;
     var imgHeight = null;
     img.onload = function () {
+        EXIF.getData(this, function() {
+            //console.log(EXIF.getAllTags(this));
+            orientation = EXIF.getTag(this, "Orientation");
+            console.log('orientation:'+orientation);
+        });
         console.log(this.width);
         console.log(this.height);
         if (this.width > this.height) {
