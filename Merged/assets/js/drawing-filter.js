@@ -32,6 +32,7 @@ class DrawingFilter extends PaintFunction {
     onClick() {
         if (shifting) {
             this.draw(this.contextReal);
+            saveMove();
         }
         shifting = false;
     }
