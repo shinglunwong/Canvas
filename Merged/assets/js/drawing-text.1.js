@@ -93,13 +93,6 @@ class DrawingText extends PaintFunction {
         $('.textInput').focus();
         
         $('.textInput').css({fontSize: sizeFont, fontFamily: familyFont, color: currentColor})
-
-        $('#canvas').on('mouseenter','.textInput', function() {
-            $('.cursors').hide()
-        })
-        $('#canvas').on('mouseleave','.textInput', function() {
-            $('.cursors').show()
-        })
         
         $('#canvas').on('submit', '.textInputForm', function (e) {
             textReal.font = `${sizeFont}px ${familyFont}`
@@ -116,7 +109,6 @@ class DrawingText extends PaintFunction {
 
             $('#canvas').off('submit', '.textInputForm')
             $('.textInputForm').remove()
-            $('.cursors').show()
             typing = false;
 
             saveMove();

@@ -26,7 +26,7 @@ let fontWidth = 16;
 let font = '24px sans-serif'
 
 // color-picker
-currentColor = "rgb(95, 171, 237)";
+currentColor = "rgb(0, 0, 0)";
 $("#color-picker").spectrum({
     preferredFormat: "rgb",
     color: currentColor,
@@ -177,6 +177,8 @@ $('input.upload').change(function () {
     var imgWidth = null;
     var imgHeight = null;
     img.crossOrigin = 'Anonymous';
+
+
     img.onload = function () {
         // EXIF.getData(this, function() {
         //     //console.log(EXIF.getAllTags(this));
@@ -388,6 +390,10 @@ $(function () {
         $('.textInput').css('fontFamily', font);
 
         familyFont = font;
+
+        if (typing) {
+            $('.textInput').focus();
+        }
     });
 })
 
@@ -399,15 +405,18 @@ $('.text-rotate').change(function () {
     else
         textAngle = $('.text-rotate').val();
     console.log('textAngle:' + textAngle);
+
+    $('.textInput').css('transform', `rotate(${textAngle}deg)`)
 });
 $('#text-rotate-more').click(function () {
-    $('.text-rotate').val(parseInt($('.text-rotate').val()) + 1).change();
+    $('.text-rotate').val(parseInt($('.text-rotate').val()) + 15).change();
+    if ($('.text-rotate').val() > 360) {
+        $('.text-rotate').val(parseInt($('.text-rotate').val()) - 360)
+    }
 });
 $('#text-rotate-less').click(function () {
-    $('.text-rotate').val(parseInt($('.text-rotate').val()) - 1).change();
+    $('.text-rotate').val(parseInt($('.text-rotate').val()) - 15).change();
+    if ($('.text-rotate').val() < 0) {
+        $('.text-rotate').val(parseInt($('.text-rotate').val()) + 360)
+    }
 });
-
-$('.text-rotate').change(function () {
-    $('.textInput').css('transform', `rotate(${textAngle}deg)`)
-
-})
