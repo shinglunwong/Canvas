@@ -13,6 +13,7 @@ class DrawingText extends PaintFunction {
         if (!typing) {
             styleSet();
             this.contextDraft.strokeStyle = 'black';
+            this.contextReal.strokeStyle = 'transparent';
             this.contextDraft.fillStyle = 'transparent';
             this.contextReal.fillStyle = 'transparent';
             this.contextReal.font = `${sizeFont}px ${familyFont}`
@@ -89,7 +90,7 @@ class DrawingText extends PaintFunction {
         $('#canvas').append(`<form class='textInputForm' style=" top:${this.origY}px; left:${this.origX}px;">
                 <input class='textInput' style='height:${this.height + 1}px; width:${this.width + 1}px;' type="text" placeholder='Input text here'>
             </form>`);
-
+        $('.textInput').focus();
         $('.textInput').css({fontSize: sizeFont, fontFamily: familyFont, color: currentColor})
         
         $('#canvas').on('submit', '.textInputForm', function (e) {
