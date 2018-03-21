@@ -290,7 +290,7 @@ body {
 }
 .button-style button {
     box-shadow: 1px 1px 1px #000000;
-    background-color: white;
+    background-color: #eeecec;
 }
 .button-style button:active {
     box-shadow: inset 1px 1px 1px #000000;
@@ -303,4 +303,23 @@ body {
 }
 .filter-desktop, .brush-panel, .text-panel {
     display: none;
+}
+
+div .dropdown {
+    display: inline;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    z-index: 500;
+    right: 0;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropdown-content button:hover {
+    box-shadow: inset 1px 1px 1px #000000;
+}
+button.btn {
+    width: 42px;
 }
