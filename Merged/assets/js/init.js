@@ -65,13 +65,28 @@ $('.stroke-size').change(function () {
     else
         currentStrokeSize = $('.stroke-size').val();
     console.log('currentStrokeSize:' + currentStrokeSize);
+    cursorSize();
 });
 $('#stroke-size-more').click(function () {
     $('.stroke-size').val(parseInt($('.stroke-size').val()) + 1).change();
+    cursorSize();
 });
 $('#stroke-size-less').click(function () {
     $('.stroke-size').val(parseInt($('.stroke-size').val()) - 1).change();
+    cursorSize();
 });
+
+$('.cursor').css('width', currentStrokeSize * 0.5); //defaults
+$('.cursor').css('height', currentStrokeSize * 0.5);
+$('.cursor-outer').css('width', currentStrokeSize * 0.5 + 10);
+$('.cursor-outer').css('height', currentStrokeSize * 0.5 + 10);
+
+function cursorSize() {
+    $('.cursor').css('width', currentStrokeSize * 0.5);
+    $('.cursor').css('height', currentStrokeSize * 0.5);
+    $('.cursor-outer').css('width', currentStrokeSize * 0.5 + 10);
+    $('.cursor-outer').css('height', currentStrokeSize * 0.5 + 10);
+}
 
 function styleSet() {
     contextDraft.strokeStyle = currentStrokeColor;
@@ -82,8 +97,8 @@ function styleSet() {
     contextReal.fillStyle = currentColor;
     contextDraft.lineJoin = 'miter';
     contextReal.lineJoin = 'miter';
-    contextDraft.shadowBlur =  0;
-    contextReal.shadowBlur =  0;
+    contextDraft.shadowBlur = 0;
+    contextReal.shadowBlur = 0;
 }
 
 function resetPosition() {
@@ -96,30 +111,24 @@ function resetPosition() {
 // tools buttons
 $('#tools button').click(function (e) {
     e.preventDefault();
-    $('.filter-desktop').hide();
+    $('.filter-desktop, .brush-panel, .text-panel').hide();
     if (typeof $(this).attr('id') !== 'undefined') {
         console.log('currentFunction:' + $(this).attr('id'));
         currentFunction = eval('new Drawing' + $(this).attr('id') + '(contextReal,contextDraft);');
         $('#tools button').removeClass('active');
         $(this).toggleClass('active');
     }
-    // hide/show brush style
-    if ($('button#Brush').hasClass('active')==true) {
-        $('.side-function .btn').css("visibility", "visible")
-    } else {
-        $('.side-function .btn').css("visibility", "hidden")
-    }
 });
 
 // brush style
-$('.brush-style-2').click(function(e){
-    currentFunction = new DrawingBrush2(contextReal,contextDraft);
+$('.brush-style-2').click(function (e) {
+    currentFunction = new DrawingBrush2(contextReal, contextDraft);
 })
-$('.brush-style-1').click(function(e){
-    currentFunction = new DrawingBrush1(contextReal,contextDraft);
+$('.brush-style-1').click(function (e) {
+    currentFunction = new DrawingBrush1(contextReal, contextDraft);
 })
-$('.brush-style').click(function(e){
-    currentFunction = new DrawingBrush(contextReal,contextDraft);
+$('.brush-style').click(function (e) {
+    currentFunction = new DrawingBrush(contextReal, contextDraft);
 })
 
 // select default tool
@@ -179,9 +188,9 @@ $('#canvas').hover(function () {
         let mouseY = e.pageY - this.offsetTop;
         $('.cursor').css('left', mouseX);
         $('.cursor').css('top', mouseY);
-        $('.cursor').css('width', currentStrokeSize * 0.5);
-        $('.cursor').css('height', currentStrokeSize * 0.5);
         $('.cursor').css('backgroundColor', currentColor);
+        $('.cursor-outer').css('left', mouseX);
+        $('.cursor-outer').css('top', mouseY);
     })
 })
 
@@ -212,7 +221,7 @@ if (isMobile) {
         let mouseY = e.center.y - e.target.offsetParent.offsetTop;
         //console.log('mouseY:'+mouseY);
         if (e.type == 'press' || e.type == 'tap') {
-            if(e.type == 'press') {
+            if (e.type == 'press') {
                 shifting = true;
             }
             currentFunction.onKeydown(e);
@@ -289,6 +298,22 @@ function saveMove() {
     drawHistory.push(lastMove);
 }
 
+function replaySteps() {
+    var replayIndex = 0;
+    var replayFunction = setInterval(function () {
+        var replay = new Image();
+        replay.src = drawHistory[replayIndex];
+        replay.onload = function () {
+            contextReal.drawImage(replay, 0, 0);
+        }
+        replayIndex++;
+        if (replayIndex == drawHistory.length) {
+            clearInterval(replayFunction);
+        }
+    }, 600)
+
+}
+
 // prev/next filter
 $('.previous-filter').click(function () {
     currentFunction.onPanLeft();
@@ -302,3 +327,8 @@ $('.apply-filter').click(function () {
     shifting = true;
     currentFunction.onClick();
 });
+
+
+//custom font size
+var sizeFont = 30;
+var familyFont = 'Arial';

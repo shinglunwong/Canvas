@@ -4,10 +4,10 @@ tasks:
 
 Andrew
 
-- fix border, width
+<!-- - fix border, width
 - fix text
 - save
-- undo
+- undo -->
 
 Brad
 
@@ -15,7 +15,7 @@ Brad
 - brush style
 - navbar and design
 
-Didier
+Didier  
 
 + fix colorpicker
 - stamp / filters
