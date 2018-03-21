@@ -212,8 +212,17 @@ $('[data-shortcut]').each(function () {
 
 // mobile events
 if (isMobile) {
-    var mc = new Hammer(document.getElementById('canvas-draft'));
+    var myElement = document.getElementById('canvas-draft');
+    var mc = new Hammer.Manager(myElement);
+    // var mc = new Hammer(document.getElementById('canvas-draft'));
+    mc.add(new Hammer.Tap({ event: 'singletap' }));
+    mc.add(new Hammer.Pan());
+    mc.add(new Hammer.Press());
     mc.on("pan panstart panend panright panleft tap press pressup", function (e) {
+        // e.stopPropagation();
+        // e.preventDefault();
+        // e.gesture.stopPropagation();
+        // e.gesture.preventDefault();
         console.log('new event:' + e.type);
         //console.log(e);
         let mouseX = e.center.x - e.target.offsetParent.offsetLeft;
