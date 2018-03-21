@@ -26,7 +26,7 @@ let fontWidth = 16;
 let font = '24px sans-serif'
 
 // color-picker
-currentColor = "rgb(0, 0, 0)";
+currentColor = "rgb(95, 171, 237)";
 $("#color-picker").spectrum({
     preferredFormat: "rgb",
     color: currentColor,

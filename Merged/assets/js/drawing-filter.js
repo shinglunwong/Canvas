@@ -3,7 +3,7 @@ class DrawingFilter extends PaintFunction {
         super();
         this.contextReal = contextReal;
         this.contextDraft = contextDraft;
-        this.filters = ['filter1.png', 'filter2.png', 'filter3.png'];
+        this.filters = ['filter1.png', 'filter2.png', 'filter3.png', 'filter4.png'];
         this.currentFilter = 0;
         this.draw(this.contextDraft);
         this.filterUpdate = false;
@@ -15,6 +15,8 @@ class DrawingFilter extends PaintFunction {
         // apply next filter on draft
         if(!this.filterUpdate) {
             this.currentFilter++;
+            if(this.currentFilter>=this.filters.length)
+                this.currentFilter-=this.filters.length;
             this.filterUpdate = true;
         }
     }
@@ -22,12 +24,15 @@ class DrawingFilter extends PaintFunction {
         // apply previous filter on draft
         if(!this.filterUpdate) {
             this.currentFilter--;
+            if(this.currentFilter<0)
+                this.currentFilter+=this.filters.length;
             this.filterUpdate = true;
         }
     }
     onClick() {
         if (shifting) {
             this.draw(this.contextReal);
+            saveMove();
         }
         shifting = false;
     }
@@ -36,12 +41,12 @@ class DrawingFilter extends PaintFunction {
         this.filterUpdate = false;
     }
     draw(context) {
-        console.log('draw filter '+this.currentFilter % this.filters.length);
+        console.log('draw filter '+this.currentFilter);
         this.clearDraft();
         let img = new Image();
         var imgWidth = null;
         var imgHeight = null;
-        img.src = 'assets/filters/' + this.filters[this.currentFilter % this.filters.length];
+        img.src = 'assets/filters/' + this.filters[this.currentFilter];
         img.onload = function () {
             // filter width ajusted to canvas width
             imgWidth = canvasReal.width;

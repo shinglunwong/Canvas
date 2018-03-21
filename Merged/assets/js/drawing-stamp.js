@@ -8,12 +8,13 @@ class DrawingStamp extends PaintFunction{
     
     onMouseDown(coord, event) {
         this.draw(this.contextReal, coord);
+        saveMove();
     }
     onDragging(){}
     onMouseMove(coord, event) {
         this.draw(this.contextDraft, coord);
     }
-    onMouseUp(){}
+    onMouseUp() {}
     onMouseLeave(){
         this.clearDraft();
     }
@@ -21,6 +22,6 @@ class DrawingStamp extends PaintFunction{
     draw(context, coord){
         this.clearDraft();
         var stamp = document.getElementById('selected-stamp').getElementsByTagName('img')[0];
-        context.drawImage(stamp, coord[0]-36, coord[1]-36);
+        context.drawImage(stamp, coord[0]-77, coord[1]-77);
     }
 }

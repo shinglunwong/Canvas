@@ -65,9 +65,9 @@ class DrawingBrush2 extends PaintFunction {
         var angle = this.angleBetween(this.lastPoint, currentPoint);
 
         for (var i = 0; i < dist; i++) {
-            var x = this.lastPoint.x + (Math.sin(angle) * i) - 25;
-            var y = this.lastPoint.y + (Math.cos(angle) * i) - 25;
-            this.contextReal.drawImage(this.newImg, x, y);
+            var x = this.lastPoint.x + (Math.sin(angle) * i) ;
+            var y = this.lastPoint.y + (Math.cos(angle) * i) ;
+            this.contextReal.drawImage(this.newImg, x, y, currentStrokeSize, currentStrokeSize);
         }
 
         this.lastPoint = currentPoint;
