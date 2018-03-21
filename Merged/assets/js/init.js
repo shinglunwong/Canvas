@@ -24,8 +24,9 @@ let fontWidth = 16;
 let font = '24px sans-serif'
 
 // color-picker
-currentColor = "#f00";
+currentColor = "rgb(0, 0, 0)";
 $("#color-picker").spectrum({
+    preferredFormat: "rgb",
     color: currentColor,
     showAlpha: true,
     showPalette: true,
@@ -41,8 +42,9 @@ $("#color-picker").spectrum({
 });
 
 // color-stroke-picker
-currentStrokeColor = "#000";
+currentStrokeColor = "rgb(0, 0, 0)";
 $("#color-stroke-picker").spectrum({
+    preferredFormat: "rgb",
     color: currentStrokeColor,
     showAlpha: true,
     showPalette: true,
