@@ -317,6 +317,10 @@ body {
     width: 32px;
 }
 
+.stamp-panel .selected {
+    width: 58px;
+}
+
 .emoji-grid {
     display: none;
     background: white;

@@ -83,6 +83,11 @@ $('.stamp-panel .selected').click(function () {
     $('.emoji-grid').toggle();
 });
 
+$('.emoji-grid img').click(function () {
+    $('.stamp-panel .selected').html($(this).parent().html());
+    $('.emoji-grid').toggle();
+});
+
 $('.cursor').css('width', currentStrokeSize * 0.5); //defaults
 $('.cursor').css('height', currentStrokeSize * 0.5);
 $('.cursor-outer').css('width', currentStrokeSize * 0.5 + 10);
