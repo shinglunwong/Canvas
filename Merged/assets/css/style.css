@@ -278,6 +278,14 @@ body {
     min-height: 50px;
 }
 
+.textInputForm:hover .cursor, .textInputForm:hover .cursor-outer {
+    display: none;
+}
+
+.textInput:focus {
+    border: none;
+}
+
 .side-function {
     background: rgb(255, 218, 115);
     border-radius: 20px;
@@ -323,3 +331,20 @@ div .dropdown {
 button.btn {
     width: 42px;
 }
+.text-rotate {
+    width: 40px;
+    height: 38px;
+    text-align: center;
+    border-radius: .25rem;
+    position: relative;
+    top: 2px;
+}
+.btn-group-vertical .text-rotate-picker {
+    padding: 0;
+    height: 20px;
+    background: rgb(255, 218, 115);
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+

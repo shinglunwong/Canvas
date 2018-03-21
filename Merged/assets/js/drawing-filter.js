@@ -39,9 +39,14 @@ class DrawingFilter extends PaintFunction {
         console.log('draw filter '+this.currentFilter % this.filters.length);
         this.clearDraft();
         let img = new Image();
+        var imgWidth = null;
+        var imgHeight = null;
         img.src = 'assets/filters/' + this.filters[this.currentFilter % this.filters.length];
         img.onload = function () {
-            context.drawImage(img, 0, 0);
+            // filter width ajusted to canvas width
+            imgWidth = canvasReal.width;
+            imgHeight = canvasReal.width / (this.width / this.height);
+            context.drawImage(img, 0, 0, imgWidth, imgHeight);
         };
     }
 }
