@@ -290,6 +290,7 @@ body {
 }
 .button-style button {
     box-shadow: 1px 1px 1px #000000;
+    background-color: white;
 }
 .button-style button:active {
     box-shadow: inset 1px 1px 1px #000000;
