@@ -188,6 +188,10 @@ nav {
     cursor: none;
 }
 
+.canvas:not(:hover){
+    cursor: default;
+}
+
 #canvas-draft {
     z-index: 100;
     border: 1px black solid;
