@@ -21,10 +21,6 @@ $(document).ready(function () {
 
 })
 
-// Declare default tools options
-let fontWidth = 16;
-let font = '24px sans-serif'
-
 // color-picker
 currentColor = "rgb(0, 0, 0)";
 $("#color-picker").spectrum({
@@ -74,14 +70,17 @@ $('.stroke-size').change(function () {
         currentStrokeSize = $('.stroke-size').val();
     console.log('currentStrokeSize:' + currentStrokeSize);
     cursorSize();
+    changeFontSize()
 });
 $('#stroke-size-more').click(function () {
     $('.stroke-size').val(parseInt($('.stroke-size').val()) + 1).change();
     cursorSize();
+    changeFontSize()
 });
 $('#stroke-size-less').click(function () {
     $('.stroke-size').val(parseInt($('.stroke-size').val()) - 1).change();
     cursorSize();
+    changeFontSize()
 });
 
 $('#selected-stamp').click(function () {
@@ -191,18 +190,15 @@ $('input.upload').change(function () {
             if (canvasReal.width / (this.width / this.height) > canvasReal.height) {
                 imgHeight = canvasReal.height;
                 imgWidth = imgHeight * (this.width / this.height);
-            }
-            else {
+            } else {
                 imgWidth = canvasReal.width
                 imgHeight = canvasReal.width * (this.height / this.width);
             }
-        }
-        else {
+        } else {
             if (canvasReal.height * (this.width / this.height > canvasReal.width)) {
                 imgWidth = canvasReal.width;
                 imgHeight = imgWidth * (this.height / this.width);
-            }
-            else {
+            } else {
                 imgHeight = canvasReal.height;
                 imgWidth = canvasReal.height * (this.width / this.height);
             }
@@ -235,7 +231,7 @@ $('[data-shortcut]').each(function () {
     key = element.data('shortcut');
 
     $(document).on('keyup', null, String(key), function () {
-        if (currentFunction.__proto__.constructor.name != 'DrawingText') {    // no shortcut if typing text
+        if (currentFunction.__proto__.constructor.name != 'DrawingText') { // no shortcut if typing text
             element.trigger('focus').trigger('click');
 
             if (element.prop('tagName').toLowerCase() === 'a') {
@@ -250,7 +246,9 @@ if (isMobile) {
     var myElement = document.getElementById('canvas-draft');
     var mc = new Hammer.Manager(myElement);
     // var mc = new Hammer(document.getElementById('canvas-draft'));
-    mc.add(new Hammer.Tap({ event: 'singletap' }));
+    mc.add(new Hammer.Tap({
+        event: 'singletap'
+    }));
     mc.add(new Hammer.Pan());
     mc.add(new Hammer.Press());
     mc.on("pan panstart panend panright panleft tap press pressup", function (e) {
@@ -270,22 +268,17 @@ if (isMobile) {
             }
             currentFunction.onKeydown(e);
             currentFunction.onClick([mouseX, mouseY], e);
-        }
-        else if (e.type == 'panstart') {
+        } else if (e.type == 'panstart') {
             currentFunction.onKeydown(e);
             currentFunction.onMouseDown([mouseX, mouseY], e);
             dragging = true;
-        }
-        else if (e.type == 'pan') {
+        } else if (e.type == 'pan') {
             currentFunction.onDragging([mouseX, mouseY], e);
-        }
-        else if (e.type == 'panright') {
+        } else if (e.type == 'panright') {
             currentFunction.onPanRight();
-        }
-        else if (e.type == 'panleft') {
+        } else if (e.type == 'panleft') {
             currentFunction.onPanLeft();
-        }
-        else if (e.type == 'panend' || e.type == 'pressup') {
+        } else if (e.type == 'panend' || e.type == 'pressup') {
             dragging = false;
             currentFunction.onMouseUp([mouseX, mouseY], e);
             shifting = false;
@@ -309,11 +302,9 @@ var redoList = [];
 $('.undo').click(function () {
     if (drawHistory.length == 0) {
         return
-    }
-    else if (drawHistory.length == 1) {
+    } else if (drawHistory.length == 1) {
         contextReal.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
-    }
-    else {
+    } else {
         var lastStep = new Image();
         lastStep.src = drawHistory[drawHistory.length - 2];
         lastStep.onload = function () {
@@ -326,8 +317,7 @@ $('.undo').click(function () {
 $('.redo').click(function () {
     if (redoList.length == 0) {
         return
-    }
-    else {
+    } else {
         var nextStep = new Image();
         nextStep.src = redoList[redoList.length - 1];
         nextStep.onload = function () {
@@ -340,10 +330,12 @@ $('.redo').click(function () {
 function saveMove() {
     var lastMove = saveCanvasReal[0].toDataURL('image/png', 1);
     drawHistory.push(lastMove);
+    redoList = [];
 }
 $('.replay').click(function () {
     replaySteps();
 })
+
 function replaySteps() {
     var replayIndex = 0;
     contextReal.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
@@ -378,15 +370,46 @@ $('.apply-filter').click(function () {
 
 //custom font
 var sizeFont = 30;
-var familyFont = 'Arial';
+var familyFont = 'Roboto';
+
+var allFonts = [];
+var topFonts = [];
+
+function changeFontSize(){
+    sizeFont = currentStrokeSize;
+    $('.textInput').css('fontSize', `${sizeFont}px`);
+    console.log('fontsize: '+ $('.textInput').css('fontSize'))
+}
 
 $(function () {
-    $('#font').fontselect().change(function () {
+    function getFonts() {
+        return $.get(
+            'https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyBHFvkerakVUs2uJ0Uw9a1RNAwRPYqrHew&sort=popularity'
+        );
+    }
+    $.when(getFonts()).then(function (data) {
+        allFonts = data.items;
 
 
-        // replace + signs with spaces for css
-        var font = $(this).val().replace(/\+/g, ' ');
-        console.log(font)
+        function getFontsCats(fontType, num) {
+            var maxFonts = 0
+            for (var i = 0; i < allFonts.length; i++) {
+                if (allFonts[i].category == fontType) {
+                    topFonts.push(allFonts[i])
+                    maxFonts++
+                }
+                if (maxFonts == num) {
+                    return
+                }
+            }
+        }
+        getFontsCats('sans-serif', 3);
+        getFontsCats('display', 6)
+        getFontsCats('handwriting', 6)
+        fillFonts()
+    })
+    $('.select-font').change(function(e){
+        var font = $(this).val();
         $('.textInput').css('fontFamily', font);
 
         familyFont = font;
@@ -394,8 +417,19 @@ $(function () {
         if (typing) {
             $('.textInput').focus();
         }
-    });
+    })
 })
+
+function fillFonts() {
+    for (i = 0; i < topFonts.length; i++) {
+        console.log('fill');
+        var font = topFonts[i].family;
+        var url = font.replace(/ /g, "+");
+        $('head').append(
+            `<link href="https://fonts.googleapis.com/css?family=${url}" rel="stylesheet">`);
+        $('.select-font').append(`<option style='font-family:"${font}"'>${font}</option>`);
+    }
+}
 
 //text angle
 textAngle = 0;

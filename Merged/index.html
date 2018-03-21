@@ -13,7 +13,6 @@
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.css">
-    <link rel="stylesheet" href="assets/css/fontselect.css">
 
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
@@ -74,8 +73,8 @@
                     <span class="btn btn-secondary color-stroke-picker" title="Stroke Color">
                         <input id='color-stroke-picker' />
                     </span>
-                    <input type="text" class="stroke-size" value="10">
-                    <div class="btn-group-vertical">
+                    <input type="text" class="stroke-size change-stroke-size" value="10">
+                    <div class="btn-group-vertical change-stroke-size">
                         <button type="button" id="stroke-size-more">
                             <i class="fas fa-angle-up"></i>
                         </button>
@@ -179,16 +178,7 @@
                     </div>
                     <!-- text panel -->
                     <div class="text-panel">
-                        <!-- <input type="text" class="font-size" value="24"> -->
-                        <!-- <div class="btn-group-vertical">
-                            <button type="button" class='font-size-picker' id="font-more">
-                                <i class="fas fa-angle-up"></i>
-                            </button>
-                            <button type="button" class='font-size-picker' id="font-less">
-                                <i class="fas fa-angle-down"></i>
-                            </button>
-                        </div> -->
-                        <input class='btn btn-secondary' id="font" type="text">
+                        <select class="form-control form-control-sm select-font" id="font"></select>
 
                         <input type="text" class="text-rotate" value="0°">
                         <div class="btn-group-vertical">
@@ -222,16 +212,16 @@
                                 </button>
                                 <button class='btn clear'>
                                     <i class="fas fa-trash-alt"></i>
-                            <a class="save" download="canvas-drawing.jpg">
-                                <button class='btn'>
-                                    <i class="fas fa-save"></i>
-                                </button>
-                            </a>
+                                    <a class="save" download="canvas-drawing.jpg">
+                                        <button class='btn'>
+                                            <i class="fas fa-save"></i>
+                                        </button>
+                                    </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     </nav>
     <!-- Toolbar-->
     <div id="tools" class="btn-group-vertical">
@@ -319,7 +309,6 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c"
         crossorigin="anonymous"></script>
     <script type='text/javascript' src="https://hammerjs.github.io/dist/hammer.min.js"></script>
-    <script src="assets/js/fontselect/jquery.fontselect.min.js"></script>
 
     <!-- Functions -->
     <script type='text/javascript' src="assets/js/canvas-common.js"></script>

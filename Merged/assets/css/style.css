@@ -362,9 +362,8 @@ body {
 .textInput:focus {
     border: none;
 }
-.font-select {
-    background-color: #5a6268;
-    border-color: #545b62;
+.select-font {
+    width: 200px;
     display: inline-block;
     font-weight: 400;
     text-align: center;
@@ -460,7 +459,7 @@ button.btn {
 .btn-group-vertical .text-rotate-picker {
     padding: 0;
     height: 20px;
-    background: rgb(255, 218, 115);
+    background: transparent;
     border: none;
     outline: none;
     box-shadow: none;

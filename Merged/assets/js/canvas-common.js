@@ -101,7 +101,8 @@ class PaintFunction {
 
 $('body').on('mousedown', function (e) {
     if (typing) {
-        if ($(e.target).parents('.text-panel').length > 0 || $(e.target).hasClass('textInput')) {
+        if ($(e.target).parents('.text-panel').length > 0 || $(e.target).hasClass('textInput') || $(e.target).parents('.change-stroke-size').length > 0 || $(e.target).hasClass('change-stroke-size'))  {
+            console.log('no problem')
             return
         }
         else {
@@ -110,5 +111,4 @@ $('body').on('mousedown', function (e) {
             typing = false;
         }
     }
-    console.log($(e.target).hasClass('textInput'))
 })
