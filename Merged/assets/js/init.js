@@ -309,7 +309,9 @@ function saveMove() {
     var lastMove = saveCanvasReal[0].toDataURL('image/png', 1);
     drawHistory.push(lastMove);
 }
-
+$('.replay').click(function(){
+    replaySteps();
+})
 function replaySteps() {
     var replayIndex = 0;
     var replayFunction = setInterval(function () {
