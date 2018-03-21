@@ -77,7 +77,7 @@ nav {
     width: 100%;
     background-color: #FFC739;
     margin-bottom: 10px;
-    box-shadow: 0 5px 10px #444444;
+    box-shadow: 0 3px 8px #444444;
 }
 .align-left {
     margin: 0 auto;
@@ -114,16 +114,31 @@ nav {
 }
 
 #tools button {
-    width: 55px;
-    height: 50px;
+    width: 42px;
+    height: 40px;
     opacity: 0.8;
+    background-color: #c9c9c9;
+    border-radius: 0;
+    border: none;
+    padding: 6px;
+    transition: width 0.25s;
 }
-
-
-#tools button.active, 
-.btn-secondary:not(:disabled):not(.disabled).active.grid{
-    background-color: lightgray;
+#tools button.active {
+    background-color: #f0f0f0;
+    box-shadow: 1px 1px 2px #000000;
     opacity: 1;
+    width: 58px;
+    z-index: 2; 
+}
+#tools button.hover {
+    border: none;
+    width: 50px;
+} 
+.btn-group-vertical>.btn+.btn,
+ .btn-group-vertical>.btn+.btn-group,
+  .btn-group-vertical>.btn-group+.btn,
+   .btn-group-vertical>.btn-group+.btn-group {
+    margin-top: 0;
 }
 
 .upload {
@@ -293,18 +308,13 @@ body {
 }
 
 .side-function {
-    background: rgb(255, 218, 115);
-    border-radius: 20px;
-    width: 28%;
-    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: inset 0 0 5px #353535;
 }
 .button-style button {
     box-shadow: 1px 1px 1px #000000;
-    background-color: #eeecec;
+    background-color: #f0f0f0;
 }
 .button-style button:active {
     box-shadow: inset 1px 1px 1px #000000;
@@ -379,3 +389,6 @@ button.btn {
     box-shadow: none;
 }
 
+.fa-minus {
+    transform: rotate(45deg);
+}
