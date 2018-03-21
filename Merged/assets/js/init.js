@@ -14,6 +14,9 @@ $(document).ready(function () {
         contextReal.fillStyle = 'white';
         contextReal.fillRect(0, 0, canvasReal.width, canvasReal.height);
     })
+    if(isMobile) {
+        $('#canvas:hover .cursor, #canvas:hover .cursor-outer').hide();
+    }
 })
 
 // Declare default tools options
@@ -332,3 +335,24 @@ $('.apply-filter').click(function () {
 //custom font size
 var sizeFont = 30;
 var familyFont = 'Arial';
+
+//text angle
+textAngle = 0;
+$('.text-rotate').change(function () {
+    if (isNaN($('.text-rotate').val()))
+        $('.text-rotate').val(textAngle);
+    else
+        textAngle = $('.text-rotate').val();
+    console.log('textAngle:' + textAngle);
+});
+$('#text-rotate-more').click(function () {
+    $('.text-rotate').val(parseInt($('.text-rotate').val()) + 1).change();
+});
+$('#text-rotate-less').click(function () {
+    $('.text-rotate').val(parseInt($('.text-rotate').val()) - 1).change();
+});
+
+$('.text-rotate').change(function () {
+    $('.textInput').css('transform', `rotate(${textAngle}deg)`)
+    
+})
