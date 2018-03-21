@@ -11,6 +11,9 @@ class DrawingBrush2 extends PaintFunction {
         this.imgd;
         this.newImg;
         this.brushPath = [];
+        this.red;
+        this.blue;
+        this.green;
     }
 
     distanceBetween(point1, point2) {
@@ -29,15 +32,23 @@ class DrawingBrush2 extends PaintFunction {
         image.src = canvas.toDataURL();
         return image;
     }
+    getRGB(str){
+        var match = str.match(/rgba?\((\d{1,3}), ?(\d{1,3}), ?(\d{1,3})\)?(?:, ?(\d(?:\.\d?))\))?/);
+        this.red = Number(match[1]);
+        this.green = Number(match[2]);
+        this.blue = Number(match[3]);
+    }
+
     changeColor() {
+        this.getRGB(currentColor.toString());
         var canvas = document.createElement("canvas");
         var ctx = canvas.getContext("2d");
         ctx.drawImage(this.img, 0, 0);
         this.imgd = ctx.getImageData(0, 0, this.img.width, this.img.height);
         for (var i = 0; i < this.imgd.data.length; i += 4) {
-            this.imgd.data[i] = 255;
-            this.imgd.data[i + 1] = 50;
-            this.imgd.data[i + 2] = 255;
+            this.imgd.data[i] = this.red;
+            this.imgd.data[i + 1] = this.green;
+            this.imgd.data[i + 2] = this.blue;
         }
         this.newImg = this.imagedata_to_image(this.imgd);
     }
