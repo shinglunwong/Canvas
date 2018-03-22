@@ -92,6 +92,7 @@ form .dimension{
     background-repeat: no-repeat;
     overflow: hidden;
     background-image: url(../images/splash.jpg);
+    background-color: #ffcb52;
     display: block;
     flex-direction: column;
     justify-content: center;

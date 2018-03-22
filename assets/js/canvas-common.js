@@ -87,6 +87,9 @@ class PaintFunction {
     constructor() {
         this.clearDraft();
         $('.main-function').show();
+        $('#canvas').off('submit', '.textInputForm')
+        $('.textInputForm').remove();
+        typing = false;
     }
     onMouseDown() { }
     onDragging() { }
@@ -101,16 +104,3 @@ class PaintFunction {
         contextDraft.closePath();
     }
 }
-
-$('body').on('mousedown', function (e) {
-    if (typing) {
-        if ($(e.target).parents('.text-panel').length > 0 || $(e.target).hasClass('textInput') || $(e.target).parents('.main-function ').length > 0 )  {
-            return
-        }
-        else {
-            $('#canvas').off('submit', '.textInputForm')
-            $('.textInputForm').remove();
-            typing = false;
-        }
-    }
-})
