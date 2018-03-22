@@ -8,12 +8,14 @@ class DrawingBrush2 extends PaintFunction {
         this.lastPoint;
         this.contextDraft.lineJoin = this.contextDraft.lineCap = 'round';
         this.contextReal.lineJoin = this.contextReal.lineCap = 'round';
+        this.contextReal.shadowBlur = currentStrokeSize;
         this.imgd;
         this.newImg;
         this.brushPath = [];
         this.red;
         this.blue;
         this.green;
+        $('.shape-panel').fadeIn(220);
     }
 
     distanceBetween(point1, point2) {
@@ -54,6 +56,7 @@ class DrawingBrush2 extends PaintFunction {
     }
 
     onMouseDown(coord, event) {
+        this.contextReal.shadowColor = currentStrokeColor;
         this.changeColor();
         this.lastPoint = { x: coord[0], y: coord[1] };
         this.brushPath = [coord[0], coord[1]];
@@ -67,7 +70,7 @@ class DrawingBrush2 extends PaintFunction {
         for (var i = 0; i < dist; i++) {
             var x = this.lastPoint.x + (Math.sin(angle) * i) ;
             var y = this.lastPoint.y + (Math.cos(angle) * i) ;
-            this.contextReal.drawImage(this.newImg, x, y, currentStrokeSize*1.5, currentStrokeSize*1.5);
+            this.contextReal.drawImage(this.newImg, x, y, currentStrokeSize*1.5/2, currentStrokeSize*1.5/2);
         }
 
         this.lastPoint = currentPoint;

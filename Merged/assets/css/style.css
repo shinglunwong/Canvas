@@ -482,8 +482,8 @@ button.btn.brush-style-2 {
     width: 134px;
 }
 .position {
-    position: absolute;
-    top: 520px;
     color: #666666;
     font-size: 12px;
+    margin-left: 4px;
+    margin-top: 2px;
 }

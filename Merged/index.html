@@ -60,7 +60,7 @@
     <!-- Stylebar -->
     <nav class="navbar navbar-expand-md navbar-light">
         <div class="navbar-brand">
-            <img src="assets/images/Dab.png">
+            <a href="/" class="new-project"><img src="assets/images/Dab.png"></a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="#navbarNav" aria-label="Toggle navigation" aria-expanded="false">
             <span class="navbar-toggler-icon"></span>
@@ -72,7 +72,7 @@
                         <input id='color-picker' />
                     </span>
                     <input type="text" class="stroke-size" value="10">
-                    <input id="size-slider" type="text" data-slider-min="1" data-slider-max="30" data-slider-step="1" data-slider-value="10"/>
+                    <input id="size-slider" type="text" data-slider-min="1" data-slider-max="60" data-slider-step="1" data-slider-value="10"/>
                 </div>
                 <div class="side-function align-center">
                     <!-- brush panel -->
@@ -198,9 +198,6 @@
                     <button class='btn redo' title="Grid [right]" data-shortcut="right">
                         <i class="fas fa-share"></i>
                     </button>
-                    <button class="btn new-project" title="New project [n]" data-shortcut="n">
-                        <i class="fas fa-file-alt"></i>
-                    </button>
                     <div class="dropdown">
                         <button class='btn dropbtn'>
                             <i class="fas fa-cog"></i>
@@ -273,13 +270,13 @@
                 />
             </svg>
         </button>
-    </div>
-    <div class="position">
-        <span>x: </span>
-        <span class="mouse-x"></span>
-    </br>
-        <span>y: </span>
-        <span class="mouse-y"></span>
+        <div class="position">
+            <span>x: </span>
+            <span class="mouse-x"></span>
+            </br>
+            <span>y: </span>
+            <span class="mouse-y"></span>
+        </div>
     </div>
 
     <!-- Canvas -->
