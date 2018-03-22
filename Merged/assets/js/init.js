@@ -132,24 +132,28 @@ $('#tools button').click(function (e) {
 });
 
 // brush style
-$('.brush-style-2').click(function (e) {
+$('button.brush-style-2').click(function (e) {
+    e.preventDefault();
     currentFunction = new DrawingBrush2(contextReal, contextDraft);
     $('.brush-panel button').removeClass('active'); 
-    $(e.target).addClass('active');
+    $(this).addClass('active');
 })
-$('.brush-style-1').click(function (e) {
+$('button.brush-style-1').click(function (e) {
+    e.preventDefault();
     currentFunction = new DrawingBrush1(contextReal, contextDraft);
     $('.brush-panel button').removeClass('active'); 
-    $(e.target).addClass('active');
+    $(this).addClass('active');
 })
-$('.brush-style').click(function (e) {
+$('button.brush-style').click(function (e) {
+    e.preventDefault();
     currentFunction = new DrawingBrush(contextReal, contextDraft);
     $('.brush-panel button').removeClass('active'); 
-    $(e.target).addClass('active');
+    $(this).addClass('active');
 })
 
 // select default tool
 $('#Brush').click();
+$('button.brush-style').click();
 
 // grid
 $('.grid').click(function () {
