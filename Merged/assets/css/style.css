@@ -41,7 +41,8 @@ form .dimension{
 }
 .canvas-size{
     height: 100%;
-    width: 100%;
+    width: 60%;
+    margin: 10px auto 0 auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -56,7 +57,7 @@ form .dimension{
     display: inline-block;
 }
 .submit-button{
-    margin: 5px 10px 0 10px;
+    margin: 10px 10px 0 10px;
     flex-grow: 1;
 }
 .import-button{
@@ -65,7 +66,7 @@ form .dimension{
     font-weight: 400;
     border-radius: .25rem;
     width: 100%;
-    margin: 5px 10px 0 10px;
+    margin: 10px 10px 0 10px;
     background-color: #946a00;
     color: rgb(252, 228, 167);
     border: none;
