@@ -6,10 +6,10 @@ Online paint based on HTML canvas
 
 HTML, CSS, Bootstrap, JQuery, Google fonts, Spectrum colorpicker, Hammer.JS mobile gestures & Font Awesome.
 
-## Compatibility
+## Features
 
 - 3 brushes
-- lines (hold shift or press on mobile for 90 degree angles)
+- lines (hold shift or press on mobile for 90 degrees angle)
 - rectangles (hold shift or press on mobile for square)
 - elipse (hold shift or press on mobile for circle)
 - polygon
@@ -27,9 +27,9 @@ HTML, CSS, Bootstrap, JQuery, Google fonts, Spectrum colorpicker, Hammer.JS mobi
 - shortcuts
 - import images
 
-## Features
+## Compatibility
 
-Desktop, tablet, mobile
+Desktop, tablet and mobile
 
 ## Installation
 
