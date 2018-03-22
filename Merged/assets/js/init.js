@@ -22,7 +22,7 @@ $(document).ready(function () {
 })
 
 // color-picker
-currentColor = "rgb(0, 0, 0)";
+currentColor = "rgb(60, 116, 239)";
 $("#color-picker").spectrum({
     preferredFormat: "rgb",
     color: currentColor,

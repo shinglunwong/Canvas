@@ -475,3 +475,9 @@ button.btn.brush-style-2 {
     width: 42px;
     height: 38px;
 }
+.navbar-brand {
+    width: 100px;
+}
+.navbar-brand img{
+    width: 100%;
+}
