@@ -102,9 +102,14 @@ nav {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #FFC739;
+    background-color: #ffcb52;
     margin-bottom: 10px;
     box-shadow: 0 3px 8px #444444;
+    z-index: 199;
+}
+button.navbar-toggler {
+    width: 100%;
+    height: 100%;
 }
 .align-left {
     margin: 0 auto;
@@ -132,6 +137,12 @@ nav {
 .button-style .btn-group-vertical .btn {
     border-radius: 0;
 }
+.collapse.show {
+    height: 80px;
+}
+.collapsing {
+    height: 80px;
+}
 #tools {
     position: absolute;
     display: flex;
@@ -144,14 +155,14 @@ nav {
     width: 42px;
     height: 40px;
     opacity: 0.8;
-    background-color: #c9c9c9;
+    background-color: #c1b07d;
     border-radius: 0;
     border: none;
     padding: 6px;
     transition: width 0.25s;
 }
 #tools button.active {
-    background-color: #f0f0f0;
+    background-color: #ffcf60;
     box-shadow: 1px 1px 2px #000000;
     opacity: 1;
     width: 58px;
@@ -170,12 +181,6 @@ nav {
 
 .upload {
     display: none;
-}
-
-.btn-secondary:not(:disabled):not(.disabled).active:focus,
-.btn-secondary:not(:disabled):not(.disabled):active:focus, 
-.show>.btn-secondary.dropdown-toggle:focus {
-    box-shadow: 0 0 0 1px rgba(108,117,125,.5)
 }
 
 
@@ -267,7 +272,7 @@ nav {
 .button-style button[id^=stroke-size] {
     padding: 0;
     height: 20px;
-    background: #FFC739;
+    background: #ffcb52;
     border: none;
     outline: none;
     box-shadow: none;
@@ -309,7 +314,7 @@ nav {
 
 
 body {
-    background-color: wheat;
+    background-color: #f0f0f0;
 }
 
 .textInputForm {
@@ -359,8 +364,10 @@ body {
     box-shadow: 1px 1px 1px #000000;
     background-color: #f0f0f0;
 }
-.button-style button:active {
+.button-style button:active,
+.button-style button.active {
     box-shadow: inset 1px 1px 1px #000000;
+    background: #bdbdbd;
 }
 .btn.focus, .btn:focus {
     box-shadow: 1px 1px 1px #000000;

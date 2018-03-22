@@ -139,12 +139,18 @@ $('#tools button').click(function (e) {
 // brush style
 $('.brush-style-2').click(function (e) {
     currentFunction = new DrawingBrush2(contextReal, contextDraft);
+    $('.brush-panel button').removeClass('active'); 
+    $(e.target).addClass('active');
 })
 $('.brush-style-1').click(function (e) {
     currentFunction = new DrawingBrush1(contextReal, contextDraft);
+    $('.brush-panel button').removeClass('active'); 
+    $(e.target).addClass('active');
 })
 $('.brush-style').click(function (e) {
     currentFunction = new DrawingBrush(contextReal, contextDraft);
+    $('.brush-panel button').removeClass('active'); 
+    $(e.target).addClass('active');
 })
 
 // select default tool

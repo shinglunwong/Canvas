@@ -54,7 +54,7 @@ class DrawingBrush1 extends DrawingBrush {
         styleSet();
         this.context.lineWidth = currentStrokeSize / 2;
         this.context.strokeStyle = currentColor;
-        this.context.shadowBlur = 10;
+        this.context.shadowBlur = currentStrokeSize / 2;
         this.context.shadowColor = currentColor;
         this.context.beginPath();
     }
