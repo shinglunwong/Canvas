@@ -146,7 +146,7 @@ nav {
 }
     /* Left */
 .button-style .btn-group-vertical {
-    height: 50px;
+    height: 39px;
 }
 .button-style .btn-group-vertical .btn {
     border-radius: 0;
@@ -402,6 +402,8 @@ body {
 
 #selected-sticker {
     width: 58px;
+    padding-bottom: 3px;
+    padding-top: 3px;
 }
 
 .slider.slider-horizontal {
@@ -490,4 +492,13 @@ button.btn.brush-style-2 {
     font-size: 12px;
     margin-left: 4px;
     margin-top: 2px;
+}
+
+.submit-button:after{
+    content: " ";
+    display: block;
+    width: 150px;
+    height: 2px;
+    margin: 20px auto 20px;
+    background: gray;
 }
