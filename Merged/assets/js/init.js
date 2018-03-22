@@ -78,12 +78,12 @@ $("#size-slider").on("change", function(slideEvt) {
     $(".stroke-size").val(parseInt(this.value)).change();
 });
 
-$('#selected-stamp').click(function () {
+$('#selected-sticker').click(function () {
     $('.emoji-grid').toggle();
 });
 
 $('.emoji-grid img').click(function () {
-    $('#selected-stamp').html($(this).parent().html());
+    $('#selected-sticker').html($(this).parent().html());
     $('.emoji-grid').toggle();
 });
 
@@ -122,7 +122,7 @@ function resetPosition() {
 // tools buttons
 $('#tools button').click(function (e) {
     e.preventDefault();
-    $('.filter-desktop, .brush-panel, .stamp-panel, .text-panel').hide();
+    $('.filter-desktop, .brush-panel, .sticker-panel, .text-panel').hide();
     if (typeof $(this).attr('id') !== 'undefined') {
         console.log('currentFunction:' + $(this).attr('id'));
         currentFunction = eval('new Drawing' + $(this).attr('id') + '(contextReal,contextDraft);');

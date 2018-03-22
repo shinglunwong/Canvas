@@ -1,9 +1,9 @@
-class DrawingStamp extends PaintFunction{
+class DrawingSticker extends PaintFunction{
     constructor(contextReal, contextDraft){
         super();
         this.contextReal = contextReal;
         this.contextDraft = contextDraft;
-        $('.stamp-panel').fadeIn(220); 
+        $('.sticker-panel').fadeIn(220); 
     }
     
     onMouseDown(coord, event) {
@@ -21,7 +21,7 @@ class DrawingStamp extends PaintFunction{
     onMouseEnter(){}
     draw(context, coord){
         this.clearDraft();
-        var stamp = document.getElementById('selected-stamp').getElementsByTagName('img')[0];
-        context.drawImage(stamp, coord[0]-77, coord[1]-77);
+        var sticker = document.getElementById('selected-sticker').getElementsByTagName('img')[0];
+        context.drawImage(sticker, coord[0]-77, coord[1]-77);
     }
 }
