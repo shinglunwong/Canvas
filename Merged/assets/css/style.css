@@ -481,3 +481,9 @@ button.btn.brush-style-2 {
 .navbar-brand img{
     width: 100%;
 }
+.position {
+    position: absolute;
+    top: 520px;
+    color: #666666;
+    font-size: 12px;
+}
