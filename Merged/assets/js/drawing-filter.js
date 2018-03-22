@@ -1,6 +1,7 @@
 class DrawingFilter extends PaintFunction {
     constructor(contextReal, contextDraft) {
         super();
+        $('.main-function').hide();
         this.contextReal = contextReal;
         this.contextDraft = contextDraft;
         this.filters = ['filter1.png', 'filter2.png', 'filter3.png', 'filter4.png'];

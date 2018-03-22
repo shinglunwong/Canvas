@@ -1,6 +1,7 @@
 class DrawingSticker extends PaintFunction{
     constructor(contextReal, contextDraft){
         super();
+        $('.main-function').hide();
         this.contextReal = contextReal;
         this.contextDraft = contextDraft;
         $('.sticker-panel').fadeIn(220); 

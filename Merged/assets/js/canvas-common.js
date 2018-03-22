@@ -86,6 +86,7 @@ $('#canvas-draft').click(function (e) {
 class PaintFunction {
     constructor() {
         this.clearDraft();
+        $('.main-function').show();
     }
     onMouseDown() { }
     onDragging() { }
