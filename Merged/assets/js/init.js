@@ -36,7 +36,6 @@ $("#color-picker").spectrum({
     change: function (color) {
         currentColor = color;
         $('.textInput').css('color', color);
-        console.log('currentColor:' + currentColor);
     }
 });
 
@@ -54,7 +53,6 @@ $("#color-stroke-picker").spectrum({
     ],
     change: function (color) {
         currentStrokeColor = color;
-        console.log('currentStrokeColor:' + currentStrokeColor);
     }
 });
 
@@ -68,13 +66,11 @@ $('.stroke-size').change(function () {
         $('.stroke-size').val(currentStrokeSize);
     else
         currentStrokeSize = $('.stroke-size').val();
-    console.log('currentStrokeSize:' + currentStrokeSize);
     cursorSize();
     changeFontSize();
 });
 $("#size-slider").slider();
 $("#size-slider").on("change", function (slideEvt) {
-    //console.log('new size:'+this.value);
     $(".stroke-size").val(parseInt(this.value)).change();
 });
 
@@ -124,7 +120,6 @@ $('#tools button').click(function (e) {
     e.preventDefault();
     $('.filter-desktop, .brush-panel, .sticker-panel, .text-panel, .shape-panel').hide();
     if (typeof $(this).attr('id') !== 'undefined') {
-        console.log('currentFunction:' + $(this).attr('id'));
         currentFunction = eval('new Drawing' + $(this).attr('id') + '(contextReal,contextDraft);');
         $('#tools button').removeClass('active');
         $(this).toggleClass('active');
@@ -181,7 +176,6 @@ $('.clear').click(function () {
 // import image
 $('input.import-file').click(function (e) {
     e.preventDefault();
-    console.log('upload');
     $('input.upload').click();
 });
 $('input.upload').change(function () {
@@ -195,13 +189,6 @@ $('input.upload').change(function () {
 
 
     img.onload = function () {
-        // EXIF.getData(this, function() {
-        //     //console.log(EXIF.getAllTags(this));
-        //     orientation = EXIF.getTag(this, "Orientation");
-        //     console.log('orientation:'+orientation);
-        // });
-        console.log(this.width);
-        console.log(this.height);
         if (this.width > this.height) {
             if (canvasReal.width / (this.width / this.height) > canvasReal.height) {
                 imgHeight = canvasReal.height;
@@ -268,17 +255,8 @@ if (isMobile) {
     mc.add(new Hammer.Pan());
     mc.add(new Hammer.Press());
     mc.on("pan panstart panend tap press pressup", function (e) {
-    // mc.on("pan panstart panend panright panleft tap press pressup", function (e) {
-        // e.stopPropagation();
-        // e.preventDefault();
-        // e.gesture.stopPropagation();
-        // e.gesture.preventDefault();
-        console.log('new event:' + e.type);
-        //console.log(e);
         let mouseX = e.center.x - e.target.offsetParent.offsetLeft;
-        //console.log('mouseX:'+mouseX);
         let mouseY = e.center.y - e.target.offsetParent.offsetTop;
-        //console.log('mouseY:'+mouseY);
         if (e.type == 'press' || e.type == 'tap') {
             if (e.type == 'press') {
                 shifting = true;
@@ -291,10 +269,6 @@ if (isMobile) {
             dragging = true;
         } else if (e.type == 'pan') {
             currentFunction.onDragging([mouseX, mouseY], e);
-        // } else if (e.type == 'panright') {
-        //     currentFunction.onPanRight();
-        // } else if (e.type == 'panleft') {
-        //     currentFunction.onPanLeft();
         } else if (e.type == 'panend' || e.type == 'pressup') {
             dragging = false;
             currentFunction.onMouseUp([mouseX, mouseY], e);
@@ -307,7 +281,6 @@ if (isMobile) {
 var saveCanvasReal = $('#canvas-real');
 
 $('.save').click(function () {
-    console.log('save');
     $('.dropdown-content').removeClass('show');
     var dataURL = saveCanvasReal[0].toDataURL('image/jpeg', 1);
     this.href = dataURL;
@@ -349,7 +322,6 @@ function saveMove() {
     var lastMove = saveCanvasReal[0].toDataURL('image/png', 1);
     drawHistory.push(lastMove);
     redoList = [];
-    console.log(drawHistory)
 }
 $('.replay').click(function () {
     if (drawHistory.length > 0) {
@@ -399,7 +371,6 @@ var topFonts = [];
 function changeFontSize() {
     sizeFont = currentStrokeSize;
     $('.textInput').css('fontSize', `${sizeFont}px`);
-    console.log('fontsize: ' + $('.textInput').css('fontSize'))
 }
 
 $(function () {
@@ -443,7 +414,6 @@ $(function () {
 
 function fillFonts() {
     for (i = 0; i < topFonts.length; i++) {
-        console.log('fill');
         var font = topFonts[i].family;
         var url = font.replace(/ /g, "+");
         $('head').append(
@@ -459,7 +429,6 @@ $('.text-rotate').change(function () {
         $('.text-rotate').val(textAngle);
     else
         textAngle = $('.text-rotate').val();
-    console.log('textAngle:' + textAngle);
 
     $('.textInput').css('transform', `rotate(${textAngle}deg)`)
 });
