@@ -348,7 +348,7 @@ function replaySteps() {
             clearInterval(replayFunction);
             replaying = false;
         }
-    }, 400)
+    }, 250)
 
 }
 
