@@ -283,11 +283,13 @@ $('.save').click(function () {
     this.href = dataURL;
 })
 
+var replaying = false;
+
 // Undo/redo function
 var drawHistory = [];
 var redoList = [];
 $('.undo').click(function () {
-    if (drawHistory.length == 0) {
+    if (drawHistory.length == 0 || replaying) {
         return
     } else if (drawHistory.length == 1) {
         contextReal.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
@@ -301,7 +303,7 @@ $('.undo').click(function () {
     redoList.push(drawHistory.pop());
 })
 $('.redo').click(function () {
-    if (redoList.length == 0) {
+    if (redoList.length == 0 || replaying) {
         return
     } else {
         var nextStep = new Image();
@@ -315,13 +317,17 @@ $('.redo').click(function () {
 
 // save
 function saveMove() {
-    var lastMove = saveCanvasReal[0].toDataURL('image/png', 1);
-    drawHistory.push(lastMove);
-    redoList = [];
+    if (!replaying) {
+        var lastMove = saveCanvasReal[0].toDataURL('image/png', 1);
+        drawHistory.push(lastMove);
+        redoList = [];
+    }
 }
 $('.replay').click(function () {
-    if (drawHistory.length > 0) {
-        replaySteps();
+    if (!replaying) {
+        if (drawHistory.length > 0) {
+            replaySteps();
+        }
     }
 })
 
@@ -329,6 +335,7 @@ $('.replay').click(function () {
 function replaySteps() {
     var replayIndex = 0;
     contextReal.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
+    replaying = true;
     var replayFunction = setInterval(function () {
         var replay = new Image();
         replay.src = drawHistory[replayIndex];
@@ -338,6 +345,7 @@ function replaySteps() {
         replayIndex++;
         if (replayIndex == drawHistory.length) {
             clearInterval(replayFunction);
+            replaying = false;
         }
     }, 400)
 
