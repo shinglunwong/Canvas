@@ -146,7 +146,7 @@ nav {
 }
     /* Left */
 .button-style .btn-group-vertical {
-    height: 50px;
+    height: 39px;
 }
 .button-style .btn-group-vertical .btn {
     border-radius: 0;
@@ -402,6 +402,8 @@ body {
 
 #selected-sticker {
     width: 58px;
+    padding-bottom: 3px;
+    padding-top: 3px;
 }
 
 .slider.slider-horizontal {
