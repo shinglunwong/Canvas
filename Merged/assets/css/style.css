@@ -125,19 +125,20 @@ nav {
     box-shadow: 0 3px 8px #444444;
     z-index: 99;
 }
-.align-left {
-    margin: 0 auto;
+.button-style {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: space-around;
+    flex-grow: 1;
+    flex-wrap: wrap;
+
 }
-.align-right {
-    margin: 0 auto;
+.button-style > div {
+    margin: 5px 15px;
 }
 .align-center {
-    margin: 0 auto;
-}
-.button-style {
-    height: 50px;
-    display: flex;
-    align-items: center;
     flex-grow: 1;
 }
 .brush-style {
@@ -149,9 +150,6 @@ nav {
 }
 .button-style .btn-group-vertical .btn {
     border-radius: 0;
-}
-.collapse.show {
-    height: 75px;
 }
 #tools {
     position: absolute;
@@ -478,14 +476,14 @@ button.btn.brush-style-2 {
     height: 38px;
 }
 .navbar-brand {
-    width: 100px;
+    width: 150px;
 }
 .navbar-brand img{
     width: 134px;
 }
 .position {
-    position: absolute;
-    top: 520px;
     color: #666666;
     font-size: 12px;
+    margin-left: 4px;
+    margin-top: 2px;
 }
