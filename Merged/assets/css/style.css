@@ -136,7 +136,7 @@ nav {
 
 }
 .button-style > div {
-    margin: 5px 15px;
+    margin: 5px 5px;
 }
 .align-center {
     flex-grow: 1;
@@ -352,7 +352,7 @@ body {
     border: none;
 }
 .select-font {
-    width: 200px;
+    width: 130px;;
     display: inline-block;
     font-weight: 400;
     text-align: center;
@@ -475,11 +475,15 @@ button.btn.brush-style-2 {
     width: 42px;
     height: 38px;
 }
+.navbar {
+    padding: 10px;
+}
 .navbar-brand {
-    width: 150px;
+    width: 105px;
+    margin:0;
 }
 .navbar-brand img{
-    width: 134px;
+    width: 100px;
 }
 .position {
     color: #666666;
