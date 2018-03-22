@@ -36,7 +36,6 @@ class DrawingPolygon extends PaintFunction {
 
     onMouseMove(coord, event) {
         if (this.x.length > 0) {
-            console.log(this.contextDraft.lineWidth)
             this.drawingX = coord[0];
             this.drawingY = coord[1];
 

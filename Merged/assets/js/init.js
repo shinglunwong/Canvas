@@ -419,8 +419,8 @@ $(function () {
             }
         }
         getFontsCats('sans-serif', 3);
-        getFontsCats('display', 6)
-        getFontsCats('handwriting', 6)
+        getFontsCats('display', 12)
+        getFontsCats('handwriting', 12)
         fillFonts()
     })
     $('.select-font').change(function(e){
