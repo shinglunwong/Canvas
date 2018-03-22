@@ -395,12 +395,17 @@ body {
     display: none;
 }
 
-.stamp-panel img {
+.sticker-panel img {
     width: 32px;
 }
 
-#selected-stamp {
+#selected-sticker {
     width: 58px;
+}
+
+.slider.slider-horizontal {
+    margin-left: 10px;
+    width: 130px;
 }
 
 .emoji-grid {
