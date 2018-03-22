@@ -208,7 +208,7 @@ $('.clear').click(function () {
     $('.dropdown-content').removeClass('show');
     contextReal.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
 
-}).click();
+});
 
 // Custom cursor
 $('#canvas').hover(function () {
@@ -329,6 +329,7 @@ $('.replay').click(function () {
             replaySteps();
         }
     }
+    $('.dropdown-content').removeClass('show');
 })
 
 // replay
