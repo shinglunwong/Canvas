@@ -127,7 +127,7 @@ function resetPosition() {
 // tools buttons
 $('#tools button').click(function (e) {
     e.preventDefault();
-    $('.filter-desktop, .brush-panel, .stamp-panel, .text-panel').hide();
+    $('.filter-desktop, .brush-panel, .stamp-panel, .text-panel, .shape-panel').hide();
     if (typeof $(this).attr('id') !== 'undefined') {
         console.log('currentFunction:' + $(this).attr('id'));
         currentFunction = eval('new Drawing' + $(this).attr('id') + '(contextReal,contextDraft);');

@@ -38,6 +38,7 @@ class DrawingEraser extends DrawingBrush {
     constructor(contextReal) {
         super();
         this.context = contextReal;
+        $('.brush-panel').hide();
     }
     onMouseDown(coord, event) {
         this.context.strokeStyle = 'white';

@@ -8,6 +8,7 @@ class DrawingPolygon extends PaintFunction {
         this.y = [];
         this.drawingX = '';
         this.drawingY = '';
+        $('.shape-panel').fadeIn(220);
     }
     onClick(coord, event) {
         styleSet();
