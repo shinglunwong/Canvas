@@ -1,10 +1,11 @@
-// Set Canvas dimension
 $(document).ready(function () {
+    // Set Canvas dimension
     var winWidth = $(window).width() - 100;
     var winHeight = $(window).height() - 120;
     $("#width").attr("value", winWidth);
     $("#height").attr("value", winHeight);
     $('#canvas canvas').attr("width", winWidth).attr("height", winHeight);
+    // create new canvas
     $('.canvas-size').submit(function (e) {
         e.preventDefault();
         $('.splash').fadeOut('slow');
@@ -15,9 +16,43 @@ $(document).ready(function () {
         contextReal.fillStyle = 'white';
         contextReal.fillRect(0, 0, canvasReal.width, canvasReal.height);
     })
-    if (isMobile) {
-        $('#canvas:hover + .cursors').hide();
-    }
+    // import image
+    $('input.import-file').click(function (e) {
+        e.preventDefault();
+        $('input.upload').click();
+    });
+    $('input.upload').change(function () {
+        var file = document.querySelector('input[type=file]').files[0];
+        var url = URL.createObjectURL(file);
+        var img = new Image();
+        var imgWidth = null;
+        var imgHeight = null;
+        img.crossOrigin = 'Anonymous';
+        img.onload = function () {
+            if (this.width > this.height) {
+                if (canvasReal.width / (this.width / this.height) > canvasReal.height) {
+                    imgHeight = canvasReal.height;
+                    imgWidth = imgHeight * (this.width / this.height);
+                } else {
+                    imgWidth = canvasReal.width
+                    imgHeight = canvasReal.width * (this.height / this.width);
+                }
+            } else {
+                if (canvasReal.height * (this.width / this.height > canvasReal.width)) {
+                    imgWidth = canvasReal.width;
+                    imgHeight = imgWidth * (this.height / this.width);
+                } else {
+                    imgHeight = canvasReal.height;
+                    imgWidth = canvasReal.height * (this.width / this.height);
+                }
+            }
+            $('#canvas canvas').attr("width", imgWidth).attr("height", imgHeight);
+            $('#canvas, #canvas-grid.grid').css("width", imgWidth).css("height", imgHeight);
+            contextReal.drawImage(img, 0, 0, imgWidth, imgHeight);
+        }
+        img.src = url;
+        $('.splash').fadeOut('slow');
+    });
 
 })
 
@@ -74,15 +109,16 @@ $("#size-slider").on("change", function (slideEvt) {
     $(".stroke-size").val(parseInt(this.value)).change();
 });
 
+// sticker
 $('#selected-sticker').click(function () {
     $('.emoji-grid').toggle();
 });
-
 $('.emoji-grid img').click(function () {
     $('#selected-sticker').html($(this).parent().html());
     $('.emoji-grid').toggle();
 });
 
+// cursor
 $('.cursor').css('width', currentStrokeSize * 0.5); //defaults
 $('.cursor').css('height', currentStrokeSize * 0.5);
 $('.cursor-outer').css('width', currentStrokeSize * 0.5 + 10);
@@ -95,6 +131,7 @@ function cursorSize() {
     $('.cursor-outer').css('height', currentStrokeSize * 0.5 + 10);
 }
 
+// style
 function styleSet() {
     contextDraft.strokeStyle = currentStrokeColor;
     contextReal.strokeStyle = currentStrokeColor;
@@ -128,6 +165,7 @@ $('#tools button').click(function (e) {
 $('.dropbtn').click(function (e) {
     $('.dropdown-content').toggleClass('show');
 });
+
 // brush style
 $('button.brush-style-2').click(function (e) {
     e.preventDefault();
@@ -158,7 +196,7 @@ $('.grid').click(function () {
     $('#canvas-grid').toggleClass('grid');
 }).click();
 
-// grid
+// new project
 $('.new-project').click(function (e) {
     e.preventDefault();
     if (confirm("Are you sure you want to create a new project? Don't forget to save it ;)") === true) {
@@ -172,48 +210,6 @@ $('.clear').click(function () {
     contextReal.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
 
 }).click();
-
-// import image
-$('input.import-file').click(function (e) {
-    e.preventDefault();
-    $('input.upload').click();
-});
-$('input.upload').change(function () {
-
-    var file = document.querySelector('input[type=file]').files[0];
-    var url = URL.createObjectURL(file);
-    var img = new Image();
-    var imgWidth = null;
-    var imgHeight = null;
-    img.crossOrigin = 'Anonymous';
-
-
-    img.onload = function () {
-        if (this.width > this.height) {
-            if (canvasReal.width / (this.width / this.height) > canvasReal.height) {
-                imgHeight = canvasReal.height;
-                imgWidth = imgHeight * (this.width / this.height);
-            } else {
-                imgWidth = canvasReal.width
-                imgHeight = canvasReal.width * (this.height / this.width);
-            }
-        } else {
-            if (canvasReal.height * (this.width / this.height > canvasReal.width)) {
-                imgWidth = canvasReal.width;
-                imgHeight = imgWidth * (this.height / this.width);
-            } else {
-                imgHeight = canvasReal.height;
-                imgWidth = canvasReal.height * (this.width / this.height);
-            }
-        }
-        $('#canvas canvas').attr("width", imgWidth).attr("height", imgHeight);
-        $('#canvas, #canvas-grid.grid').css("width", imgWidth).css("height", imgHeight);
-        contextReal.drawImage(img, 0, 0, imgWidth, imgHeight);
-    }
-    img.src = url;
-    $('.splash').fadeOut('slow');
-
-});
 
 // Custom cursor
 $('#canvas').hover(function () {
@@ -246,9 +242,9 @@ $('[data-shortcut]').each(function () {
 
 // mobile events
 if (isMobile) {
+    $('.cursors').remove();
     var myElement = document.getElementById('canvas-draft');
     var mc = new Hammer.Manager(myElement);
-    // var mc = new Hammer(document.getElementById('canvas-draft'));
     mc.add(new Hammer.Tap({
         event: 'singletap'
     }));
@@ -257,7 +253,6 @@ if (isMobile) {
     mc.on("pan panstart panend tap press pressup", function (e) {
         let mouseX = e.center.x - e.target.offsetParent.offsetLeft;
         let mouseY = e.center.y - e.target.offsetParent.offsetTop;
-        //console.log('mouseY:'+mouseY);
         $('.mouse-x').html(mouseX);
         $('.mouse-y').html(mouseY);
         if (e.type == 'press' || e.type == 'tap') {
@@ -289,8 +284,7 @@ $('.save').click(function () {
     this.href = dataURL;
 })
 
-// Undo function
-
+// Undo/redo function
 var drawHistory = [];
 var redoList = [];
 $('.undo').click(function () {
@@ -307,7 +301,6 @@ $('.undo').click(function () {
     }
     redoList.push(drawHistory.pop());
 })
-
 $('.redo').click(function () {
     if (redoList.length == 0) {
         return
@@ -321,6 +314,7 @@ $('.redo').click(function () {
     }
 })
 
+// save
 function saveMove() {
     var lastMove = saveCanvasReal[0].toDataURL('image/png', 1);
     drawHistory.push(lastMove);
@@ -332,6 +326,7 @@ $('.replay').click(function () {
     }
 })
 
+// replay
 function replaySteps() {
     var replayIndex = 0;
     contextReal.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
@@ -413,7 +408,7 @@ $(function () {
             $('.textInput').focus();
         }
     })
-})
+});
 
 function fillFonts() {
     for (i = 0; i < topFonts.length; i++) {
@@ -449,7 +444,7 @@ $('#text-rotate-less').click(function () {
 });
 
 // position
-$('#canvas').mousemove(function(e){
-    $('.mouse-x').html(e.clientX-80);
-    $('.mouse-y').html(e.clientY-90);
+$('#canvas').mousemove(function (e) {
+    $('.mouse-x').html(e.clientX - 80);
+    $('.mouse-y').html(e.clientY - 90);
 })

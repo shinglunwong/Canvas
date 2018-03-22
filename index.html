@@ -19,11 +19,10 @@
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
-
 </head>
 
 <body>
-    <!-- input form -->
+    <!-- splash screen -->
     <div class="splash">
         <div id="overlay">
             <div id="form-text">
@@ -41,13 +40,14 @@
                         <input type="submit" value="Create Canvas" class="form-button" id="create">
                     </div>
                     <div class="import-button">
+                        <input type="file" class="upload" />
                         <input type="button" class="import-file form-button" value="Import Image">
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    <!-- Stylebar -->
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-md navbar-light">
         <div class="navbar-brand">
             <a href="/" class="new-project">
@@ -182,6 +182,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- settings -->
                 <div class="setting-function align-right">
                     <button class="btn grid" title="Grid [g]" data-shortcut="g">
                         <i class="fas fa-th"></i>
@@ -283,10 +284,9 @@
         <div class="cursor"></div>
         <div class="cursor-outer"></div>
     </div>
-    <input type="file" class="upload" />
 
     <script>
-        var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent); // only open console on mobile
+        var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     </script>
 
     <!-- JS dependencies -->
