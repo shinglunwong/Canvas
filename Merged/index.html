@@ -13,7 +13,7 @@
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.css">
-
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
     <!-- favicon error fix -->
@@ -68,14 +68,7 @@
                         <input id='color-picker' />
                     </span>
                     <input type="text" class="stroke-size change-stroke-size" value="10">
-                    <div class="btn-group-vertical change-stroke-size">
-                        <button type="button" id="stroke-size-more">
-                            <i class="fas fa-angle-up"></i>
-                        </button>
-                        <button type="button" id="stroke-size-less">
-                            <i class="fas fa-angle-down"></i>
-                        </button>
-                    </div>
+                    <input id="size-slider" type="text" data-slider-min="1" data-slider-max="30" data-slider-step="1" data-slider-value="10"/>
                 </div>
                 <div class="side-function align-center">
                     <!-- brush panel -->
@@ -309,6 +302,7 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c"
         crossorigin="anonymous"></script>
     <script type='text/javascript' src="https://hammerjs.github.io/dist/hammer.min.js"></script>
+    <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/bootstrap-slider.min.js"></script>
 
     <!-- Functions -->
     <script type='text/javascript' src="assets/js/canvas-common.js"></script>

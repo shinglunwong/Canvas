@@ -70,17 +70,12 @@ $('.stroke-size').change(function () {
         currentStrokeSize = $('.stroke-size').val();
     console.log('currentStrokeSize:' + currentStrokeSize);
     cursorSize();
-    changeFontSize()
+    changeFontSize();
 });
-$('#stroke-size-more').click(function () {
-    $('.stroke-size').val(parseInt($('.stroke-size').val()) + 1).change();
-    cursorSize();
-    changeFontSize()
-});
-$('#stroke-size-less').click(function () {
-    $('.stroke-size').val(parseInt($('.stroke-size').val()) - 1).change();
-    cursorSize();
-    changeFontSize()
+$("#size-slider").slider();
+$("#size-slider").on("change", function(slideEvt) {
+    //console.log('new size:'+this.value);
+    $(".stroke-size").val(parseInt(this.value)).change();
 });
 
 $('#selected-stamp').click(function () {
