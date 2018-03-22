@@ -14,6 +14,7 @@ class DrawingText extends PaintFunction {
             styleSet();
             this.contextDraft.strokeStyle = 'black';
             this.contextReal.strokeStyle = 'transparent';
+            this.contextDraft.lineWidth = 5;
             this.contextDraft.fillStyle = 'transparent';
             this.contextReal.fillStyle = 'transparent';
             this.contextReal.font = `${sizeFont}px ${familyFont}`
@@ -33,7 +34,7 @@ class DrawingText extends PaintFunction {
 
     onMouseUp(coord) {
         if (!typing) {
-            this.draw(coord, event, this.contextReal);
+            this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
             typing = true;
             this.textInput(coord);
             resetPosition();
@@ -92,7 +93,7 @@ class DrawingText extends PaintFunction {
             </form>`);
         $('.textInput').focus();
         
-        $('.textInput').css({fontSize: sizeFont, fontFamily: familyFont, color: currentColor})
+        $('.textInput').css({fontSize: `${sizeFont}px`, fontFamily: familyFont, color: currentColor, transform: `rotate(${textAngle}deg)`})
 
         $('#canvas').on('mouseenter','.textInput', function() {
             $('.cursors').hide()
