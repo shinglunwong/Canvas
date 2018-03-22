@@ -122,11 +122,7 @@ function resetPosition() {
 // tools buttons
 $('#tools button').click(function (e) {
     e.preventDefault();
-<<<<<<< HEAD
-    $('.filter-desktop, .brush-panel, .sticker-panel, .text-panel').hide();
-=======
     $('.filter-desktop, .brush-panel, .stamp-panel, .text-panel, .shape-panel').hide();
->>>>>>> 92b8bc724bd3de87bb34f0dd50e9bdabe7a72094
     if (typeof $(this).attr('id') !== 'undefined') {
         console.log('currentFunction:' + $(this).attr('id'));
         currentFunction = eval('new Drawing' + $(this).attr('id') + '(contextReal,contextDraft);');
