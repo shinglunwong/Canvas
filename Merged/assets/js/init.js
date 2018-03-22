@@ -444,3 +444,9 @@ $('#text-rotate-less').click(function () {
         $('.text-rotate').val(parseInt($('.text-rotate').val()) + 360)
     }
 });
+
+// position
+$('#canvas').mousemove(function(e){
+    $('.mouse-x').html(e.clientX-80);
+    $('.mouse-y').html(e.clientY-90);
+})
