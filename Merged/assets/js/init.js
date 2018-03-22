@@ -130,7 +130,9 @@ $('#tools button').click(function (e) {
         $(this).toggleClass('active');
     }
 });
-
+$('.dropbtn').click(function(e){
+    $('.dropdown-content').toggleClass('show');
+});
 // brush style
 $('.brush-style-2').click(function (e) {
     currentFunction = new DrawingBrush2(contextReal, contextDraft);
