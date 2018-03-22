@@ -33,67 +33,84 @@ $(window).on('mouseup', function (e) {
         currentFunction.clearDraft();
     }
 })
-$('#canvas-draft').mousedown(function(e){
+$('#canvas-draft').mousedown(function (e) {
     let mouseX = e.offsetX - this.offsetLeft;
     let mouseY = e.offsetY - this.offsetTop;
-    currentFunction.onMouseDown([mouseX,mouseY],e);
+    currentFunction.onMouseDown([mouseX, mouseY], e);
     dragging = true;
+
 });
 
-$('#canvas-draft').mousemove(function(e){
+$('#canvas-draft').mousemove(function (e) {
     let mouseX = e.offsetX - this.offsetLeft;
     let mouseY = e.offsetY - this.offsetTop;
-    if(dragging){
-        currentFunction.onDragging([mouseX,mouseY],e);
+    if (dragging) {
+        currentFunction.onDragging([mouseX, mouseY], e);
     } else {
-        currentFunction.onMouseMove([mouseX,mouseY],e);
+        currentFunction.onMouseMove([mouseX, mouseY], e);
     }
 });
 
-$('#canvas-draft').mouseup(function(e){
+$('#canvas-draft').mouseup(function (e) {
     dragging = false;
     let mouseX = e.offsetX - this.offsetLeft;
     let mouseY = e.offsetY - this.offsetTop;
-    currentFunction.onMouseUp([mouseX,mouseY],e);
+    currentFunction.onMouseUp([mouseX, mouseY], e);
 });
 
-$('#canvas-draft').mouseleave(function(e){
+$('#canvas-draft').mouseleave(function (e) {
     if (dragging) {
         leftCanvas = true;
     }
     dragging = false;
     let mouseX = e.offsetX - this.offsetLeft;
     let mouseY = e.offsetY - this.offsetTop;
-    currentFunction.onMouseLeave([mouseX,mouseY],e);
+    currentFunction.onMouseLeave([mouseX, mouseY], e);
 });
 
-$('#canvas-draft').mouseenter(function(e){
+$('#canvas-draft').mouseenter(function (e) {
     if (leftCanvas) {
         dragging = true;
         leftCanvas = false;
     }
     let mouseX = e.offsetX - this.offsetLeft;
     let mouseY = e.offsetY - this.offsetTop;
-    currentFunction.onMouseEnter([mouseX,mouseY],e);
+    currentFunction.onMouseEnter([mouseX, mouseY], e);
 });
-$('#canvas-draft').click(function(e){
+$('#canvas-draft').click(function (e) {
     let mouseX = e.offsetX - this.offsetLeft;
     let mouseY = e.offsetY - this.offsetTop;
     currentFunction.onClick([mouseX, mouseY], e);
 })
 
-class PaintFunction{
-    constructor(){}
-    onMouseDown(){}
-    onDragging(){}
-    onMouseMove(){}
-    onMouseUp(){}
-    onMouseLeave(){}
-    onMouseEnter(){}
-    onClick() {}
-    onKeydown() {}
+class PaintFunction {
+    constructor() {
+        this.clearDraft();
+    }
+    onMouseDown() { }
+    onDragging() { }
+    onMouseMove() { }
+    onMouseUp() { }
+    onMouseLeave() { }
+    onMouseEnter() { }
+    onClick() { }
+    onKeydown() { }
     clearDraft() {
         contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
         contextDraft.closePath();
     }
 }
+
+$('body').on('mousedown', function (e) {
+    if (typing) {
+        if ($(e.target).parents('.text-panel').length > 0 || $(e.target).hasClass('textInput')) {
+            return
+        }
+        else {
+            $('#canvas').off('submit', '.textInputForm')
+            $('.textInputForm').remove();
+            typing = false;
+        }
+    }
+    console.log($(e.target).hasClass('textInput'))
+})

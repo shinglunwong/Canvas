@@ -4,6 +4,7 @@ $(document).ready(function () {
     var winHeight = $(window).height() - 120;
     $("#width").attr("value", winWidth);
     $("#height").attr("value", winHeight);
+    $('#canvas canvas').attr("width", winWidth).attr("height", winHeight);
     $('.canvas-size').submit(function (e) {
         e.preventDefault();
         $('.splash').fadeOut('slow');
@@ -25,7 +26,7 @@ let fontWidth = 16;
 let font = '24px sans-serif'
 
 // color-picker
-currentColor = "rgb(95, 171, 237)";
+currentColor = "rgb(0, 0, 0)";
 $("#color-picker").spectrum({
     preferredFormat: "rgb",
     color: currentColor,
@@ -169,17 +170,21 @@ $('.clear').click(function () {
 }).click();
 
 // import image
-$('button.import-file').click(function (e) {
+$('input.import-file').click(function (e) {
     e.preventDefault();
     console.log('upload');
     $('input.upload').click();
 });
 $('input.upload').change(function () {
+
     var file = document.querySelector('input[type=file]').files[0];
     var url = URL.createObjectURL(file);
     var img = new Image();
     var imgWidth = null;
     var imgHeight = null;
+    img.crossOrigin = 'Anonymous';
+
+
     img.onload = function () {
         // EXIF.getData(this, function() {
         //     //console.log(EXIF.getAllTags(this));
@@ -189,18 +194,32 @@ $('input.upload').change(function () {
         console.log(this.width);
         console.log(this.height);
         if (this.width > this.height) {
-            imgWidth = canvasReal.width;
-            imgHeight = canvasReal.width / (this.width / this.height);
+            if (canvasReal.width / (this.width / this.height) > canvasReal.height) {
+                imgHeight = canvasReal.height;
+                imgWidth = imgHeight * (this.width / this.height);
+            }
+            else {
+                imgWidth = canvasReal.width
+                imgHeight = canvasReal.width * (this.height / this.width);
+            }
         }
         else {
-            imgWidth = canvasReal.height * (this.width / this.height);
-            imgHeight = canvasReal.height;
+            if (canvasReal.height * (this.width / this.height > canvasReal.width)) {
+                imgWidth = canvasReal.width;
+                imgHeight = imgWidth * (this.height / this.width);
+            }
+            else {
+                imgHeight = canvasReal.height;
+                imgWidth = canvasReal.height * (this.width / this.height);
+            }
         }
         $('#canvas canvas').attr("width", imgWidth).attr("height", imgHeight);
         $('#canvas, #canvas-grid.grid').css("width", imgWidth).css("height", imgHeight);
         contextReal.drawImage(img, 0, 0, imgWidth, imgHeight);
     }
     img.src = url;
+    $('.splash').fadeOut('slow');
+
 });
 
 // Custom cursor
@@ -328,11 +347,12 @@ function saveMove() {
     var lastMove = saveCanvasReal[0].toDataURL('image/png', 1);
     drawHistory.push(lastMove);
 }
-$('.replay').click(function(){
+$('.replay').click(function () {
     replaySteps();
 })
 function replaySteps() {
     var replayIndex = 0;
+    contextReal.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
     var replayFunction = setInterval(function () {
         var replay = new Image();
         replay.src = drawHistory[replayIndex];
@@ -343,7 +363,7 @@ function replaySteps() {
         if (replayIndex == drawHistory.length) {
             clearInterval(replayFunction);
         }
-    }, 600)
+    }, 400)
 
 }
 
@@ -376,6 +396,10 @@ $(function () {
         $('.textInput').css('fontFamily', font);
 
         familyFont = font;
+
+        if (typing) {
+            $('.textInput').focus();
+        }
     });
 })
 
@@ -387,15 +411,18 @@ $('.text-rotate').change(function () {
     else
         textAngle = $('.text-rotate').val();
     console.log('textAngle:' + textAngle);
+
+    $('.textInput').css('transform', `rotate(${textAngle}deg)`)
 });
 $('#text-rotate-more').click(function () {
-    $('.text-rotate').val(parseInt($('.text-rotate').val()) + 1).change();
+    $('.text-rotate').val(parseInt($('.text-rotate').val()) + 15).change();
+    if ($('.text-rotate').val() > 360) {
+        $('.text-rotate').val(parseInt($('.text-rotate').val()) - 360)
+    }
 });
 $('#text-rotate-less').click(function () {
-    $('.text-rotate').val(parseInt($('.text-rotate').val()) - 1).change();
+    $('.text-rotate').val(parseInt($('.text-rotate').val()) - 15).change();
+    if ($('.text-rotate').val() < 0) {
+        $('.text-rotate').val(parseInt($('.text-rotate').val()) + 360)
+    }
 });
-
-$('.text-rotate').change(function () {
-    $('.textInput').css('transform', `rotate(${textAngle}deg)`)
-
-})
