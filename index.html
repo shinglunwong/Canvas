@@ -1,14 +1,9 @@
-<!DOCTYPE Html>
+<!DOCTYPE html>
 <html>
 
 <head>
     <title>DAB Picasso</title>
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
-
-    <!-- Debug -->
-    <script>
-        var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent); // only open console on mobile
-    </script>
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -16,81 +11,80 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
-    <!-- favicon error fix -->
-    <link rel="shortcut icon" href="favicon.ico">
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="android-icon-192x192.png">
+    <link rel="shortcut icon" href="favicon.ico" />
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
 
 </head>
 
 <body>
     <!-- input form -->
-    <div class='splash'>
+    <div class="splash">
         <div id="overlay">
             <div id="form-text">
                 <img src="assets/images/Dab.png">
-                <form class='canvas-size' method='post'>
-                    <div class='size-forms'>
+                <form class="canvas-size" method="post">
+                    <div class="size-forms">
                         <span>W: </span>
                         <input type="text" name="width" value="" class="dimension form-control" id="width">
                     </div>
-                    <div class='size-forms'>
-                        <span>&nbsp&nbsp H: </span>
+                    <div class="size-forms">
+                        <span>H: </span>
                         <input type="text" name="height" value="" class="dimension form-control" id="height">
                     </div>
-                    <div class='submit-button'>
+                    <div class="submit-button">
                         <input type="submit" value="Create Canvas" class="form-button" id="create">
                     </div>
-                    <div class='import-button'>
-                        <!-- <button type="button" class="import-file" title="Import file [i]" data-shortcut="i">
-                            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                viewBox="0 0 52 52" style="enable-background:new 0 0 52 52;" xml:space="preserve">
-                                <rect x="2" y="1" style="fill:#424A60;stroke:#E7ECED;stroke-width:2;stroke-miterlimit:10;" width="48" height="50" />
-                                <circle style="fill:#EFCE4A;" cx="14" cy="13.569" r="4.569" />
-                                <rect x="2" y="41" style="fill:#E7ECED;" width="48" height="10" />
-                                <polygon style="fill:#1A9172;" points="49,32.111 48,31 36,20 25.5,31.5 30.983,36.983 35,41 49,41 " />
-                                <polygon style="fill:#25AE88;" points="30.983,36.983 20.017,26.017 3,41 35,41 " />
-                            </svg>
-                        </button> -->
-                        <input type='button' class='import-file form-button' value='Import Image'>
+                    <div class="import-button">
+                        <input type="button" class="import-file form-button" value="Import Image">
                     </div>
                 </form>
-
             </div>
         </div>
     </div>
     <!-- Stylebar -->
     <nav class="navbar navbar-expand-md navbar-light">
         <div class="navbar-brand">
-            <a href="/" class="new-project"><img src="assets/images/Dab.png"></a>
+            <a href="/" class="new-project">
+                <img src="assets/images/Dab.png">
+            </a>
         </div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="#navbarNav" aria-label="Toggle navigation" aria-expanded="false">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="#navbarNav" aria-label="Toggle navigation"
+            aria-expanded="false">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <div class="button-style">
                 <div class="main-function align-left">
                     <span class="btn btn-secondary color-picker" title="Color">
-                        <input id='color-picker' />
+                        <input id="color-picker" />
                     </span>
                     <input type="text" class="stroke-size" value="10">
-                    <input id="size-slider" type="text" data-slider-min="1" data-slider-max="60" data-slider-step="1" data-slider-value="10"/>
+                    <input id="size-slider" type="text" data-slider-min="1" data-slider-max="60" data-slider-step="1" data-slider-value="10"
+                    />
                 </div>
                 <div class="side-function align-center">
                     <!-- brush panel -->
                     <div class="brush-panel">
-                        <button class='btn brush-style'>
+                        <button class="btn brush-style">
                             <i class="fas fa-circle"></i>
                         </button>
-                        <button class='btn brush-style-1'>
+                        <button class="btn brush-style-1">
                             <i class="fas fa-paint-brush"></i>
                         </button>
-                        <button class='btn brush-style-2'>
+                        <button class="btn brush-style-2">
                             <img src="assets/images/tool.png">
                         </button>
                     </div>
                     <!-- shape panel -->
                     <div class="shape-panel">
                         <span class="btn btn-secondary color-stroke-picker" title="Stroke Color">
-                            <input id='color-stroke-picker' />
+                            <input id="color-stroke-picker" />
                         </span>
                     </div>
                     <!-- sticker panel -->
@@ -163,13 +157,13 @@
                     </div>
                     <!-- filter panel -->
                     <div class="filter-desktop">
-                        <button class='btn previous-filter'>
+                        <button class="btn previous-filter">
                             <i class="fas fa-caret-left"></i>
                         </button>
-                        <button class='btn apply-filter'>
+                        <button class="btn apply-filter">
                             <i class="fas fa-check"></i>
                         </button>
-                        <button class='btn next-filter'>
+                        <button class="btn next-filter">
                             <i class="fas fa-caret-right"></i>
                         </button>
                     </div>
@@ -179,34 +173,34 @@
 
                         <input type="text" class="text-rotate" value="0">
                         <div class="btn-group-vertical">
-                            <button type="button" class='text-rotate-picker' id="text-rotate-more">
+                            <button type="button" class="text-rotate-picker" id="text-rotate-more">
                                 <i class="fas fa-redo"></i>
                             </button>
-                            <button type="button" class='text-rotate-picker' id="text-rotate-less">
+                            <button type="button" class="text-rotate-picker" id="text-rotate-less">
                                 <i class="fas fa-undo"></i>
                             </button>
                         </div>
                     </div>
                 </div>
-                <div class='setting-function align-right'>
+                <div class="setting-function align-right">
                     <button class="btn grid" title="Grid [g]" data-shortcut="g">
                         <i class="fas fa-th"></i>
                     </button>
-                    <button class='btn undo' title="Grid [left]" data-shortcut="left">
+                    <button class="btn undo" title="Grid [left]" data-shortcut="left">
                         <i class="fas fa-reply"></i>
                     </button>
-                    <button class='btn redo' title="Grid [right]" data-shortcut="right">
+                    <button class="btn redo" title="Grid [right]" data-shortcut="right">
                         <i class="fas fa-share"></i>
                     </button>
                     <div class="dropdown">
-                        <button class='btn dropbtn'>
+                        <button class="btn dropbtn">
                             <i class="fas fa-cog"></i>
                         </button>
                         <div class="dropdown-content">
-                            <button class='replay'>
+                            <button class="replay">
                                 <i class="fas fa-play-circle"></i>
                             </button>
-                            <button class='clear'>
+                            <button class="clear">
                                 <i class="fas fa-trash-alt"></i>
                                 <a class="save" download="canvas-drawing.jpg">
                                     <button>
@@ -285,76 +279,41 @@
         <canvas id="canvas-draft" class="canvas"></canvas>
         <div id="canvas-grid" class="canvas grid"></div>
     </div>
-    <div class='cursors'>
-        <div class='cursor'></div>
-        <div class='cursor-outer'></div>
+    <div class="cursors">
+        <div class="cursor"></div>
+        <div class="cursor-outer"></div>
     </div>
     <input type="file" class="upload" />
 
+    <script>
+        var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent); // only open console on mobile
+    </script>
+
     <!-- JS dependencies -->
-    <script type='text/javascript' src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.js"></script>
-    <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script type='text/javascript' src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script type='text/javascript' src="https://cdn.jsdelivr.net/npm/jquery.hotkeys@0.1.0/jquery.hotkeys.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery.hotkeys@0.1.0/jquery.hotkeys.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l"
         crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c"
         crossorigin="anonymous"></script>
-    <script type='text/javascript' src="https://hammerjs.github.io/dist/hammer.min.js"></script>
-    <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/bootstrap-slider.min.js"></script>
+    <script type="text/javascript" src="https://hammerjs.github.io/dist/hammer.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/bootstrap-slider.min.js"></script>
 
     <!-- Functions -->
-    <script type='text/javascript' src="assets/js/canvas-common.js"></script>
-    <script type='text/javascript' src="assets/js/drawing-brush.js"></script>
-    <script type='text/javascript' src="assets/js/drawing-brush-2.js"></script>
-    <script type='text/javascript' src="assets/js/drawing-line.js"></script>
-    <script type='text/javascript' src="assets/js/drawing-rectangle.js"></script>
-    <script type='text/javascript' src="assets/js/drawing-circle.js"></script>
-    <script type='text/javascript' src="assets/js/drawing-text.js"></script>
-    <script type='text/javascript' src="assets/js/drawing-polygon.js"></script>
-    <script type='text/javascript' src="assets/js/drawing-sticker.js"></script>
-    <script type='text/javascript' src="assets/js/drawing-filter.js"></script>
-    <script type='text/javascript' src="assets/js/init.js"></script>
-
-    <!-- mobile debug -->
-
-    <div id="logger" class="web_console" style='    background-color: white;
-    bottom: 0;
-    z-index:101;
-    position: absolute;
-    width: 100vw;
-    height: 200px;
-    overflow: scroll;
-    display:none;'></div>
-
-    <script type="text/javascript">
-        // if (isMobile) {
-        //     $('#logger').show();
-        //     // Overriding console object
-        //     var console = {};
-
-        //     // Getting div to insert logs
-        //     var logger = document.getElementById("logger");
-
-        //     // Adding log method from our console object
-        //     console.log = function (text) {
-        //         var element = document.createElement("div");
-        //         var txt = document.createTextNode(text);
-
-
-        //         element.appendChild(txt);
-        //         $(logger).prepend(element);
-        //         // logger.appendChild(element);
-        //     }
-
-
-        //     /**
-        //         console.log prints the message in the page instead browser console, useful to programming and debugging JS using a Android phone
-                
-        //     */
-        // }
-    </script>
+    <script type="text/javascript" src="assets/js/canvas-common.js"></script>
+    <script type="text/javascript" src="assets/js/drawing-brush.js"></script>
+    <script type="text/javascript" src="assets/js/drawing-brush-2.js"></script>
+    <script type="text/javascript" src="assets/js/drawing-line.js"></script>
+    <script type="text/javascript" src="assets/js/drawing-rectangle.js"></script>
+    <script type="text/javascript" src="assets/js/drawing-circle.js"></script>
+    <script type="text/javascript" src="assets/js/drawing-text.js"></script>
+    <script type="text/javascript" src="assets/js/drawing-polygon.js"></script>
+    <script type="text/javascript" src="assets/js/drawing-sticker.js"></script>
+    <script type="text/javascript" src="assets/js/drawing-filter.js"></script>
+    <script type="text/javascript" src="assets/js/init.js"></script>
 </body>
 
 </html>
