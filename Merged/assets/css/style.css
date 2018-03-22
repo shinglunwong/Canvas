@@ -14,13 +14,10 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    height: 150px;
-    width: 260px;
     color: black;
     transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%);
     text-align: center;
-    background-color: white;
     border: 1px solid #ced4da;
     padding: 20px;
     border-radius: .25rem;
@@ -93,7 +90,6 @@ form .dimension{
     background-repeat: no-repeat;
     overflow: hidden;
     background-image: url(../images/splash.jpg);
-    opacity: 0.95;
     display: block;
     flex-direction: column;
     justify-content: center;
