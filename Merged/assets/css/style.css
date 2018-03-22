@@ -434,12 +434,19 @@ div .dropdown {
     z-index: 500;
     right: 0;
 }
-.dropdown:hover .dropdown-content {
-    display: block;
+.dropdown-content button {
+    border-radius: none;
+    border: none;
+    width: 42px;
+    height: 38px;
+}
+.show {
+    display:block;
 }
 .dropdown-content button:hover {
     border: 1px solid grey;
     background: #bdbdbd;
+    border-radius: none;
 }
 button.btn {
     width: 42px;
