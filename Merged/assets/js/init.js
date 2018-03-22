@@ -70,25 +70,20 @@ $('.stroke-size').change(function () {
         currentStrokeSize = $('.stroke-size').val();
     console.log('currentStrokeSize:' + currentStrokeSize);
     cursorSize();
-    changeFontSize()
+    changeFontSize();
 });
-$('#stroke-size-more').click(function () {
-    $('.stroke-size').val(parseInt($('.stroke-size').val()) + 1).change();
-    cursorSize();
-    changeFontSize()
-});
-$('#stroke-size-less').click(function () {
-    $('.stroke-size').val(parseInt($('.stroke-size').val()) - 1).change();
-    cursorSize();
-    changeFontSize()
+$("#size-slider").slider();
+$("#size-slider").on("change", function(slideEvt) {
+    //console.log('new size:'+this.value);
+    $(".stroke-size").val(parseInt(this.value)).change();
 });
 
-$('#selected-stamp').click(function () {
+$('#selected-sticker').click(function () {
     $('.emoji-grid').toggle();
 });
 
 $('.emoji-grid img').click(function () {
-    $('#selected-stamp').html($(this).parent().html());
+    $('#selected-sticker').html($(this).parent().html());
     $('.emoji-grid').toggle();
 });
 
@@ -127,7 +122,7 @@ function resetPosition() {
 // tools buttons
 $('#tools button').click(function (e) {
     e.preventDefault();
-    $('.filter-desktop, .brush-panel, .stamp-panel, .text-panel').hide();
+    $('.filter-desktop, .brush-panel, .sticker-panel, .text-panel, .shape-panel').hide();
     if (typeof $(this).attr('id') !== 'undefined') {
         console.log('currentFunction:' + $(this).attr('id'));
         currentFunction = eval('new Drawing' + $(this).attr('id') + '(contextReal,contextDraft);');
@@ -135,32 +130,46 @@ $('#tools button').click(function (e) {
         $(this).toggleClass('active');
     }
 });
-
+$('.dropbtn').click(function(e){
+    $('.dropdown-content').toggleClass('show');
+});
 // brush style
-$('.brush-style-2').click(function (e) {
+$('button.brush-style-2').click(function (e) {
+    e.preventDefault();
     currentFunction = new DrawingBrush2(contextReal, contextDraft);
     $('.brush-panel button').removeClass('active'); 
-    $(e.target).addClass('active');
+    $(this).addClass('active');
 })
-$('.brush-style-1').click(function (e) {
+$('button.brush-style-1').click(function (e) {
+    e.preventDefault();
     currentFunction = new DrawingBrush1(contextReal, contextDraft);
     $('.brush-panel button').removeClass('active'); 
-    $(e.target).addClass('active');
+    $(this).addClass('active');
 })
-$('.brush-style').click(function (e) {
+$('button.brush-style').click(function (e) {
+    e.preventDefault();
     currentFunction = new DrawingBrush(contextReal, contextDraft);
     $('.brush-panel button').removeClass('active'); 
-    $(e.target).addClass('active');
+    $(this).addClass('active');
 })
 
 // select default tool
 $('#Brush').click();
+$('button.brush-style').click();
 
 // grid
 $('.grid').click(function () {
     $(this).toggleClass('active');
     $('#canvas-grid').toggleClass('grid');
 }).click();
+
+// grid
+$('.new-project').click(function (e) {
+    e.preventDefault();
+    if(confirm("Are you sure you want to create a new project? Don't forget to save it ;)")===true) {
+        location.reload();
+    }
+});
 
 // clear
 $('.clear').click(function () {

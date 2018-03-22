@@ -5,6 +5,7 @@ class DrawingRectangle extends PaintFunction {
         this.contextDraft = contextDraft;
         this.height = null;
         this.width = null;
+        $('.shape-panel').fadeIn(220);
     }
 
     onMouseDown(coord, event) {
