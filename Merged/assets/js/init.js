@@ -173,6 +173,7 @@ $('.new-project').click(function (e) {
 
 // clear
 $('.clear').click(function () {
+    $('.dropdown-content').removeClass('show');
     contextReal.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
 
 }).click();
@@ -307,6 +308,7 @@ var saveCanvasReal = $('#canvas-real');
 
 $('.save').click(function () {
     console.log('save');
+    $('.dropdown-content').removeClass('show');
     var dataURL = saveCanvasReal[0].toDataURL('image/jpeg', 1);
     this.href = dataURL;
 })
@@ -349,6 +351,7 @@ function saveMove() {
     redoList = [];
 }
 $('.replay').click(function () {
+    $('.dropdown-content').removeClass('show');
     replaySteps();
 })
 
