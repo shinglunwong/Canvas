@@ -83,7 +83,7 @@ class DrawingText extends PaintFunction {
         }
 
         var x = this.origX + this.width / 2 -1;
-        var y = this.origY + this.height / 2 + 15;
+        var y = this.origY + this.height / 2 ;
         var width = this.width;
 
         var textReal = this.contextReal;
@@ -109,7 +109,7 @@ class DrawingText extends PaintFunction {
             textReal.fillStyle = currentColor;
 
             var message = $('.textInput').val();
-            textReal.translate(x, y -sizeFont/2-1)
+            textReal.translate(x, y)
             textReal.rotate((Math.PI / 180) * angle);
             textReal.fillText(message, 0, 0);
             textReal.translate(-x - canvas.width / 2, -y - canvas.height / 2)
