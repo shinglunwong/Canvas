@@ -487,3 +487,12 @@ button.btn.brush-style-2 {
     margin-left: 4px;
     margin-top: 2px;
 }
+
+.submit-button:after{
+    content: " ";
+    display: block;
+    width: 150px;
+    height: 2px;
+    margin: 20px auto 20px;
+    background: gray;
+}
