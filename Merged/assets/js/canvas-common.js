@@ -105,7 +105,6 @@ class PaintFunction {
 $('body').on('mousedown', function (e) {
     if (typing) {
         if ($(e.target).parents('.text-panel').length > 0 || $(e.target).hasClass('textInput') || $(e.target).parents('.main-function ').length > 0 )  {
-            console.log('no problem')
             return
         }
         else {
