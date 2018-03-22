@@ -279,6 +279,8 @@ if (isMobile) {
         //console.log('mouseX:'+mouseX);
         let mouseY = e.center.y - e.target.offsetParent.offsetTop;
         //console.log('mouseY:'+mouseY);
+        $('.mouse-x').html(mouseX);
+        $('.mouse-y').html(mouseY);
         if (e.type == 'press' || e.type == 'tap') {
             if (e.type == 'press') {
                 shifting = true;
