@@ -1,60 +1,59 @@
-$(document).ready(function () {
-    // Set Canvas dimension
-    var winWidth = $(window).width() - 100;
-    var winHeight = $(window).height() - 120;
-    $("#width").attr("value", winWidth);
-    $("#height").attr("value", winHeight);
-    $('#canvas canvas').attr("width", winWidth).attr("height", winHeight);
-    // create new canvas
-    $('.canvas-size').submit(function (e) {
-        e.preventDefault();
-        $('.splash').fadeOut('slow');
-        var width = $("#width").val();
-        var height = $("#height").val();
-        $('#canvas canvas').attr("width", width).attr("height", height);
-        $('#canvas, #canvas-grid.grid').css("width", width).css("height", height);
-        contextReal.fillStyle = 'white';
-        contextReal.fillRect(0, 0, canvasReal.width, canvasReal.height);
-    })
-    // import image
-    $('input.import-file').click(function (e) {
-        e.preventDefault();
-        $('input.upload').click();
-    });
-    $('input.upload').change(function () {
-        var file = document.querySelector('input[type=file]').files[0];
-        var url = URL.createObjectURL(file);
-        var img = new Image();
-        var imgWidth = null;
-        var imgHeight = null;
-        img.crossOrigin = 'Anonymous';
-        img.onload = function () {
-            if (this.width > this.height) {
-                if (canvasReal.width / (this.width / this.height) > canvasReal.height) {
-                    imgHeight = canvasReal.height;
-                    imgWidth = imgHeight * (this.width / this.height);
-                } else {
-                    imgWidth = canvasReal.width
-                    imgHeight = canvasReal.width * (this.height / this.width);
-                }
-            } else {
-                if (canvasReal.height * (this.width / this.height > canvasReal.width)) {
-                    imgWidth = canvasReal.width;
-                    imgHeight = imgWidth * (this.height / this.width);
-                } else {
-                    imgHeight = canvasReal.height;
-                    imgWidth = canvasReal.height * (this.width / this.height);
-                }
-            }
-            $('#canvas canvas').attr("width", imgWidth).attr("height", imgHeight);
-            $('#canvas, #canvas-grid.grid').css("width", imgWidth).css("height", imgHeight);
-            contextReal.drawImage(img, 0, 0, imgWidth, imgHeight);
-        }
-        img.src = url;
-        $('.splash').fadeOut('slow');
-    });
+// Set Canvas dimension
+var winWidth = $(window).width() - 100;
+var winHeight = $(window).height() - 120;
+$("#width").attr("value", winWidth);
+$("#height").attr("value", winHeight);
+$('#canvas canvas').attr("width", winWidth).attr("height", winHeight);
 
+// create new canvas
+$('.canvas-size').submit(function (e) {
+    e.preventDefault();
+    $('.splash').fadeOut('slow');
+    var width = $("#width").val();
+    var height = $("#height").val();
+    $('#canvas canvas').attr("width", width).attr("height", height);
+    $('#canvas, #canvas-grid.grid').css("width", width).css("height", height);
+    contextReal.fillStyle = 'white';
+    contextReal.fillRect(0, 0, canvasReal.width, canvasReal.height);
 })
+
+// import image
+$('input.import-file').click(function (e) {
+    e.preventDefault();
+    $('input.upload').click();
+});
+$('input.upload').change(function () {
+    var file = document.querySelector('input[type=file]').files[0];
+    var url = URL.createObjectURL(file);
+    var img = new Image();
+    var imgWidth = null;
+    var imgHeight = null;
+    img.crossOrigin = 'Anonymous';
+    img.onload = function () {
+        if (this.width > this.height) {
+            if (canvasReal.width / (this.width / this.height) > canvasReal.height) {
+                imgHeight = canvasReal.height;
+                imgWidth = imgHeight * (this.width / this.height);
+            } else {
+                imgWidth = canvasReal.width
+                imgHeight = canvasReal.width * (this.height / this.width);
+            }
+        } else {
+            if (canvasReal.height * (this.width / this.height > canvasReal.width)) {
+                imgWidth = canvasReal.width;
+                imgHeight = imgWidth * (this.height / this.width);
+            } else {
+                imgHeight = canvasReal.height;
+                imgWidth = canvasReal.height * (this.width / this.height);
+            }
+        }
+        $('#canvas canvas').attr("width", imgWidth).attr("height", imgHeight);
+        $('#canvas, #canvas-grid.grid').css("width", imgWidth).css("height", imgHeight);
+        contextReal.drawImage(img, 0, 0, imgWidth, imgHeight);
+    }
+    img.src = url;
+    $('.splash').fadeOut('slow');
+});
 
 // color-picker
 currentColor = "rgb(60, 116, 239)";
@@ -394,9 +393,9 @@ $(function () {
             }
         }
         getFontsCats('sans-serif', 3);
-        getFontsCats('display', 12)
-        getFontsCats('handwriting', 12)
-        fillFonts()
+        getFontsCats('display', 12);
+        getFontsCats('handwriting', 12);
+        fillFonts();
     })
     $('.select-font').change(function (e) {
         var font = $(this).val();
@@ -407,7 +406,7 @@ $(function () {
         if (typing) {
             $('.textInput').focus();
         }
-    })
+    });
 });
 
 function fillFonts() {

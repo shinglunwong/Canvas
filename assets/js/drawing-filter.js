@@ -8,9 +8,6 @@ class DrawingFilter extends PaintFunction {
         this.currentFilter = 0;
         this.draw(this.contextDraft);
         this.filterUpdate = false;
-        // if(!isMobile) {
-        //     $('.filter-desktop').fadeIn(220);
-        // }
         $('.filter-desktop').fadeIn(220);
     }
     onPanRight() {
@@ -50,8 +47,7 @@ class DrawingFilter extends PaintFunction {
         var imgHeight = null;
         img.src = 'assets/filters/' + this.filters[this.currentFilter];
         img.onload = function () {
-            // filter width ajusted to canvas width
-            if(canvasReal.height > canvasReal.width) {
+            if(canvasReal.height > canvasReal.width) {  // filter width ajusted to canvas width
                 imgWidth = canvasReal.width;
                 imgHeight = canvasReal.width / (this.width / this.height);
             }
