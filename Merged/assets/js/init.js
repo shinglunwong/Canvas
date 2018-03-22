@@ -163,6 +163,14 @@ $('.grid').click(function () {
     $('#canvas-grid').toggleClass('grid');
 }).click();
 
+// grid
+$('.new-project').click(function (e) {
+    e.preventDefault();
+    if(confirm("Are you sure you want to create a new project? Don't forget to save it ;)")===true) {
+        location.reload();
+    }
+});
+
 // clear
 $('.clear').click(function () {
     contextReal.clearRect(0, 0, canvasDraft.width, canvasDraft.height);

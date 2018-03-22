@@ -49,8 +49,14 @@ class DrawingFilter extends PaintFunction {
         img.src = 'assets/filters/' + this.filters[this.currentFilter];
         img.onload = function () {
             // filter width ajusted to canvas width
-            imgWidth = canvasReal.width;
-            imgHeight = canvasReal.width / (this.width / this.height);
+            if(canvasReal.height > canvasReal.width) {
+                imgWidth = canvasReal.width;
+                imgHeight = canvasReal.width / (this.width / this.height);
+            }
+            else {
+                imgWidth = this.width/2;
+                imgHeight = this.height/2;
+            }
             context.drawImage(img, 0, 0, imgWidth, imgHeight);
         };
     }

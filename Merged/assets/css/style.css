@@ -327,7 +327,7 @@ body {
 
 .textInputForm {
     margin: 0;
-    z-index: 100;
+    z-index: 98;
     position: absolute;
 }
 .textInput {
@@ -335,8 +335,13 @@ body {
     text-align: center;
     background-color: transparent;  
     border: none;
-    min-width: 100px;
+    outline: #bdbdbd dashed 2px;
+    /* min-width: 100px; */
     min-height: 50px;
+    resize: horizontal
+}
+.textInput:focus {
+    outline: -webkit-focus-ring-color auto 5px;
 }
 
 .textInputForm:hover .cursor, .textInputForm:hover .cursor-outer {

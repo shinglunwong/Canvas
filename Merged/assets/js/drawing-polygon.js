@@ -52,6 +52,7 @@ class DrawingPolygon extends PaintFunction {
     draw(context) {
         this.contextDraft.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
         if (context == this.contextDraft) {
+            contextDraft.strokeStyle = 'black';
             contextDraft.lineWidth = 2;
             this.contextDraft.fillStyle = 'transparent';
             this.contextDraft.beginPath();
@@ -61,6 +62,7 @@ class DrawingPolygon extends PaintFunction {
             this.contextDraft.lineTo(this.x[0] - 10, this.y[0] + 10);
             this.contextDraft.closePath();
             this.contextDraft.stroke();
+            contextDraft.strokeStyle = currentStrokeColor;
             contextDraft.lineWidth = currentStrokeSize/2;
         }
 
