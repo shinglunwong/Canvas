@@ -125,20 +125,12 @@ nav {
     background-color: #ffcb52;
     margin-bottom: 10px;
     box-shadow: 0 3px 8px #444444;
-    z-index: 199;
+    z-index: 99;
 }
 button.navbar-toggler {
     width: 100%;
     height: 100%;
 }
-
-@media only screen and (max-width: 768px) {
-    .button-style {
-        display: flex;
-        flex-direction: column;
-    }
-
-
 }
 .align-left {
     margin: 0 auto;
@@ -167,10 +159,7 @@ button.navbar-toggler {
     border-radius: 0;
 }
 .collapse.show {
-    height: 80px;
-}
-.collapsing {
-    height: 80px;
+    height: 75px;
 }
 #tools {
     position: absolute;
