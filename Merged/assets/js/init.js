@@ -22,7 +22,7 @@ $(document).ready(function () {
 })
 
 // color-picker
-currentColor = "rgb(0, 0, 0)";
+currentColor = "rgb(60, 116, 239)";
 $("#color-picker").spectrum({
     preferredFormat: "rgb",
     color: currentColor,
@@ -173,6 +173,7 @@ $('.new-project').click(function (e) {
 
 // clear
 $('.clear').click(function () {
+    $('.dropdown-content').removeClass('show');
     contextReal.clearRect(0, 0, canvasDraft.width, canvasDraft.height);
 
 }).click();
@@ -266,7 +267,8 @@ if (isMobile) {
     }));
     mc.add(new Hammer.Pan());
     mc.add(new Hammer.Press());
-    mc.on("pan panstart panend panright panleft tap press pressup", function (e) {
+    mc.on("pan panstart panend tap press pressup", function (e) {
+    // mc.on("pan panstart panend panright panleft tap press pressup", function (e) {
         // e.stopPropagation();
         // e.preventDefault();
         // e.gesture.stopPropagation();
@@ -289,10 +291,10 @@ if (isMobile) {
             dragging = true;
         } else if (e.type == 'pan') {
             currentFunction.onDragging([mouseX, mouseY], e);
-        } else if (e.type == 'panright') {
-            currentFunction.onPanRight();
-        } else if (e.type == 'panleft') {
-            currentFunction.onPanLeft();
+        // } else if (e.type == 'panright') {
+        //     currentFunction.onPanRight();
+        // } else if (e.type == 'panleft') {
+        //     currentFunction.onPanLeft();
         } else if (e.type == 'panend' || e.type == 'pressup') {
             dragging = false;
             currentFunction.onMouseUp([mouseX, mouseY], e);
@@ -306,6 +308,7 @@ var saveCanvasReal = $('#canvas-real');
 
 $('.save').click(function () {
     console.log('save');
+    $('.dropdown-content').removeClass('show');
     var dataURL = saveCanvasReal[0].toDataURL('image/jpeg', 1);
     this.href = dataURL;
 })

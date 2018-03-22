@@ -7,9 +7,10 @@ class DrawingFilter extends PaintFunction {
         this.currentFilter = 0;
         this.draw(this.contextDraft);
         this.filterUpdate = false;
-        if(!isMobile) {
-            $('.filter-desktop').fadeIn(220);
-        }
+        // if(!isMobile) {
+        //     $('.filter-desktop').fadeIn(220);
+        // }
+        $('.filter-desktop').fadeIn(220);
     }
     onPanRight() {
         // apply next filter on draft
