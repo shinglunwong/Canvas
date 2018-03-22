@@ -22,6 +22,7 @@
     padding: 20px;
     border-radius: .25rem;
     box-shadow: 0 0 4px 1px #444444;
+    background-color: #f5f5dc6e;
 }
 .form-button{
     display: block;
@@ -479,5 +480,5 @@ button.btn.brush-style-2 {
     width: 100px;
 }
 .navbar-brand img{
-    width: 100%;
+    width: 134px;
 }
