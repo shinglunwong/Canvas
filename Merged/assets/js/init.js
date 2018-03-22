@@ -73,7 +73,7 @@ $('.stroke-size').change(function () {
     changeFontSize();
 });
 $("#size-slider").slider();
-$("#size-slider").on("change", function(slideEvt) {
+$("#size-slider").on("change", function (slideEvt) {
     //console.log('new size:'+this.value);
     $(".stroke-size").val(parseInt(this.value)).change();
 });
@@ -130,26 +130,26 @@ $('#tools button').click(function (e) {
         $(this).toggleClass('active');
     }
 });
-$('.dropbtn').click(function(e){
+$('.dropbtn').click(function (e) {
     $('.dropdown-content').toggleClass('show');
 });
 // brush style
 $('button.brush-style-2').click(function (e) {
     e.preventDefault();
     currentFunction = new DrawingBrush2(contextReal, contextDraft);
-    $('.brush-panel button').removeClass('active'); 
+    $('.brush-panel button').removeClass('active');
     $(this).addClass('active');
 })
 $('button.brush-style-1').click(function (e) {
     e.preventDefault();
     currentFunction = new DrawingBrush1(contextReal, contextDraft);
-    $('.brush-panel button').removeClass('active'); 
+    $('.brush-panel button').removeClass('active');
     $(this).addClass('active');
 })
 $('button.brush-style').click(function (e) {
     e.preventDefault();
     currentFunction = new DrawingBrush(contextReal, contextDraft);
-    $('.brush-panel button').removeClass('active'); 
+    $('.brush-panel button').removeClass('active');
     $(this).addClass('active');
 })
 
@@ -166,7 +166,7 @@ $('.grid').click(function () {
 // grid
 $('.new-project').click(function (e) {
     e.preventDefault();
-    if(confirm("Are you sure you want to create a new project? Don't forget to save it ;)")===true) {
+    if (confirm("Are you sure you want to create a new project? Don't forget to save it ;)") === true) {
         location.reload();
     }
 });
@@ -346,9 +346,12 @@ function saveMove() {
     var lastMove = saveCanvasReal[0].toDataURL('image/png', 1);
     drawHistory.push(lastMove);
     redoList = [];
+    console.log(drawHistory)
 }
 $('.replay').click(function () {
-    replaySteps();
+    if (drawHistory.length > 0) {
+        replaySteps();
+    }
 })
 
 function replaySteps() {
@@ -390,10 +393,10 @@ var familyFont = 'Roboto';
 var allFonts = [];
 var topFonts = [];
 
-function changeFontSize(){
+function changeFontSize() {
     sizeFont = currentStrokeSize;
     $('.textInput').css('fontSize', `${sizeFont}px`);
-    console.log('fontsize: '+ $('.textInput').css('fontSize'))
+    console.log('fontsize: ' + $('.textInput').css('fontSize'))
 }
 
 $(function () {
@@ -423,7 +426,7 @@ $(function () {
         getFontsCats('handwriting', 12)
         fillFonts()
     })
-    $('.select-font').change(function(e){
+    $('.select-font').change(function (e) {
         var font = $(this).val();
         $('.textInput').css('fontFamily', font);
 
