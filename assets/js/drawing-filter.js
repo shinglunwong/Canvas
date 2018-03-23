@@ -31,7 +31,6 @@ class DrawingFilter extends PaintFunction {
     onClick() {
         if (shifting) {
             this.draw(this.contextReal);
-            saveMove();
         }
         shifting = false;
     }
@@ -56,6 +55,9 @@ class DrawingFilter extends PaintFunction {
                 imgHeight = this.height/2;
             }
             context.drawImage(img, 0, 0, imgWidth, imgHeight);
+            if(context.canvas.id=='canvas-real') {
+                saveMove();
+            }
         };
     }
 }
